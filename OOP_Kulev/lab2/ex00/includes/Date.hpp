@@ -8,24 +8,29 @@
 class	Date
 {
 public:
+
+	//Exceptions
 	class	InvalidDate : public std::exception {
 	public:
 		virtual const char * what() const throw();
 	};
 
-	enum	EMonth {
-		jan = 1, feb, mar, apr, may, jun, jul, aug, sept, oct, nov, dec
+	enum		EMonth {
+					jan = 1, feb, mar,
+					apr, may, jun,
+					jul, aug, sept,
+					oct, nov, dec
 	};
 
 	//Getters
-	int		getDay(void) const;
-	int		getMonth(void) const;
-	int		getYear(void) const;
+	int			getDay(void) const;
+	int			getMonth(void) const;
+	int			getYear(void) const;
 
 	//Setters
-	void	setDay(int day);
-	void	setMonth(int month);
-	void	setYear(int year);
+	void		setDay(int day);
+	void		setMonth(int month);
+	void		setYear(int year);
 
 	//Constr & destr
 	Date(void);
@@ -33,13 +38,13 @@ public:
 	Date(Date const & target);
 	~Date(void);
 
-	bool	isLeapYear(void) const;
+	bool		isLeapYear(void) const;
 	std::string	toStrNamedMonth(void) const;
 	std::string	toStr(void) const;
 
 
 	//Operators
-	Date & operator = (Date const & target);
+	Date &		operator = (Date const & target);
 
 private:
 	static const std::string _monthNames[12];
@@ -51,6 +56,6 @@ private:
 	int			_monthMaxDays(void) const;
 };
 
-std::ostream & operator << (std::ostream & o, Date const & target);
+std::ostream &	operator << (std::ostream & o, Date const & target);
 
 #endif

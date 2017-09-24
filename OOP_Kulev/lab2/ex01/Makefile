@@ -41,8 +41,8 @@ INCLUDES	=	$(INC_PROJ)
 # Compile can include flags or other stuff, so it can be useful when I
 # want to compile without flags
 
-# COMPILE		=	$(CC) $(FLAGS) $(INCLUDES)
-COMPILE		=	$(CC) $(INCLUDES)
+COMPILE		=	$(CC) $(FLAGS) $(INCLUDES)
+# COMPILE		=	$(CC) $(INCLUDES)
 
 # Finds all '.cpp' files in 'src'
 

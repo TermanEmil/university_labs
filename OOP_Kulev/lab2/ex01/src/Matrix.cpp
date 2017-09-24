@@ -1,27 +1,11 @@
 #include "Matrix.hpp"
 
 /*
-** Getters & setters
+** Getters
 */
-
-int		Matrix::getCel(int i, int j) const {
-	if (i < 0 || i >= _lines || j < 0 || j >= _cols)
-	{
-		mErrno = boundsErr;
-		return (0);
-	}
-	return _tab[i][j];
-}
 
 int		Matrix::getLines(void) const {return (_tab == NULL) ? 0 : _lines;}
 int		Matrix::getCols(void) const {return (_tab == NULL) ? 0 : _cols;}
-
-void	Matrix::setCel(int newVal, int i, int j) {
-	if (i < 0 || i >= _lines || j < 0 || j >= _cols)
-		mErrno = boundsErr;
-	else
-		_tab[i][j] = newVal;
-}
 
 /*
 ** Constructors & destructors
@@ -52,6 +36,12 @@ Matrix::~Matrix(void) {_delTab();}
 ** Utilities
 */
 
+void	Matrix::assignAll(int const value) {
+	for (int i = 0; i < _lines; i++)
+		for (int j = 0; j < _cols; j++)
+			_tab[i][j] = value;
+}
+
 void	Matrix::_delTab(void) {
 	if (_tab != NULL) {
 		for (int i = 0; i < _lines; i++) {
@@ -72,7 +62,6 @@ int		Matrix::_newTab(int lines, int cols) {
 		_delTab();
 
 	_tab = new int * [lines];
-
 	if (_tab == NULL) {
 		mErrno = enomem;
 		return -1;
@@ -83,19 +72,16 @@ int		Matrix::_newTab(int lines, int cols) {
 
 		if (_tab[i] == NULL) {
 			mErrno = enomem;
-			for (int i_free = 0; i_free < i; i_free++)
-				delete [] _tab[i];
-			
-			delete [] _tab;
+			_lines = i;
+			_delTab();
+			_lines = 0;
 			return -1;
 		}
-
-		for (int j = 0; j < cols; j++)
-			_tab[i][j] = 0;
 	}
 
 	_lines = lines;
 	_cols = cols;
+	assignAll(0);
 	return 0;
 }
 
@@ -109,10 +95,14 @@ Matrix & Matrix::operator = (Matrix const & target) {
 
 	for (int i = 0; i < _lines; i++)
 		for (int j = 0; j < _cols; j++)
-			_tab[i][j] = target.getCel(i, j);
+			_tab[i][j] = target[i][j];
 
 	return *this;
 }
+
+int	*		Matrix::operator [] (int const i) {return _tab[i];}
+int	const *	Matrix::operator [] (int const i) const {return _tab[i];}
+
 
 /*
 ** Arithmetic operators
@@ -126,9 +116,12 @@ Matrix Matrix::operator + (Matrix const & target) const {
 
 	Matrix	result(*this);
 
+	if (result.mErrno != 0)
+		return result;
+
 	for (int i = 0; i < _lines; i++)
 		for (int j = 0; j < _cols; j++)
-			result.setCel(_tab[i][j] + target.getCel(i, j), i, j);
+			result[i][j] = _tab[i][j] + target[i][j];
 
 	return result;
 }
@@ -141,9 +134,12 @@ Matrix Matrix::operator - (Matrix const & target) const {
 
 	Matrix	result(*this);
 
+	if (result.mErrno != 0)
+		return result;
+
 	for (int i = 0; i < _lines; i++)
 		for (int j = 0; j < _cols; j++)
-			result.setCel(_tab[i][j] - target.getCel(i, j), i, j);
+			result[i][j] = _tab[i][j] - target[i][j];
 
 	return result;
 }
@@ -158,14 +154,30 @@ Matrix Matrix::operator * (Matrix const & target) const {
 
 	Matrix	result(_lines, target.getCols());
 
+	if (result.mErrno != 0)
+		return result;
+
 	for (int i = 0; i < _lines; i++) {
 		for (int j = 0; j < target.getCols(); j++) {
 			sum = 0;
 			for (int k = 0; k < _cols; k++)
-				sum += _tab[i][k] * target.getCel(k, j);
-			result.setCel(sum, i, j);
+				sum += (_tab[i][k]) * (target[k][j]);
+			result[i][j] = sum;
 		}
 	}
+
+	return result;
+}
+
+Matrix Matrix::operator * (int const nb) const {
+	Matrix	result(_lines, _cols);
+
+	if (result.mErrno != 0)
+		return result;
+
+	for (int i = 0; i < _lines; i++)
+		for (int j = 0; j < _cols; j++)
+			result[i][j] = _tab[i][j] * nb;
 
 	return result;
 }
@@ -179,7 +191,7 @@ std::ostream & operator << (std::ostream & o, Matrix const & target) {
 	for (int i = 0; i < target.getLines(); i++) {
 		o << "\t{";
 		for (int j = 0; j < target.getCols(); j++) {
-			o << target.getCel(i, j);
+			o << target[i][j];
 			if (j != target.getCols() - 1)
 				o << ",\t";
 		}

@@ -1,0 +1,5 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{1. Hyperbolic Tangent}{2}{0}{1}
+\beamer@sectionintoc {2}{2. Some Code}{3}{0}{2}
+\beamer@sectionintoc {3}{3. Integrals}{4}{0}{3}
+\beamer@sectionintoc {4}{4. Fractal}{8}{0}{4}

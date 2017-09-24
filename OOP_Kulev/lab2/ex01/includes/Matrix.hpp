@@ -8,40 +8,46 @@
 class Matrix
 {
 public:
-	enum	EMatrixErrno {
-		boundsErr = 1, invalidSize, enomem = ENOMEM
+	enum			EMatrixErrno {
+						boundsErr = 1,
+						invalidSize,
+						enomem = ENOMEM
 	};
 
 	mutable int		mErrno;
 
-	int		getCel(int i, int j) const;
-	int		getLines(void) const;
-	int		getCols(void) const;
-
-	void	setCel(int newVal, int i, int j);
+	int				getLines(void) const;
+	int				getCols(void) const;
 
 	Matrix(void);
 	Matrix(int lines, int cols);
 	Matrix(Matrix const & target);
 	~Matrix(void);
 
-	//Operators
-	Matrix & operator = (Matrix const & target);
+	//Utils
+	void			assignAll(int value);
 
-	Matrix operator + (Matrix const & target) const;
-	Matrix operator - (Matrix const & target) const;
-	Matrix operator * (Matrix const & target) const;
+	//Operators
+	Matrix &		operator = (Matrix const & target);
+
+	int	const *		operator [] (int i) const;
+	int	*			operator [] (int i);
+
+	Matrix			operator + (Matrix const & target) const;
+	Matrix			operator - (Matrix const & target) const;
+	Matrix			operator * (Matrix const & target) const;
+	Matrix			operator * (int nb) const;
 
 private:
-	int		**_tab;
-	int		_lines;
-	int		_cols;
+	int				**_tab;
+	int				_lines;
+	int				_cols;
 
 	//Utils
-	void	_delTab(void);
-	int		_newTab(int lines, int cols);
+	void			_delTab(void);
+	int				_newTab(int lines, int cols);
 };
 
-std::ostream & operator << (std::ostream & o, Matrix const & target);
+std::ostream &		operator << (std::ostream & o, Matrix const & target);
 
 #endif
