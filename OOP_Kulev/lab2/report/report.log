@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.22)  22 SEP 2017 23:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.22)  25 SEP 2017 10:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -892,6 +892,17 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 \FV@StepNumber=\count169
 \FV@OutFile=\write3
 )
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+\fancy@headwidth=\skip56
+\f@ncyO@elh=\skip57
+\f@ncyO@erh=\skip58
+\f@ncyO@olh=\skip59
+\f@ncyO@orh=\skip60
+\f@ncyO@elf=\skip61
+\f@ncyO@erf=\skip62
+\f@ncyO@olf=\skip63
+\f@ncyO@orf=\skip64
+)
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
@@ -907,20 +918,20 @@ Package csquotes Info: ... none found.
 (/home/boss/Documents/UTM/university_labs/OOP_Kulev/lab2/report/report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
 \c@lstlisting=\count170
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
@@ -938,7 +949,7 @@ LaTeX Font Info:    ... okay on input line 47.
 \everyMPtoPDFconversion=\toks39
 )
 \AtBeginShipoutBox=\box50
-Package hyperref Info: Link coloring OFF on input line 47.
+Package hyperref Info: Link coloring OFF on input line 50.
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
@@ -947,9 +958,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count177
 )
-LaTeX Info: Redefining \ref on input line 47.
-LaTeX Info: Redefining \pageref on input line 47.
-LaTeX Info: Redefining \nameref on input line 47.
+LaTeX Info: Redefining \ref on input line 50.
+LaTeX Info: Redefining \pageref on input line 50.
+LaTeX Info: Redefining \nameref on input line 50.
 
 (/home/boss/Documents/UTM/university_labs/OOP_Kulev/lab2/report/report.out)
 (/home/boss/Documents/UTM/university_labs/OOP_Kulev/lab2/report/report.out)
@@ -975,55 +986,99 @@ e
 ABD: EveryShipout initializing macros [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 72.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 78.
  (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 72.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 78.
 
-Overfull \hbox (17.08406pt too wide) in paragraph at lines 82--83
+Overfull \hbox (17.08406pt too wide) in paragraph at lines 88--89
 \OT1/cmr/m/n/10 con-struc-torul f^^Uar^^Ua parametri (con-struc-torul im-plicit
 ), con-struc-torul cu un parametru
  []
 
 [2]
 (/home/boss/Documents/UTM/university_labs/OOP_Kulev/lab2/report/./../ex00/inclu
-des/Date.hpp) [3]
+des/Date.hpp) [3] [4]
 (/home/boss/Documents/UTM/university_labs/OOP_Kulev/lab2/report/./../ex01/inclu
-des/Matrix.hpp) [4]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 97.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 97.
+des/Matrix.hpp)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 149.
+ [5]
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 168.
+
+ (/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
+File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <9> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 168.
+
+[6]
+(/home/boss/Documents/UTM/university_labs/OOP_Kulev/lab2/report/./../ex00/src/D
+ate.cpp [7])
+(/home/boss/Documents/UTM/university_labs/OOP_Kulev/lab2/report/./../ex00/src/m
+ain.cpp)
+Overfull \hbox (15.0pt too wide) in paragraph at lines 178--185
+[]$[]$ 
+ []
+
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 186--202
+[]$[]$
+ []
+
+[8]
+(/home/boss/Documents/UTM/university_labs/OOP_Kulev/lab2/report/./../ex01/src/M
+atrix.cpp [9])
+(/home/boss/Documents/UTM/university_labs/OOP_Kulev/lab2/report/./../ex01/src/m
+ain.cpp)
+Overfull \hbox (15.0pt too wide) in paragraph at lines 206--213
+[]$[]$ 
+ []
+
+[10]
+Overfull \hbox (15.0pt too wide) in paragraph at lines 214--277
+[]$[]$
+ []
+
+[11] [12] [13]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 293.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 293.
 
 (/home/boss/Documents/UTM/university_labs/OOP_Kulev/lab2/report/report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 97.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 97.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 293.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 293.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 360D4BC9B34D3F6EAC8086C69BD13904;354.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 97.
+(rerunfilecheck)             Checksum: 10197009E73C9818A071BCF1E2742467;586.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 293.
  ) 
 Here is how much of TeX's memory you used:
- 22393 strings out of 493029
- 392337 string characters out of 6136234
- 589533 words of memory out of 5000000
- 25561 multiletter control sequences out of 15000+600000
- 9191 words of font info for 34 fonts, out of 8000000 for 9000
+ 23130 strings out of 493029
+ 403151 string characters out of 6136234
+ 673626 words of memory out of 5000000
+ 25761 multiletter control sequences out of 15000+600000
+ 10674 words of font info for 39 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 40i,6n,58p,10375b,1219s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 40i,6n,58p,10375b,1842s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmtt8.pfb>
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
 Output written on /home/boss/Documents/UTM/university_labs/OOP_Kulev/lab2/repor
-t/report.pdf (4 pages, 110035 bytes).
+t/report.pdf (13 pages, 203882 bytes).
 PDF statistics:
- 234 PDF objects out of 1000 (max. 8388607)
- 216 compressed objects within 3 object streams
- 128 named destinations out of 1000 (max. 500000)
- 57 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 915 PDF objects out of 1000 (max. 8388607)
+ 877 compressed objects within 9 object streams
+ 639 named destinations out of 1000 (max. 500000)
+ 89 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -42,12 +42,6 @@ void	Date::setYear(int const year) {
 ** Constructors & destructors
 */
 
-Date::Date(void) {
-	setYear(0);
-	setMonth(1);
-	setDay(1);
-}
-
 Date::Date(int const day, int const month, int const year) {
 	setYear(year);
 	setMonth(month);

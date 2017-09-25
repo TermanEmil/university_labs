@@ -18,6 +18,8 @@
 \usepackage{csquotes}
 \usepackage{xcolor}
 \usepackage{fancyvrb}
+\usepackage{fancyhdr}
+\usepackage{fancyvrb}
 
 \graphicspath{{./}}
 
@@ -30,12 +32,13 @@
 
 \lstset{
 	language=C++,
+	frame=single,
+	rulecolor=\color{gray},
 	basicstyle=\fontsize{5}{5}\ttfamily,
 	keywordstyle=\color{blue},
 	stringstyle=\color{orange},
 	commentstyle=\color{gray},
 	extendedchars=true,
-	frame=single,
 	keepspaces=true,
 	numbers=left,
 	numbersep=5pt,
@@ -46,6 +49,9 @@
 
 \begin{document}
 	% Custom Commands
+	\newcommand{\cppInLine}[1]{
+		{\lstinline[basicstyle=\small]|#1|}
+	}
 	% Begin of the document
 
 	\title{OOP laboratory\_02}
@@ -87,11 +93,201 @@
 
 	\section{Data analysis}
 		\subsection{Ex a}
-			\lstinputlisting[language=C++]{./../ex00/includes/Date.hpp}
+			\lstinputlisting{./../ex00/includes/Date.hpp}
+
+			\begin{itemize}
+				\item \cppInLine{Date(int day, int month, int year);}
+					\par A constructor which initializes the day, month and the year fields with the given values. The \textit{InvalidDate} exception is thrown in case of invalid parameters.
+
+				\item \cppInLine{Date(Date const & target);}
+					\par A copy constructor, taking in a constant reference to a \textit{Date} instance.
+
+				\item
+					\begin{enumerate}
+						\item \cppInLine{int getDay(void) const;}
+						\item \cppInLine{int getMonth(void) const;}
+						\item \cppInLine{int getYear(void) const;}
+					\end{enumerate}
+					Constant getter functions.
+
+				\item
+					\begin{enumerate}
+						\item \cppInLine{int setDay(int day);}
+						\item \cppInLine{int setMonth(int month);}
+						\item \cppInLine{int setYear(int year);}
+					\end{enumerate}
+					Setters which will throw the \textit{InvalidDate} exception in case the given values are impossible.
+
+				\item \cppInLine{Date & operator = (Date const & target);}
+					\par The overload assign operator, which assigns the day, month and the year to \textit{this} Date instance.
+
+				\item \cppInLine{std::string toStrNamedMonth(void) const;}
+					\par Returns a new string, of the date formated formated in the folowing way: \textit{06 jun 2017}
+
+				\item \cppInLine{std::string toStr(void) const;}
+					\par Returns a new string, of the date formated formated in the folowing way: \textit{06.06.2017}
+			\end{itemize}
+
 			\pagebreak
 
 		\subsection{Ex b}
-			\lstinputlisting[language=C++]{./../ex01/includes/Matrix.hpp}
+			\lstinputlisting{./../ex01/includes/Matrix.hpp}
+
+			\begin{itemize}
+				\item \cppInLine{Matrix(void);}
+					\par The default constructor, which makes an empty matrix.
+
+				\item \cppInLine{Matrix(int lines, int cols);}
+					\par A constructor which makes a matrix of the size \textit{linex} x \textit{cols}, initializing every element with 0.
+
+				\item \cppInLine{Matrix(Matrix const & target);}
+					\par A copy constructors which takes in a constant reference to a matrix.
+
+				\item \cppInLine{\~Matrix(void);}
+					\par The destructor: it deletes the allocated memory of the matrix.
+
+				\item \cppInLine{int const * operator [] (int i) const;}
+					\par A getter operator returning a constant pointer to the \textit{i} line of the matrix.
+
+				\item \cppInLine{int * operator [] (int i);}
+					\par The same as previous, but this operator simply returns a normal pointer to the line.
+
+				\item
+					\begin{enumerate}
+						\item \cppInLine{Matrix operator + (Matrix const & target) const;}
+
+						\item \cppInLine{Matrix operator - (Matrix const & target) const;}
+
+						\item \cppInLine{Matrix operator * (Matrix const & target) const;}
+					\end{enumerate}
+					Arithmetic constant operators, which take in a constant reference to a matrix with which the operation is to be executed. A new fresh matrix with the result is returned.
+
+				\item \cppInLine{Matrix operator * (int nb) const;}
+					\par Overload operator for multiplication which returns a new matrix with the elements of this matrix multiplied with the given number.
+
+				\item \cppInLine{std::ostream & operator << (std::ostream & o, Matrix const & target);}
+					\par An overload operator \textit{$<<$} for matrix. It takes in an \textit{ostream} reference and a constant reference to a Matrix. It puts in the stream the entire content of the given matrix.
+			\end{itemize}
+
 			\pagebreak
+
+	\section{The actual code}
+		\subsection{Ex a}
+			\lstinputlisting{./../ex00/src/Date.cpp}
+
+			\begin{minipage}{\textwidth}
+				\begin{center}
+					\textbf{main.cpp}
+				\end{center}
+
+				\lstinputlisting{./../ex00/src/main.cpp}
+			\end{minipage}
+
+			\begin{minipage}{\textwidth}
+				\begin{center}
+					\textbf{Output}
+				\end{center}
+
+				\lstset{language={}}
+				\begin{lstlisting}
+10.3.1997
+10 mar 1997
+Invalid day, month or year
+Invalid day, month or year
+29.2.2000
+Invalid day, month or year
+				\end{lstlisting}
+			\end{minipage}
+			\pagebreak
+
+		\subsection{Ex b}
+			\lstinputlisting{./../ex01/src/Matrix.cpp}
+			
+			\begin{minipage}{\textwidth}
+				\begin{center}
+					\textbf{main.cpp}
+				\end{center}
+
+				\lstinputlisting{./../ex01/src/main.cpp}
+			\end{minipage}
+
+			\begin{minipage}{\textwidth}
+				\begin{center}
+					\textbf{Output}
+				\end{center}
+
+				\lstset{language={}}
+				\begin{lstlisting}
+Addition & substraction
+matrix1:
+{
+	{1,	0}
+	{0,	2}
+}
+matrix2:
+{
+	{1,	42}
+	{0,	2}
+}
+matrix1 + matrix2:
+{
+	{2,	42}
+	{0,	4}
+}
+
+matrix3:
+{
+	{0,	0,	0,	0,	0}
+	{0,	0,	0,	0,	0}
+	{0,	0,	0,	0,	0}
+	{0,	0,	0,	0,	0}
+	{0,	0,	0,	0,	0}
+}
+matrix1 + matrix3:
+{
+}
+error: 2
+
+Multiplication
+matrix1:
+{
+	{1,	3,	2,	4}
+	{0,	5,	-1,	6}
+}
+matrix2:
+{
+	{1,	-3,	2,	-4}
+	{-2,	0,	3,	4}
+	{5,	-1,	6,	7}
+	{8,	9,	10,	11}
+}
+matrix1 x matrix2:
+{
+	{37,	31,	63,	66}
+	{33,	55,	69,	79}
+}
+matrix1 x 10:
+{
+	{10,	30,	20,	40}
+	{0,	50,	-10,	60}
+}
+				\end{lstlisting}
+			\end{minipage}
+			\pagebreak
+
+	\section{Analysis of the results and conclusions}
+		\begin{itemize}
+			\item \textit{Classes} are much flexible than \textit{Structures}.
+
+			\item When we use Classes instead of structures, we pass less parameters to functions (which work with these classes), making the code more readable and more intuitive - leading to less errors and bugs.
+
+			\item When classes are used over structures, we can benefit from \textit{private} and \textit{public} fields. These fields help us to encapsulate the data, making available only some specific class fields to the user. In this way, we can be sure that some data will always be the way we need it to be, without extra checks.
+
+			\item In class, we can define some data that only this class will use, without polluting the global scope. For example, I used an \textit{enum} to define the Month values for my \textit{Date} class.
+
+			\item We can make multiple functions with the same name, with different parameters - feature which is absent in \textit{C} language.
+
+			\item We can define Class constructors, which ease the initialization.
+		\end{itemize}
 
 \end{document}

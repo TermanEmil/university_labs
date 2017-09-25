@@ -33,7 +33,6 @@ public:
 	void		setYear(int year);
 
 	//Constr & destr
-	Date(void);
 	Date(int day, int month, int year);
 	Date(Date const & target);
 	~Date(void);
@@ -41,7 +40,6 @@ public:
 	bool		isLeapYear(void) const;
 	std::string	toStrNamedMonth(void) const;
 	std::string	toStr(void) const;
-
 
 	//Operators
 	Date &		operator = (Date const & target);

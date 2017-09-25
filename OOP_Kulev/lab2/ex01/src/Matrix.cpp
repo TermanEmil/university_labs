@@ -37,6 +37,9 @@ Matrix::~Matrix(void) {_delTab();}
 */
 
 void	Matrix::assignAll(int const value) {
+	if (_tab == NULL)
+		return;
+
 	for (int i = 0; i < _lines; i++)
 		for (int j = 0; j < _cols; j++)
 			_tab[i][j] = value;
@@ -170,6 +173,9 @@ Matrix Matrix::operator * (Matrix const & target) const {
 }
 
 Matrix Matrix::operator * (int const nb) const {
+	if (_tab == NULL)
+		return Matrix();
+
 	Matrix	result(_lines, _cols);
 
 	if (result.mErrno != 0)
