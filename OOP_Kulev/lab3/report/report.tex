@@ -1,0 +1,229 @@
+\documentclass{article}
+
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{pgffor}
+\usepackage{xparse}
+\usepackage{expl3}
+\usepackage{tabularx, makecell}
+\usepackage{booktabs}
+\usepackage{indentfirst}
+\usepackage{lipsum}
+\usepackage{sectsty}
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes}
+\usepackage{xcolor}
+\usepackage{fancyvrb}
+\usepackage{fancyhdr}
+\usepackage{fancyvrb}
+\usepackage[most]{tcolorbox}
+\usepackage{blindtext}
+
+\graphicspath{{./}}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\sectionfont{\bfseries\Large\center} 
+
+\lstset{
+	language=C++,
+	frame=single,
+	rulecolor=\color{gray},
+	basicstyle=\fontsize{5}{5}\ttfamily,
+	keywordstyle=\color{blue},
+	stringstyle=\color{orange},
+	commentstyle=\color{gray},
+	extendedchars=true,
+	keepspaces=true,
+	numbers=left,
+	numbersep=5pt,
+	numberstyle=\color{gray},
+	tabsize=4,
+	morecomment=[l][\color{gray}]{\#}
+}
+
+\begin{document}
+	% Custom Commands
+	\newcommand{\cppInLine}[1]{
+		{\lstinline[basicstyle=\small]|#1|}
+	}
+	% Begin of the document
+
+	\title{OOP laboratory\_03}
+	\author{Terman Emil FAF161}
+	\maketitle
+
+	% Write at bottom
+	\vspace*{\fill}
+	
+	\begin{flushright}
+		Conf. unv. prof: M. Kulev
+	\end{flushright}
+
+	\begin{center}
+		\LaTeX
+	\end{center}
+
+	\pagebreak
+
+	\section{Subject}
+		Supraîncărcarea operatorilor
+	\section{Objectives}
+		\begin{itemize}
+			\item Studierea necesităţii supraîncărcării operatorilor
+			\item Studierea sintaxei de definire a operatorilor
+			\item Studierea tipurilor de operatori
+			\item Studierea formelor de supraîncărcare
+		\end{itemize}
+
+	\section{Task}
+		\textbf{a)} Să se creeze o clasă de numere întregi. Să se definească operatorii "++" şi "+", ca metode ale clasei, iar operatorii "- -" şi "-" ca funcţii prietene. Operatorii trebuie să permită efectuarea operaţiilor atît cu variabilele clasei date, cît şi cu variabilele întregi de tip predefinit.
+
+		\textbf{b)} Să se creeze o clasă Set – mulţimea numerelor întregi, utilizînd memoria dinamică. Să se definească operatorii de lucru cu mulţimile: "+" – uniunea, "*" – intersecţia, "-" scăderea, ca funcţii prietene, iar "+=" – înserarea unui nou element în mulţime, "==" – comparare la egalitate, ş. a. ca metode ale clasei. Să se definească operatorii "$<<$" şi "$>>$". Să se definească funcţia de verificare a apartenenţei unui element la o mulţime.
+
+	\section{Main notions of theory and used methods}
+		In programming, operator overloading, sometimes termed operator ad hoc polymorphism, is a specific case of polymorphism, where different operators have different implementations depending on their arguments. Operator overloading is generally defined by a programming language, a programmer, or both.
+	\pagebreak
+
+	\section{Data analysis}
+		\subsection{Ex a}
+			\lstinputlisting{./../ex00/includes/MyInt.hpp}
+
+			\begin{itemize}
+				\item
+					\begin{enumerate}
+						\item \cppInLine{MyInt operator + (MyInt const & target) const;}
+
+						\item MyInt operator + (int nb) const;
+					\end{enumerate}
+
+					\par Constant overload operators, defined as class methods. The first is used on another instance of the same class, the second is used with a simple int.
+
+				\item
+					\begin{enumerate}
+						\item \cppInLine{friend MyInt operator - (MyInt const & target1, MyInt const & target2);}
+						\item \cppInLine{friend MyInt operator - (MyInt const & target, int nb);}
+						\item \cppInLine{friend MyInt operator - (int nb, MyInt const & target);}
+					\end{enumerate}
+					\par Friend overload operators, used for each case.
+
+				\item
+					\begin{enumerate}
+						\item \cppInLine{MyInt & operator ++ (void);}
+						\item \cppInLine{MyInt operator -- (int);}
+					\end{enumerate}
+					\par The first is a method's overload operator, the second is defined as a friend operator.
+			\end{itemize}
+			\pagebreak
+
+		\subsection{Ex b}
+			\lstinputlisting[linerange = {1-88}]{./../ex01/includes/Set.tpp}
+			\begin{itemize}
+				\item
+					\cppInLine{Set<T> &		operator = (Set<T> const & target);}
+
+					\par Assign overload operator, which takes in a constant reference to the same class.
+
+				\item
+					\cppInLine{T &				operator [] (size_t const i) const;}
+
+					\par Overload operator of squared braces, which returns a modifiable reference to the set's element.
+
+				\item
+					\begin{enumerate}
+						\item
+							\cppInLine{friend Set<U>	operator + (Set<U> const & target1, Set<U> const & target2);}
+							\par \textbf{Union}
+						\item
+							\cppInLine{friend Set<U>	operator * (Set<U> const & target1, Set<U> const & target2);}
+							\par \textbf{intersection}
+						\item
+							\cppInLine{friend Set<U>	operator - (Set<U> const & target1, Set<U> const & target2);}
+							\par \textbf{Difference}
+					\end{enumerate}
+
+					\par Friend arithmetic overload operators, which take in 2 constant references of the same type of set.
+			\end{itemize}
+
+			\pagebreak
+
+	\section{The actual code}
+		\subsection{Ex a}
+			\lstinputlisting{./../ex00/src/MyInt.cpp}
+
+			\begin{minipage}{\textwidth}
+				\begin{center}
+					\textbf{main.cpp}
+				\end{center}
+
+				\lstinputlisting{./../ex00/src/main.cpp}
+			\end{minipage}
+
+			\begin{minipage}{\textwidth}
+				\begin{center}
+					\textbf{Output}
+				\end{center}
+
+				\lstset{language={}}
+				\begin{lstlisting}
+a + b = 8
+a + 5 = 8
+3 + b = 8
+a - b = -2
+a - 5 = -2
+3 - b = -2
+----------
+++a: 4
+a = 4
+----------
+a--: 4
+a = 3
+----------
+int aInt = a; aInt = 3
+				\end{lstlisting}
+			\end{minipage}
+			\pagebreak
+
+		\subsection{Ex b}
+			\lstinputlisting[firstline = 89, lastline = 361]{./../ex01/includes/Set.tpp}
+			\clearpage
+
+			\begin{samepage}
+				\begin{center}
+					\textbf{main.cpp}
+				\end{center}
+
+				\lstinputlisting{./../ex01/src/main.cpp}
+			\end{samepage}
+
+			\centering
+
+			\begin{samepage}
+				\begin{center}
+					\textbf{Output}
+				\end{center}
+
+				\lstset{language={}}
+				\lstinputlisting{./ex01_output}
+			\end{samepage}
+			\pagebreak
+
+	\section{Analysis of the results and conclusions}
+		\begin{itemize}
+			\item \textit{Operators} are very useful in making the code more readable and more intuitive.
+
+			\item Friend overload operators are useful when we want to make an action over a different class and the custom class. Ex: adding a float and a custom class.
+
+			\item Friend overload operators are also useful when a++ or ++a is used.
+
+			\item Using overload operators, we create some standarts: if a \textit{Matrix} class is created, then we would expect that this class supports addition, multiplication, etc.
+		\end{itemize}
+
+\end{document}
