@@ -1,0 +1,177 @@
+\documentclass{article}
+
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{pgffor}
+\usepackage{xparse}
+\usepackage{expl3}
+\usepackage{tabularx, makecell}
+\usepackage{booktabs}
+\usepackage{indentfirst}
+\usepackage{lipsum}
+\usepackage{sectsty}
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes}
+\usepackage{xcolor}
+\usepackage{fancyvrb}
+\usepackage{fancyhdr}
+\usepackage{fancyvrb}
+\usepackage[most]{tcolorbox}
+\usepackage{blindtext}
+\usepackage{caption}
+\usepackage{etoolbox}
+
+\graphicspath{{./}}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\sectionfont{\bfseries\Large\center} 
+
+% Lstlisting configuartions for C++
+\lstset{
+	language=C++,
+	frame=single,
+	rulecolor=\color{gray},
+	basicstyle=\fontsize{5}{5}\ttfamily,
+	keywordstyle=\color{blue},
+	stringstyle=\color{orange},
+	commentstyle=\color{gray},
+	extendedchars=true,
+	keepspaces=true,
+	numbers=left,
+	numbersep=5pt,
+	numberstyle=\color{gray},
+	tabsize=4,
+	morecomment=[l][\color{gray}]{\#}
+}
+
+% Lstlisting configuartions for algorithm code
+\newcounter{nalg}[section]
+\renewcommand{\thenalg}{\arabic{nalg}}
+\DeclareCaptionLabelFormat{algocaption}{\textbf{Algorithm \thenalg}}
+\lstnewenvironment{algorithm}[1][]
+{
+    \refstepcounter{nalg}
+    \captionsetup{labelformat=algocaption,labelsep=colon}
+    \lstset{
+        mathescape=true,
+        frame=tB,
+        numbers=left, 
+        numberstyle=\tiny,
+        basicstyle=\scriptsize, 
+        keywordstyle=\color{blue}\bfseries\em,
+        keywords={,input, output, return, datatype, function, in, if, else, foreach, while, begin, end, then, }
+        numbers=left,
+        xleftmargin=.04\textwidth,
+        #1
+    }
+}{}
+
+\begin{document}
+	% Custom Commands
+
+	% <Square cases>
+	\makeatletter
+	\newenvironment{sqcases} {
+		\matrix@check\sqcases\env@sqcases
+	}{
+		\endarray \right.
+	}
+	\def\env@sqcases {
+		\let \@ifnextchar \new@ifnextchar
+		\left \lbrack
+		\def \arraystretch{1.2}
+		\array{@{}l@{\quad}l@{}}
+	}
+	\makeatother
+	% </Square cases>
+
+	% Begin of the document
+
+	\title{APA laboratory\_01}
+	\author{Terman Emil FAF161}
+	\maketitle
+
+	% Write at bottom
+	\vspace*{\fill}
+	
+	\centering
+	\includegraphics{imgs/UTM_logo.png}
+
+	\begin{flushright}
+		Prof: M. Catruc
+	\end{flushright}
+
+	\LaTeX
+	\pagebreak
+
+	\centering
+	{\Huge \textbf{Subject:} Algorithm analyzing}
+	
+	\raggedright
+	{\large \textbf{Purpose:}}
+	\begin{itemize}
+		\item Analiza empirică a algoritmilor.
+		\item Analiza teoretică a algoritmilor.
+		\item Determinarea complexităţii temporale şi asimptotice a algoritmilor
+	\end{itemize}
+
+	\raggedright
+	{\large \textbf{Conditions:}}
+	\begin{enumerate}
+		\item Efectuaţi analiza empirică a algoritmilor propuşi.
+		\item Determinaţi relaţia ce determină complexitatea temporală pentru aceşti algoritmi.
+		\item Determinaţi complexitatea asimptotică a algoritmilor.
+		\item Faceţi o concluzie asupra lucrării efectuate.
+	\end{enumerate}
+
+	\newpage
+	\section{Recursive method}
+
+	\begin{algorithm}[caption={Recursive method}, label={Fibonaci}]
+function fib1(n)
+	if n < 2 then
+		return n
+	else
+		return fib1(n - 1) + fib1(n - 2)
+	\end{algorithm}
+	\begin{center} T(n) - ? \end{center}
+	\par For line 2 and 3: O(1)
+	\newline For line 5: T(n - 1) + T(n - 2)
+	\newline So:
+	\newline T(n) = 2, n $<$ 2
+	\newline T(n) = T(n - 1) + T(n - 2) + 3 $\approx$ T(n - 1) + T(n - 2), n $\geq$ 2
+	\begin{center}
+		$t_{n} - t_{n - 1} - t_{n - 2} = 0$
+		\par $x^2 - x - 1 = 0$
+		\[
+			\begin{sqcases}
+				x_1 = \frac{1 - \sqrt{5}}{2}\\
+				x_2 = \frac{1 + \sqrt{5}}{2}\\
+			\end{sqcases}
+		\]
+
+		$t_n = C_1 (\frac{1 - \sqrt{5}}{2})^n + C_2 (\frac{1 + \sqrt{5}}{2})^n$
+	\end{center}
+	The fraction: \textit{$\frac{1 + \sqrt{5}}{2}$} is also known as the \textit{Golden Ratio} denoted as $\varphi$.
+
+	The most significant part of $t_n$ is $\varphi$.
+
+	\begin{center}
+		$T(n) = O(\varphi^n)$
+	\end{center}
+
+	\newpage
+	\section{Iterative method}
+
+	\newpage
+	\section{Optimized iterative method}
+
+\end{document}

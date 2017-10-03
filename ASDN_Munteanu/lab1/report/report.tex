@@ -1,0 +1,114 @@
+\documentclass{article}
+
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{pgffor}
+\usepackage{xparse}
+\usepackage{expl3}
+\usepackage{tabularx, makecell}
+\usepackage{booktabs}
+\usepackage{indentfirst}
+\usepackage{lipsum}
+\usepackage{sectsty}
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes}
+\usepackage{xcolor}
+\usepackage{fancyvrb}
+\usepackage{fancyhdr}
+\usepackage{fancyvrb}
+\usepackage[most]{tcolorbox}
+\usepackage{blindtext}
+\usepackage{caption}
+\usepackage{etoolbox}
+
+\graphicspath{{./}}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\sectionfont{\bfseries\Large\center} 
+
+% Lstlisting configuartions for C++
+\lstset{
+	language=C++,
+	frame=single,
+	rulecolor=\color{gray},
+	basicstyle=\fontsize{5}{5}\ttfamily,
+	keywordstyle=\color{blue},
+	stringstyle=\color{orange},
+	commentstyle=\color{gray},
+	extendedchars=true,
+	keepspaces=true,
+	numbers=left,
+	numbersep=5pt,
+	numberstyle=\color{gray},
+	tabsize=4,
+	morecomment=[l][\color{gray}]{\#}
+}
+
+% Lstlisting configuartions for algorithm code
+\newcounter{nalg}[section]
+\renewcommand{\thenalg}{\arabic{nalg}}
+\DeclareCaptionLabelFormat{algocaption}{\textbf{Algorithm \thenalg}}
+\lstnewenvironment{algorithm}[1][]
+{
+    \refstepcounter{nalg}
+    \captionsetup{labelformat=algocaption,labelsep=colon}
+    \lstset{
+        mathescape=true,
+        frame=tB,
+        numbers=left, 
+        numberstyle=\tiny,
+        basicstyle=\scriptsize, 
+        keywordstyle=\color{blue}\bfseries\em,
+        keywords={,input, output, return, datatype, function, in, if, else, foreach, while, begin, end, then, }
+        numbers=left,
+        xleftmargin=.04\textwidth,
+        #1
+    }
+}{}
+
+\begin{document}
+	% Custom Commands
+
+	% <Square cases>
+	\makeatletter
+	\newenvironment{sqcases} {
+		\matrix@check\sqcases\env@sqcases
+	}{
+		\endarray \right.
+	}
+	\def\env@sqcases {
+		\let \@ifnextchar \new@ifnextchar
+		\left \lbrack
+		\def \arraystretch{1.2}
+		\array{@{}l@{\quad}l@{}}
+	}
+	\makeatother
+	% </Square cases>
+
+	% Begin of the document
+
+	\title{APA laboratory\_01}
+	\author{Terman Emil FAF161}
+	\maketitle
+
+	% Write at bottom
+	\vspace*{\fill}
+	
+	\centering
+	\includegraphics{imgs/UTM_logo.png}
+
+	\begin{flushright}
+		Prof: M. Catruc
+	\end{flushright}
+
+	\LaTeX
+	\pagebreak
+\end{document}
