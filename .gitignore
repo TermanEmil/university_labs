@@ -9,6 +9,8 @@
 
 #Latex build stuff
 *.fdb_latexmk
+*.log
 *.synctex.gz
 **/report/*.aux
 **/report/*.fls
+**/report/*.out
