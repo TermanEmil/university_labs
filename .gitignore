@@ -1,2 +1,14 @@
+#Object files
 *.o
+
+#LogickWorks temproray files
 *ASDN*/**/*.bak
+
+#Vim temp
+*.swp
+
+#Latex build stuff
+*.fdb_latexmk
+*.synctex.gz
+**/report/*.aux
+**/report/*.fls
