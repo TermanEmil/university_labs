@@ -14,3 +14,7 @@
 **/report/*.aux
 **/report/*.fls
 **/report/*.out
+
+#Python build stuff
+*.pyc
+__pycache__
