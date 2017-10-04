@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.22)  3 OCT 2017 14:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.10.3)  4 OCT 2017 12:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **report.tex
-(/home/boss/Documents/UTM/university_labs/APA_Catruc/lab1/report/report.tex
+(/home/boss/Documents/UTM/university_labs/ASDN_Munteanu/lab1/report/report.tex
 LaTeX2e <2016/02/01>
 Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -1227,6 +1227,195 @@ Package caption3 Info: TeX engine: e-TeX on input line 67.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 )
+(/usr/share/texmf/tex/latex/karnaugh-map/karnaugh-map.sty
+Package: karnaugh-map 2017/02/20 v1.1 Draw Karnaugh Maps
+
+(/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty
+(/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.tex
+\@xs@message=\write7
+\integerpart=\count280
+\decimalpart=\count281
+)
+Package: xstring 2013/10/13  v1.7c  String manipulations (C Tellechea)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarycalc.code.tex
+File: tikzlibrarycalc.code.tex 2013/07/15 v3.0.1a (rcs-revision 1.9)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarymatrix.code.tex
+File: tikzlibrarymatrix.code.tex 2013/07/12 v3.0.1a (rcs-revision 1.4)
+)
+.................................................
+. LaTeX info: "xparse/define-environment"
+. 
+. Defining environment 'karnaugh-map' with sig. 's O{4} O{4} O{1} O{$X_1X_0$}
+. O{$X_3X_2$} O{$X_5X_4$}' on line 281.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \autoterms with sig. 'O{-}' on line 311.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \indeterminants with sig. 'm' on line 317.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \manualterms with sig. 'm' on line 342.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \maxterms with sig. 'm' on line 348.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \minterms with sig. 'm' on line 354.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \terms with sig. 'm m' on line 367.
+.................................................
+\@karnaughmap@var@colorindex@=\count282
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \implicant with sig. 'm m O{0}' on line 426.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \implicantedge with sig. 'm m m m O{0}' on line 565.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \implicantcorner with sig. 'O{0}' on line 634.
+.................................................
+)
+(/usr/share/texlive/texmf-dist/tex/latex/mdframed/mdframed.sty
+Package: mdframed 2013/07/01 1.9b: mdframed
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
+Package: zref-abspage 2012/04/04 v2.24 Module abspage for zref (HO)
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-base.sty
+Package: zref-base 2012/04/04 v2.24 Module base for zref (HO)
+Package zref Info: New property list: main on input line 759.
+Package zref Info: New property: default on input line 760.
+Package zref Info: New property: page on input line 761.
+)
+\c@abspage=\count283
+Package zref Info: New property: abspage on input line 62.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty
+Package: needspace 2010/09/12 v1.3d reserve vertical space
+)
+\mdf@templength=\skip65
+\c@mdf@globalstyle@cnt=\count284
+\mdf@skipabove@length=\skip66
+\mdf@skipbelow@length=\skip67
+\mdf@leftmargin@length=\skip68
+\mdf@rightmargin@length=\skip69
+\mdf@innerleftmargin@length=\skip70
+\mdf@innerrightmargin@length=\skip71
+\mdf@innertopmargin@length=\skip72
+\mdf@innerbottommargin@length=\skip73
+\mdf@splittopskip@length=\skip74
+\mdf@splitbottomskip@length=\skip75
+\mdf@outermargin@length=\skip76
+\mdf@innermargin@length=\skip77
+\mdf@linewidth@length=\skip78
+\mdf@innerlinewidth@length=\skip79
+\mdf@middlelinewidth@length=\skip80
+\mdf@outerlinewidth@length=\skip81
+\mdf@roundcorner@length=\skip82
+\mdf@footenotedistance@length=\skip83
+\mdf@userdefinedwidth@length=\skip84
+\mdf@needspace@length=\skip85
+\mdf@frametitleaboveskip@length=\skip86
+\mdf@frametitlebelowskip@length=\skip87
+\mdf@frametitlerulewidth@length=\skip88
+\mdf@frametitleleftmargin@length=\skip89
+\mdf@frametitlerightmargin@length=\skip90
+\mdf@shadowsize@length=\skip91
+\mdf@extratopheight@length=\skip92
+\mdf@subtitleabovelinewidth@length=\skip93
+\mdf@subtitlebelowlinewidth@length=\skip94
+\mdf@subtitleaboveskip@length=\skip95
+\mdf@subtitlebelowskip@length=\skip96
+\mdf@subtitleinneraboveskip@length=\skip97
+\mdf@subtitleinnerbelowskip@length=\skip98
+\mdf@subsubtitleabovelinewidth@length=\skip99
+\mdf@subsubtitlebelowlinewidth@length=\skip100
+\mdf@subsubtitleaboveskip@length=\skip101
+\mdf@subsubtitlebelowskip@length=\skip102
+\mdf@subsubtitleinneraboveskip@length=\skip103
+\mdf@subsubtitleinnerbelowskip@length=\skip104
+
+(/usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-0.mdf
+File: md-frame-0.mdf 2013/07/01\ 1.9b: md-frame-0
+)
+\mdf@frametitlebox=\box70
+\mdf@footnotebox=\box71
+\mdf@splitbox@one=\box72
+\mdf@splitbox@two=\box73
+\mdf@splitbox@save=\box74
+\mdfsplitboxwidth=\skip105
+\mdfsplitboxtotalwidth=\skip106
+\mdfsplitboxheight=\skip107
+\mdfsplitboxdepth=\skip108
+\mdfsplitboxtotalheight=\skip109
+\mdfframetitleboxwidth=\skip110
+\mdfframetitleboxtotalwidth=\skip111
+\mdfframetitleboxheight=\skip112
+\mdfframetitleboxdepth=\skip113
+\mdfframetitleboxtotalheight=\skip114
+\mdffootnoteboxwidth=\skip115
+\mdffootnoteboxtotalwidth=\skip116
+\mdffootnoteboxheight=\skip117
+\mdffootnoteboxdepth=\skip118
+\mdffootnoteboxtotalheight=\skip119
+\mdftotallinewidth=\skip120
+\mdfboundingboxwidth=\skip121
+\mdfboundingboxtotalwidth=\skip122
+\mdfboundingboxheight=\skip123
+\mdfboundingboxdepth=\skip124
+\mdfboundingboxtotalheight=\skip125
+\mdf@freevspace@length=\skip126
+\mdf@horizontalwidthofbox@length=\skip127
+\mdf@verticalmarginwhole@length=\skip128
+\mdf@horizontalspaceofbox=\skip129
+\mdfsubtitleheight=\skip130
+\mdfsubsubtitleheight=\skip131
+\c@mdfcountframes=\count285
+
+****** mdframed patching \endmdf@trivlist
+
+****** -- success******
+
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \newmdtheoremenv with sig. 'O{} m o m o ' on line 601.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \mdtheorem with sig. ' O{} m o m o ' on line 701.
+.................................................
+\mdf@envdepth=\count286
+\c@mdf@env@i=\count287
+\c@mdf@env@ii=\count288
+\c@mdf@zref@counter=\count289
+Package zref Info: New property: mdf@pagevalue on input line 895.
+)
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
@@ -1236,62 +1425,60 @@ File: lstlang1.sty 2015/06/04 1.6 listings language file
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 )
-\c@nalg=\count280
+\c@nalg=\count290
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... none found.
 
-(/home/boss/Documents/UTM/university_labs/APA_Catruc/lab1/report/report.aux)
+(/home/boss/Documents/UTM/university_labs/ASDN_Munteanu/lab1/report/report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-\c@lstlisting=\count281
-
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+\c@lstlisting=\count291
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count282
+\scratchcounter=\count292
 \scratchdimen=\dimen295
-\scratchbox=\box70
-\nofMPsegments=\count283
-\nofMParguments=\count284
+\scratchbox=\box75
+\nofMPsegments=\count293
+\nofMParguments=\count294
 \everyMPshowfont=\toks43
-\MPscratchCnt=\count285
+\MPscratchCnt=\count295
 \MPscratchDim=\dimen296
-\MPnumerator=\count286
-\makeMPintoPDFobject=\count287
+\MPnumerator=\count296
+\makeMPintoPDFobject=\count297
 \everyMPtoPDFconversion=\toks44
 )
-\AtBeginShipoutBox=\box71
-Package hyperref Info: Link coloring OFF on input line 77.
+\AtBeginShipoutBox=\box76
+Package hyperref Info: Link coloring OFF on input line 81.
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count288
+\c@section@level=\count298
 )
-LaTeX Info: Redefining \ref on input line 77.
-LaTeX Info: Redefining \pageref on input line 77.
-LaTeX Info: Redefining \nameref on input line 77.
+LaTeX Info: Redefining \ref on input line 81.
+LaTeX Info: Redefining \pageref on input line 81.
+LaTeX Info: Redefining \nameref on input line 81.
 
-(/home/boss/Documents/UTM/university_labs/APA_Catruc/lab1/report/report.out)
-(/home/boss/Documents/UTM/university_labs/APA_Catruc/lab1/report/report.out)
-\@outlinefile=\write7
-\openout7 = `report.out'.
-
+(/home/boss/Documents/UTM/university_labs/ASDN_Munteanu/lab1/report/report.out)
+(/home/boss/Documents/UTM/university_labs/ASDN_Munteanu/lab1/report/report.out)
+\@outlinefile=\write8
+\openout8 = `report.out'.
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
@@ -1312,74 +1499,216 @@ ABD: EveryShipout initializing macros
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 
-<imgs/UTM_logo.png, id=19, 376.40625pt x 376.40625pt>
+<imgs/UTM_logo.png, id=43, 376.40625pt x 376.40625pt>
 File: imgs/UTM_logo.png Graphic file (type png)
  <use imgs/UTM_logo.png>
-Package pdftex.def Info: imgs/UTM_logo.png used on input line 106.
+Package pdftex.def Info: imgs/UTM_logo.png used on input line 110.
 (pdftex.def)             Requested size: 376.40532pt x 376.40532pt.
 
-Overfull \hbox (31.40532pt too wide) in paragraph at lines 106--107
+Overfull \hbox (31.40532pt too wide) in paragraph at lines 110--111
  [][] 
  []
 
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} </home/boss/Documents/UTM/u
-niversity_labs/APA_Catruc/lab1/report/imgs/UTM_logo.png>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 121.
+niversity_labs/ASDN_Munteanu/lab1/report/imgs/UTM_logo.png>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 125.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 121.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 125.
  [2]
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 140.
+\@karnaughmap@local@max@=\count299
+\@karnaughmap@local@northwest@=\count300
+\@karnaughmap@local@southeast@=\count301
+\@karnaughmap@local@testcaseone@=\count302
+\@karnaughmap@local@testcasetwo@=\count303
+\@karnaughmap@local@coordinateonecounter@=\count304
+\@karnaughmap@local@coordinatetwocounter@=\count305
+\@karnaughmap@local@coordinateonecounter@=\count306
+\@karnaughmap@local@coordinatetwocounter@=\count307
+\@karnaughmap@local@testcaseone@=\count308
+\@karnaughmap@local@testcasetwo@=\count309
+\@karnaughmap@local@coordinateonecounter@=\count310
+\@karnaughmap@local@coordinatetwocounter@=\count311
+\@karnaughmap@local@coordinateonecounter@=\count312
+\@karnaughmap@local@coordinatetwocounter@=\count313
+\@karnaughmap@local@testcaseone@=\count314
+\@karnaughmap@local@testcasetwo@=\count315
+\@karnaughmap@local@coordinateonecounter@=\count316
+\@karnaughmap@local@coordinatetwocounter@=\count317
+\@karnaughmap@local@coordinateonecounter@=\count318
+\@karnaughmap@local@coordinatetwocounter@=\count319
+\@karnaughmap@local@max@=\count320
+\@karnaughmap@local@northwest@=\count321
+\@karnaughmap@local@southeast@=\count322
+\@karnaughmap@local@northwest@=\count323
+\@karnaughmap@local@southeast@=\count324
+\@karnaughmap@local@northwest@=\count325
+\@karnaughmap@local@southeast@=\count326
+\@karnaughmap@local@northwest@=\count327
+\@karnaughmap@local@southeast@=\count328
 
+Overfull \hbox (39.76971pt too wide) in paragraph at lines 152--172
+ [] 
+ []
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
-File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <7> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 140.
- [3] [4] [5]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 177.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 177.
+[3] <./imgs/Circuit1_FDM_ex1.jpg, id=74, 636.3775pt x 449.68pt>
+File: ./imgs/Circuit1_FDM_ex1.jpg Graphic file (type jpg)
 
-(/home/boss/Documents/UTM/university_labs/APA_Catruc/lab1/report/report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 177.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 177.
+<use ./imgs/Circuit1_FDM_ex1.jpg>
+Package pdftex.def Info: ./imgs/Circuit1_FDM_ex1.jpg used on input line 199.
+(pdftex.def)             Requested size: 318.18797pt x 224.83945pt.
+Package mdframed Info: mdframed inside float 
+ mdframed uses option nobreak mdframed on input line 201.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 201.
+
+<./imgs/Circuit1_FDM_ex1_timer.jpg, id=75, 509.905pt x 157.58875pt>
+File: ./imgs/Circuit1_FDM_ex1_timer.jpg Graphic file (type jpg)
+
+<use ./imgs/Circuit1_FDM_ex1_timer.jpg>
+Package pdftex.def Info: ./imgs/Circuit1_FDM_ex1_timer.jpg used on input line 2
+07.
+(pdftex.def)             Requested size: 254.95187pt x 78.79417pt.
+Package mdframed Info: mdframed inside float 
+ mdframed uses option nobreak mdframed on input line 209.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 209.
+ [4 <./imgs/Circuit1_FDM_ex1.jpg> <./imgs/Circuit1_FDM_ex1_timer.jpg>]
+<./imgs/Circuit1_FCM_ex1.jpg, id=83, 502.87875pt x 452.69125pt>
+File: ./imgs/Circuit1_FCM_ex1.jpg Graphic file (type jpg)
+
+<use ./imgs/Circuit1_FCM_ex1.jpg>
+Package pdftex.def Info: ./imgs/Circuit1_FCM_ex1.jpg used on input line 239.
+(pdftex.def)             Requested size: 251.43875pt x 226.34506pt.
+Package mdframed Info: mdframed inside float 
+ mdframed uses option nobreak mdframed on input line 241.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 241.
+
+<./imgs/Circuit1_FCM_ex1_timer.jpg, id=84, 640.3925pt x 119.44624pt>
+File: ./imgs/Circuit1_FCM_ex1_timer.jpg Graphic file (type jpg)
+
+<use ./imgs/Circuit1_FCM_ex1_timer.jpg>
+Package pdftex.def Info: ./imgs/Circuit1_FCM_ex1_timer.jpg used on input line 2
+47.
+(pdftex.def)             Requested size: 256.15245pt x 47.77763pt.
+Package mdframed Info: mdframed inside float 
+ mdframed uses option nobreak mdframed on input line 249.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 249.
+ [5 <./imgs/Circuit1_FCM_ex1.jpg> <./imgs/Circuit1_FCM_ex1_timer.jpg>]
+\@karnaughmap@local@max@=\count329
+\@karnaughmap@local@northwest@=\count330
+\@karnaughmap@local@southeast@=\count331
+\@karnaughmap@local@northwest@=\count332
+\@karnaughmap@local@southeast@=\count333
+\@karnaughmap@local@northwest@=\count334
+\@karnaughmap@local@southeast@=\count335
+\@karnaughmap@local@testcaseone@=\count336
+\@karnaughmap@local@testcasetwo@=\count337
+\@karnaughmap@local@coordinateonecounter@=\count338
+\@karnaughmap@local@coordinatetwocounter@=\count339
+\@karnaughmap@local@coordinateonecounter@=\count340
+\@karnaughmap@local@coordinatetwocounter@=\count341
+\@karnaughmap@local@max@=\count342
+\@karnaughmap@local@northwest@=\count343
+\@karnaughmap@local@southeast@=\count344
+\@karnaughmap@local@northwest@=\count345
+\@karnaughmap@local@southeast@=\count346
+\@karnaughmap@local@northwest@=\count347
+\@karnaughmap@local@southeast@=\count348
+\@karnaughmap@local@northwest@=\count349
+\@karnaughmap@local@southeast@=\count350
+
+Overfull \hbox (39.76971pt too wide) in paragraph at lines 268--288
+ [] 
+ []
+
+[6] <./imgs/Circuit1_FDM_ex2.jpg, id=95, 477.785pt x 327.2225pt>
+File: ./imgs/Circuit1_FDM_ex2.jpg Graphic file (type jpg)
+
+<use ./imgs/Circuit1_FDM_ex2.jpg>
+Package pdftex.def Info: ./imgs/Circuit1_FDM_ex2.jpg used on input line 312.
+(pdftex.def)             Requested size: 238.8919pt x 163.61084pt.
+Package mdframed Info: mdframed inside float 
+ mdframed uses option nobreak mdframed on input line 314.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 314.
+
+<./imgs/Circuit1_FDM_ex2_timer.jpg, id=96, 378.41376pt x 152.57pt>
+File: ./imgs/Circuit1_FDM_ex2_timer.jpg Graphic file (type jpg)
+
+<use ./imgs/Circuit1_FDM_ex2_timer.jpg>
+Package pdftex.def Info: ./imgs/Circuit1_FDM_ex2_timer.jpg used on input line 3
+20.
+(pdftex.def)             Requested size: 189.2064pt x 76.2848pt.
+Package mdframed Info: mdframed inside float 
+ mdframed uses option nobreak mdframed on input line 322.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 322.
+ [7 <./imgs/Circuit1_FDM_ex2.jpg> <./imgs/Circuit1_FDM_ex2_timer.jpg>]
+<./imgs/Circuit1_FCM_ex2.jpg, id=104, 546.04pt x 438.63875pt>
+File: ./imgs/Circuit1_FCM_ex2.jpg Graphic file (type jpg)
+
+<use ./imgs/Circuit1_FCM_ex2.jpg>
+Package pdftex.def Info: ./imgs/Circuit1_FCM_ex2.jpg used on input line 352.
+(pdftex.def)             Requested size: 273.01933pt x 219.31883pt.
+Package mdframed Info: mdframed inside float 
+ mdframed uses option nobreak mdframed on input line 354.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 354.
+
+<./imgs/Circuit1_FCM_ex2_timer.jpg, id=105, 681.54625pt x 129.48375pt>
+File: ./imgs/Circuit1_FCM_ex2_timer.jpg Graphic file (type jpg)
+
+<use ./imgs/Circuit1_FCM_ex2_timer.jpg>
+Package pdftex.def Info: ./imgs/Circuit1_FCM_ex2_timer.jpg used on input line 3
+60.
+(pdftex.def)             Requested size: 272.61366pt x 51.79257pt.
+Package mdframed Info: mdframed inside float 
+ mdframed uses option nobreak mdframed on input line 362.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 362.
+ [8 <./imgs/Circuit1_FCM_ex2.jpg> <./imgs/Circuit1_FCM_ex2_timer.jpg>] [9]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 380.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 380.
+
+(/home/boss/Documents/UTM/university_labs/ASDN_Munteanu/lab1/report/report.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 380.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 380.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 16958F6A026E563EE5393DEC3B7175C7;163.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 177.
+(rerunfilecheck)             Checksum: 41E35F1DB9A5B36064EAAEBB29E3D8E7;555.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 380.
  ) 
 Here is how much of TeX's memory you used:
- 31729 strings out of 493029
- 621272 string characters out of 6136234
- 822984 words of memory out of 5000000
- 34814 multiletter control sequences out of 15000+600000
- 10644 words of font info for 38 fonts, out of 8000000 for 9000
+ 33259 strings out of 493029
+ 657562 string characters out of 6136234
+ 889214 words of memory out of 5000000
+ 36289 multiletter control sequences out of 15000+600000
+ 10779 words of font info for 39 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 63i,8n,101p,10375b,1418s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.p
-fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on /home/boss/Documents/UTM/university_labs/APA_Catruc/lab1/repo
-rt/report.pdf (5 pages, 174449 bytes).
+ 63i,21n,101p,10375b,941s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmsy10.pfb>
+Output written on /home/boss/Documents/UTM/university_labs/ASDN_Munteanu/lab1/r
+eport/report.pdf (9 pages, 569573 bytes).
 PDF statistics:
- 120 PDF objects out of 1000 (max. 8388607)
- 96 compressed objects within 1 object stream
- 21 named destinations out of 1000 (max. 500000)
- 42 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 159 PDF objects out of 1000 (max. 8388607)
+ 126 compressed objects within 2 object streams
+ 33 named destinations out of 1000 (max. 500000)
+ 130 words of extra memory for PDF output out of 10000 (max. 10000000)
 
