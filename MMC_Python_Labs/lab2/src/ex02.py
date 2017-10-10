@@ -11,7 +11,7 @@ functions = [normF, reversedOrderF, nestedForm]
 functionNames = [f.__name__ for f in functions]
 
 intervals = [(0, 1.5), (0.2, 2.0), (0.6, 1.1), (-100, 100)]
-guesses = [-10, 0, 1.1, 1.0001, 100000]
+guesses = [-10, 0, 1.1, 1.0001]
 x1Guesses = [10, 0.6, 0.9, 0.999]
 
 nSecantVals = min(len(guesses), len(x1Guesses))
@@ -48,16 +48,16 @@ for f in functions:
 	# Newton and Simplified Newton Method
 	nwtPltData, sNwtPltData = PlotData(), PlotData()
 	for guess in guesses:
-		print("\t> guess = %d <" % guess)
+		print("\t> guess = %f <" % guess)
 
 		barLabel = "x0 = {}".format(guess)
 
-		(x, xVals) = newton(0.2, toler, f, verbose = vrbs, sol = sol)
+		(x, xVals) = newton(guess, toler, f, verbose = vrbs, sol = sol)
 		printVals("Newton", x, sol, len(xVals))
 		nwtPltData.iterations.append(len(xVals))
 		nwtPltData.labels.append(barLabel)
 
-		(x, xVals) = simplifNewton(0.6, toler, f, verbose = vrbs, sol = sol)
+		(x, xVals) = simplifNewton(guess, toler, f, verbose = vrbs, sol = sol)
 		printVals("Simplified Newton", x, sol, len(xVals))
 		sNwtPltData.iterations.append(len(xVals))
 		sNwtPltData.labels.append(barLabel)
@@ -81,7 +81,6 @@ figNames = ["Bisection", "Newton", "Simplified Newton", "Secant"]
 keys = ["bis", "nwt", "sNwt", "sec"]
 
 for i in range(len(keys)):
-# for i in range(1):
 	fig = plt.figure(i)
 	fig.suptitle(figNames[i])
 	drawBarGraph(barPlotData[keys[i]], functionNames)

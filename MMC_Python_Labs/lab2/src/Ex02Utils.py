@@ -11,7 +11,7 @@ class PlotData:
 def drawBarGraph(pltDataLst, functionNames):
 	index = np.arange(len(functionNames))
 	barWidth = 0.1
-	barColors = ['m', 'cyan', 'orange', 'red', 'purple']
+	barColors = ['m', 'cyan', 'orange', 'red', 'blue']
 
 	for i in range(len(pltDataLst[0].iterations)):
 		vals = [pltData.iterations[i] for pltData in pltDataLst]
