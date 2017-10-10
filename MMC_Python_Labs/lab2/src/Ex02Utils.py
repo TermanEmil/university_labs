@@ -17,6 +17,8 @@ def drawBarGraph(pltDataLst, functionNames):
 		vals = [pltData.iterations[i] for pltData in pltDataLst]
 		plt.bar(index + barWidth * i, vals, barWidth,
 			color = barColors[i], label = pltDataLst[0].labels[i])
+		for value in vals:
+			plt.axhline(y=value, alpha=0.45, color=barColors[i])
 
 	plt.ylabel('iterations')
 	plt.xticks(index + barWidth * 2, functionNames)
@@ -31,4 +33,4 @@ def reversedOrderF(x):
 	return -1 + 3 * x - 3 * x**2 + x**3
 
 def nestedForm(x):
-	return -1 + x * (3 + x * (-3 + x))
+	return ((x - 3) * x + 3) * x - 1

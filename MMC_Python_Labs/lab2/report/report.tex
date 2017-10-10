@@ -10,18 +10,25 @@
 \usepackage{xparse}
 \usepackage{expl3}
 \usepackage{tabularx, makecell}
-\usepackage{booktabs}
+\usepackage{multirow}
+% \usepackage{booktabs}
 \usepackage{indentfirst}
 \usepackage{lipsum}
 \usepackage{sectsty}
 \usepackage[utf8]{inputenc}
-\usepackage{csquotes}
-\usepackage{xcolor}
-\usepackage{fancyvrb}
-\usepackage{fancyhdr}
-\usepackage{fancyvrb}
-\usepackage[most]{tcolorbox}
-\usepackage{blindtext}
+% \usepackage{csquotes}
+% \usepackage{xcolor}
+% \usepackage{fancyvrb}
+% \usepackage{fancyhdr}
+% \usepackage{fancyvrb}
+% \usepackage[most]{tcolorbox}
+% \usepackage{blindtext}
+\usepackage{caption}
+% \usepackage{etoolbox}
+\usepackage{mdframed}
+\usepackage[nomessages]{fp}
+% \usepackage{pgfplots}
+\usepackage{geometry}
 
 \graphicspath{{./}}
 
@@ -32,6 +39,7 @@
 
 \sectionfont{\bfseries\Large\center} 
 
+% Lstlisting configuartions for C++
 \lstset{
 	language=C++,
 	frame=single,
@@ -49,181 +57,217 @@
 	morecomment=[l][\color{gray}]{\#}
 }
 
-\begin{document}
-	% Custom Commands
-	\newcommand{\cppInLine}[1]{
-		{\lstinline[basicstyle=\small]|#1|}
-	}
-	% Begin of the document
+% Lstlisting configuartions for algorithm code
+\newcounter{nalg}[section]
+\renewcommand{\thenalg}{\arabic{nalg}}
+\DeclareCaptionLabelFormat{algocaption}{\textbf{Algorithm \thenalg}}
+\lstnewenvironment{algorithm}[1][]
+{
+    \refstepcounter{nalg}
+    \captionsetup{labelformat=algocaption,labelsep=colon}
+    \lstset{
+        mathescape=true,
+        frame=tB,
+        numbers=left, 
+        numberstyle=\tiny,
+        basicstyle=\scriptsize, 
+        keywordstyle=\color{blue}\bfseries\em,
+        keywords={,input, output, return, datatype, function, in, if, else, foreach, while, begin, end, then, }
+        numbers=left,
+        xleftmargin=.04\textwidth,
+        #1
+    }
+}{}
 
-	\title{OOP laboratory\_03}
+\geometry{
+	a4paper,
+	total={170mm,257mm},
+	left=20mm,
+	top=20mm,
+}
+
+\begin{document}
+	%Custom commands
+	% <Square cases>
+		\makeatletter
+		\newenvironment{sqcases} {
+			\matrix@check\sqcases\env@sqcases
+		}{
+			\endarray \right.
+		}
+		\def\env@sqcases {
+			\let \@ifnextchar \new@ifnextchar
+			\left \lbrack
+			\def \arraystretch{1.2}
+			\array{@{}l@{\quad}l@{}}
+		}
+		\makeatother
+	% </Square cases>
+
+	% Html like line
+		\newcommand\hr{\par\vspace{-.5\ht\strutbox}\noindent\hrulefill\par}
+
+	%Begin of the document
+
+	\title{MMC laboratory\_02}
 	\author{Terman Emil FAF161}
 	\maketitle
-
-	% Write at bottom
-	\vspace*{\fill}
 	
-	\begin{flushright}
-		Conf. unv. prof: M. Kulev
-	\end{flushright}
-
 	\begin{center}
-		\LaTeX
+	\includegraphics{imgs/UTM_logo.png}
 	\end{center}
+	\begin{flushright}
+		Prof: V. Țurcanu
+	\end{flushright}
+	\begin{center}
+	\LaTeX
+	\end{center}
+	\pagebreak %------------------------------------------------------------------End of title page
+	
+	\section{Root finding}
+		\begin{center}
+			\par Find the root of the function
+			\[
+				f(x) = \sqrt{x} - e^{-x}
+			\]
+			using Bisection, Newton, Simplified Newton and Secant methods.
+			\hr
+		\end{center}
 
-	\pagebreak
+		In these graphs is shown how fast a method converges to the solution.
+		\begin{center} \begin{figure}[!ht]
+			\begin{mdframed} \begin{center}
+				\includegraphics[scale=0.37]{./imgs/Ex1Plot.png}
+				\caption{Convergence graph.}
+			\end{center} \end{mdframed}
+			\label{fig:graph1}
+		\end{figure} \end{center}
 
-	\section{Subject}
-		Supraîncărcarea operatorilor
-	\section{Objectives}
-		\begin{itemize}
-			\item Studierea necesităţii supraîncărcării operatorilor
-			\item Studierea sintaxei de definire a operatorilor
-			\item Studierea tipurilor de operatori
-			\item Studierea formelor de supraîncărcare
-		\end{itemize}
+		\begin{center} \begin{figure}[!ht]
+			\begin{mdframed} \begin{center}
+				\includegraphics[scale=0.38]{./imgs/Ex1Plot2.png}
+				\caption{Convergence graph (Without Bisection).}
+			\end{center} \end{mdframed}
+			\label{fig:graph2}
+		\end{figure} \end{center}
 
-	\section{Task}
-		\textbf{a)} Să se creeze o clasă de numere întregi. Să se definească operatorii "++" şi "+", ca metode ale clasei, iar operatorii "- -" şi "-" ca funcţii prietene. Operatorii trebuie să permită efectuarea operaţiilor atît cu variabilele clasei date, cît şi cu variabilele întregi de tip predefinit.
+		\begin{center} \begin{tabular}{|c|c|c|c|c|}
+			\hline
+			$i$ & Bisection & Newton & S. Newton & Secant\\
+			\hline
+			1 & 0.43000 & 0.01535 & 0.17369 & 0.04856\\ 
+			\hline
+			2 & 0.17369 & 0.00012 & 0.03433 & 0.01411\\
+			\hline
+			3 & 0.12630 & 0.00000 & 0.00163 & 0.00037\\
+			\hline
+			4 & 0.02369 & 0.00000 & 0.00000 & 0.00000\\
+			\hline
+			5 & 0.05130 & - & - & 0.00000\\
+			\hline
+			6 & 0.01380 & - & - & -\\
+			% \hline
+			\multicolumn{5}{c}{...}\\
+			% \hline
+			14 & 0.00004 & - & - & -\\
+			\hline
+		\end{tabular} \end{center}
 
-		\textbf{b)} Să se creeze o clasă Set – mulţimea numerelor întregi, utilizînd memoria dinamică. Să se definească operatorii de lucru cu mulţimile: "+" – uniunea, "*" – intersecţia, "-" scăderea, ca funcţii prietene, iar "+=" – înserarea unui nou element în mulţime, "==" – comparare la egalitate, ş. a. ca metode ale clasei. Să se definească operatorii "$<<$" şi "$>>$". Să se definească funcţia de verificare a apartenenţei unui element la o mulţime.
+		\begin{enumerate}
+			\item \textbf{Newton}
+				\begin{itemize}
+					\item We can clearly see that \textit{Newton} method is the fastest to converge. But we should also note that it's the most complicated method, since derivation is required.
 
-	\section{Main notions of theory and used methods}
-		In programming, operator overloading, sometimes termed operator ad hoc polymorphism, is a specific case of polymorphism, where different operators have different implementations depending on their arguments. Operator overloading is generally defined by a programming language, a programmer, or both.
-	\pagebreak
+					\item Also, an initial guess is required: if there is a horizontal tangent line at $x_0$, then the derivation is 0 and we can't have divisions by 0.
 
-	\section{Data analysis}
-		\subsection{Ex a}
-			\lstinputlisting{./../ex00/includes/MyInt.hpp}
+					\item If the function has 2 roots, we must provide an initial guess near the solution we want, otherwise, we will recive the wrong root.
+				\end{itemize}
+			\item \textbf{Bisection}
+				\begin{itemize}
+					\item \textit{Bisection} method is much slower, but simplier. Sometimes we don't need a better function.
 
-			\begin{itemize}
-				\item
-					\begin{enumerate}
-						\item \cppInLine{MyInt operator + (MyInt const & target) const;}
+					\item Also, the given interval $[a, b]$ must respect the following condition: 
 
-						\item MyInt operator + (int nb) const;
-					\end{enumerate}
+					\[f(a) * f(b) < 0\]
+					While with the Newton's method we can try a wild guess, for example $x_0 = 100$ while the root is 1, we would still get the right result, but with the \textit{Bisection} method, we need to provide a big enough interval in which the root is sure to be found.
+				\end{itemize}
+			\item \textbf{Simplified Newton} isn't much behind Newton's method. It converges slightly slower but it doesn't require derivation.
+			\[
+				x_{i + 1} = x_i - \frac{f^2(x_i)}{f(x_i + f(x_i)) - f(x_i)}
+			\]
+			\item \textbf{Secant} method requires more iterations, but it can be faster in time than Newton's, since it doesn't require 2 function evaluation per iteration.
+		\end{enumerate}
 
-					\par Constant overload operators, defined as class methods. The first is used on another instance of the same class, the second is used with a simple int.
+		\newpage
+		\section{Order of operations}
+			\par In this exercise is required to compute the root using the program from the previous exercise, for different forms of the same function and different ranges or guesses.
+			\[
+				f(x) = x^3 - 3x^2 + 3x - 1
+			\]
 
-				\item
-					\begin{enumerate}
-						\item \cppInLine{friend MyInt operator - (MyInt const & target1, MyInt const & target2);}
-						\item \cppInLine{friend MyInt operator - (MyInt const & target, int nb);}
-						\item \cppInLine{friend MyInt operator - (int nb, MyInt const & target);}
-					\end{enumerate}
-					\par Friend overload operators, used for each case.
+			\begin{center} \begin{figure}[!ht]
+				\begin{mdframed} \begin{center}
+					\includegraphics[scale=0.6]{./imgs/Ex2Bis.png}
+					\caption{Bisection.}
+				\end{center} \end{mdframed}
+				\label{fig:barPlot1}
+			\end{figure} \end{center}
 
-				\item
-					\begin{enumerate}
-						\item \cppInLine{MyInt & operator ++ (void);}
-						\item \cppInLine{MyInt operator -- (int);}
-					\end{enumerate}
-					\par The first is a method's overload operator, the second is defined as a friend operator.
-			\end{itemize}
-			\pagebreak
 
-		\subsection{Ex b}
-			\lstinputlisting[linerange = {1-88}]{./../ex01/includes/Set.tpp}
-			\begin{itemize}
-				\item
-					\cppInLine{Set<T> &		operator = (Set<T> const & target);}
+			\begin{center} \begin{figure}[!ht]
+				\begin{mdframed} \begin{center}
+					\includegraphics[scale=0.6]{./imgs/Ex2Nwt.png}
+					\caption{Newton's.}
+				\end{center} \end{mdframed}
+				\label{fig:barPlot2}
+			\end{figure} \end{center}
 
-					\par Assign overload operator, which takes in a constant reference to the same class.
+			\begin{center} \begin{figure}[!ht]
+				\begin{mdframed} \begin{center}
+					\includegraphics[scale=0.6]{./imgs/Ex2SNwt.png}
+					\caption{Simplified Newton.}
+				\end{center} \end{mdframed}
+				\label{fig:barPlot3}
+			\end{figure} \end{center}
 
-				\item
-					\cppInLine{T &				operator [] (size_t const i) const;}
 
-					\par Overload operator of squared braces, which returns a modifiable reference to the set's element.
+			\begin{center} \begin{figure}[!ht]
+				\begin{mdframed} \begin{center}
+					\includegraphics[scale=0.6]{./imgs/Ex2Sect.png}
+					\caption{Secant.}
+				\end{center} \end{mdframed}
+				\label{fig:barPlot4}
+			\end{figure} \end{center}
 
-				\item
-					\begin{enumerate}
-						\item
-							\cppInLine{friend Set<U>	operator + (Set<U> const & target1, Set<U> const & target2);}
-							\par \textbf{Union}
-						\item
-							\cppInLine{friend Set<U>	operator * (Set<U> const & target1, Set<U> const & target2);}
-							\par \textbf{intersection}
-						\item
-							\cppInLine{friend Set<U>	operator - (Set<U> const & target1, Set<U> const & target2);}
-							\par \textbf{Difference}
-					\end{enumerate}
+			\par Theoreticly, the normal and nested forms should compute the result in less iterations, because adding adding small to big numbers, minimizes the loss of significance error, producing less errors, therefore - less iterations. The nested form aproach also reduces the calculation errors. But in this case, no notable difference is observed.
 
-					\par Friend arithmetic overload operators, which take in 2 constant references of the same type of set.
-			\end{itemize}
-
-			\pagebreak
-
-	\section{The actual code}
-		\subsection{Ex a}
-			\lstinputlisting{./../ex00/src/MyInt.cpp}
-
-			\begin{minipage}{\textwidth}
+			\newpage
+			\section{Integrals?}
 				\begin{center}
-					\textbf{main.cpp}
+					For $c = 69.35935935935935958696$ (for example), \textbf{Newton}'s method doesn't converge.\\
+					\begin{tabular}{|c|c|c|}
+						\hline
+						$i$ & x0 & x1\\
+						\hline
+						1 & 0.98578724978303855497 & 0.98558237769985945764\\
+						\hline
+						2 & 0.98558237769985945764 & 0.98558233511329373933\\
+						\hline
+						3 & 0.98558233511329373933 & 0.98558233511329\textbf{185195}\\
+						\hline
+						4 & 0.98558233511329\textbf{185195} & 0.98558233511329\textit{207399}\\
+						\hline
+						5 & 0.98558233511329\textit{207399} & 0.98558233511329\textbf{185195}\\
+						\hline
+						6 & 0.98558233511329\textbf{185195} & 0.98558233511329\textit{207399}\\
+						\hline
+						7 & 0.98558233511329\textit{207399} & 0.98558233511329\textbf{185195}\\
+						\hline
+						8 & 0.98558233511329\textbf{185195} & 0.98558233511329\textit{207399}\\
+						\hline
+						9 & 0.98558233511329\textit{207399} & 0.98558233511329\textbf{185195}\\
+						\multicolumn{3}{c}{...}
+					\end{tabular}
 				\end{center}
-
-				\lstinputlisting{./../ex00/src/main.cpp}
-			\end{minipage}
-
-			\begin{minipage}{\textwidth}
-				\begin{center}
-					\textbf{Output}
-				\end{center}
-
-				\lstset{language={}}
-				\begin{lstlisting}
-a + b = 8
-a + 5 = 8
-3 + b = 8
-a - b = -2
-a - 5 = -2
-3 - b = -2
-----------
-++a: 4
-a = 4
-----------
-a--: 4
-a = 3
-----------
-int aInt = a; aInt = 3
-				\end{lstlisting}
-			\end{minipage}
-			\pagebreak
-
-		\subsection{Ex b}
-			\lstinputlisting[firstline = 89, lastline = 361]{./../ex01/includes/Set.tpp}
-			\clearpage
-
-			\begin{samepage}
-				\begin{center}
-					\textbf{main.cpp}
-				\end{center}
-
-				\lstinputlisting{./../ex01/src/main.cpp}
-			\end{samepage}
-
-			\centering
-
-			\begin{samepage}
-				\begin{center}
-					\textbf{Output}
-				\end{center}
-
-				\lstset{language={}}
-				\lstinputlisting{./ex01_output}
-			\end{samepage}
-			\pagebreak
-
-	\section{Analysis of the results and conclusions}
-		\begin{itemize}
-			\item \textit{Operators} are very useful in making the code more readable and more intuitive.
-
-			\item Friend overload operators are useful when we want to make an action over a different class and the custom class. Ex: adding a float and a custom class.
-
-			\item Friend overload operators are also useful when a++ or ++a is used.
-
-			\item Using overload operators, we create some standarts: if a \textit{Matrix} class is created, then we would expect that this class supports addition, multiplication, etc.
-		\end{itemize}
-
+				\par Here we have an oscilation between 2 values, because of the roundoff float precision.
 \end{document}

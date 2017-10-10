@@ -5,9 +5,6 @@ import matplotlib.pyplot as plt
 def bisection(xL, xR, tolerance, f, sol = None, verbose = False):
 	if verbose: print("Bisection")
 
-	if f(xL) > 0 or f(xR) < 0:
-		raise Exception('Invalid limits')
-
 	iters = 0
 	xVals = [xL]
 

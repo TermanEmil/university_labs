@@ -4,17 +4,17 @@ from Ex02Utils import *
 #Initialization
 vrbs = True
 
-toler = 10.0 ** -4
+toler = 10.0 ** -14
 sol = 1
 
 functions = [normF, reversedOrderF, nestedForm]
 functionNames = [f.__name__ for f in functions]
 
-intervals = [(0, 1.5), (0.2, 2.0), (0.6, 1.1), (-100, 100)]
-guesses = [-10, 0, 1.1, 1.0001]
-x1Guesses = [10, 0.6, 0.9, 0.999]
+intervals = [(0, 1.5), (0.2, 2.0), (0.6, 1.1)]
+guesses = [-2, 0, 1.1, 1.0001]
+x1Guesses = [2.1, 0.6, 0.9, 0.999]
 
-nSecantVals = min(len(guesses), len(x1Guesses))
+nSecantVals = min(len(intervals), len(x1Guesses))
 secantIntervals = [(intervals[i][0], x1Guesses[i]) for i in range(nSecantVals)]
 
 barPlotData = {
