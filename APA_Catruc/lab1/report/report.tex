@@ -24,6 +24,8 @@
 \usepackage{blindtext}
 \usepackage{caption}
 \usepackage{etoolbox}
+\usepackage{geometry}
+\usepackage{mdframed}
 
 \graphicspath{{./}}
 
@@ -53,7 +55,7 @@
 }
 
 % Lstlisting configuartions for algorithm code
-\newcounter{nalg}[section]
+\newcounter{nalg}
 \renewcommand{\thenalg}{\arabic{nalg}}
 \DeclareCaptionLabelFormat{algocaption}{\textbf{Algorithm \thenalg}}
 \lstnewenvironment{algorithm}[1][]
@@ -67,16 +69,41 @@
         numberstyle=\tiny,
         basicstyle=\scriptsize, 
         keywordstyle=\color{blue}\bfseries\em,
-        keywords={,input, output, return, datatype, function, in, if, else, foreach, while, begin, end, then, }
+        keywords={,input,output,return,datatype,function,in,if,else,foreach,while,begin,end,then,to,do,for,div,\mod,mod,array,int,of,declare,}
         numbers=left,
         xleftmargin=.04\textwidth,
         #1
     }
 }{}
 
-\begin{document}
-	% Custom Commands
+\geometry{
+	a4paper,
+	total={170mm,257mm},
+	left=20mm,
+	top=20mm,
+}
 
+\begin{document}
+	%Custom Commands
+
+	% My include img. (With frame and caption) 
+	\newcommand{\myIncludeImg}[4]{
+		\begin{center} \begin{figure}[!ht]
+			\begin{mdframed}[backgroundcolor=black!5, rightline=false, leftline=false]
+				\begin{center}
+					\includegraphics[scale=#1]{#2}
+					\caption{#3}
+				\end{center}
+			\end{mdframed}
+			\label{fig:#4}
+		\end{figure} \end{center}
+	}
+
+	\newcommand{\myCenter}[1]{
+		\begin{center}
+			#1
+		\end{center}
+	}
 	% <Square cases>
 	\makeatletter
 	\newenvironment{sqcases} {
@@ -102,20 +129,21 @@
 	% Write at bottom
 	\vspace*{\fill}
 	
-	\centering
-	\includegraphics{imgs/UTM_logo.png}
+	\begin{center}
+		\includegraphics{imgs/UTM_logo.png}
+	\end{center}
 
 	\begin{flushright}
 		Prof: M. Catruc
 	\end{flushright}
 
-	\LaTeX
+	\begin{center} \LaTeX \end{center}
 	\pagebreak
 
-	\centering
-	{\Huge \textbf{Subject:} Algorithm analyzing}
-	
-	\raggedright
+	\begin{center}
+		{\Huge \textbf{Subject:} Algorithm analyzing}
+	\end{center}
+
 	{\large \textbf{Purpose:}}
 	\begin{itemize}
 		\item Analiza empirică a algoritmilor.
@@ -123,7 +151,6 @@
 		\item Determinarea complexităţii temporale şi asimptotice a algoritmilor
 	\end{itemize}
 
-	\raggedright
 	{\large \textbf{Conditions:}}
 	\begin{enumerate}
 		\item Efectuaţi analiza empirică a algoritmilor propuşi.
@@ -135,7 +162,7 @@
 	\newpage
 	\section{Recursive method}
 
-	\begin{algorithm}[caption={Recursive method}, label={Fibonaci}]
+	\begin{algorithm}[caption={Recursive method}, label={Fibonacci1}]
 function fib1(n)
 	if n < 2 then
 		return n
@@ -144,10 +171,10 @@ function fib1(n)
 	\end{algorithm}
 	\begin{center} T(n) - ? \end{center}
 	\par For line 2 and 3: O(1)
-	\newline For line 5: T(n - 1) + T(n - 2)
-	\newline So:
-	\newline T(n) = 2, n $<$ 2
-	\newline T(n) = T(n - 1) + T(n - 2) + 3 $\approx$ T(n - 1) + T(n - 2), n $\geq$ 2
+	\par For line 5: T(n - 1) + T(n - 2)
+	\par So:
+	\par T(n) = 2, n $<$ 2
+	\par T(n) = T(n - 1) + T(n - 2) + 3 $\approx$ T(n - 1) + T(n - 2), n $\geq$ 2
 	\begin{center}
 		$t_{n} - t_{n - 1} - t_{n - 2} = 0$
 		\par $x^2 - x - 1 = 0$
@@ -160,18 +187,114 @@ function fib1(n)
 
 		$t_n = C_1 (\frac{1 - \sqrt{5}}{2})^n + C_2 (\frac{1 + \sqrt{5}}{2})^n$
 	\end{center}
-	The fraction: \textit{$\frac{1 + \sqrt{5}}{2}$} is also known as the \textit{Golden Ratio} denoted as $\varphi$.
+	\par The fraction: \textit{$\frac{1 + \sqrt{5}}{2}$} is also known as the \textit{Golden Ratio} denoted as $\varphi$.
+	The most significant part of $t_n$ is $\varphi$, thus:
 
-	The most significant part of $t_n$ is $\varphi$.
+	\myCenter{$T(n) = O(\varphi^n)$}
 
-	\begin{center}
-		$T(n) = O(\varphi^n)$
-	\end{center}
+	\par This method is very uneficient since it has to recalculate multiple timess the same values. We can clearly see why it's not a good idea to use this algorithm:
+
+	\myIncludeImg{0.5}{./imgs/PlotFib1.png}{Algorithm 1}{graph1}
+
 
 	\newpage
 	\section{Iterative method}
+		\begin{algorithm}[caption={Iterative method}, label={Fibonacci2}]
+function fib2(n)
+	$i \leftarrow 1;$
+	$j \leftarrow 0;$
+	for $k \leftarrow 1$ to n do
+		$j \leftarrow i + j;$
+		$i \leftarrow j - i;$
+	return $j$
+		\end{algorithm}
+
+		\par For line 2 and 3, the time is O(1).
+		\par Line 5 and 6 are executed n times, therefore the time for both of these lines will be 2 $\cdot$ n.
+		\par We consider line 4 to be executed n times.
+		\newline
+		\[
+			t_n = 2 + n + 2n
+		\]
+		\par Therefore:
+		\[
+			T(n) = O(n)
+		\]
+
+		\myIncludeImg{0.5}{./imgs/PlotFib2.png}{Algorithm 2}{graph2}
 
 	\newpage
-	\section{Optimized iterative method}
+	\section{Logarithmic method}
+		\begin{algorithm}[caption={Logarithmic method}, label={Fibonacci3}]
+function fib3(n)
+	$i \leftarrow 1;$
+	$j \leftarrow 0;$
+	$k \leftarrow 0;$
+	$h \leftarrow 1;$
+	while $n > 0$ do
+		if $n$ mod $2 == 1$ then
+			$t \leftarrow j \cdot h;$
+			$j \leftarrow i \cdot h + j \cdot k + t;$
+			$i \leftarrow i \cdot k + t;$
+		$t \leftarrow h \cdot h;$
+		$h \leftarrow 2 \cdot k \cdot h + t;$
+		$k \leftarrow k \cdot k + t;$
+		$n \leftarrow n$ div $2;$
+	return $j$
+		\end{algorithm}
 
+		\par From the line 14, we can see that the \textcolor{blue}{while} loop will be executed $\log_2 n$ times, due to the operation:
+		\[
+			n \leftarrow n \ div \ 2
+		\]
+		\par Therefore:
+		\[
+			T(n) = log_2 n
+		\]
+
+		\myIncludeImg{0.5}{./imgs/PlotFib3.png}{Algorithm 3}{graph3}
+
+		\begin{center}
+			Those steps are generated when the \textit{if} statement is executed.
+		\end{center}
+
+	\newpage
+	\section{Iterative with saved values}
+		\begin{algorithm}[caption = {Iterative with saved values}, label = {Fibonacci4}]
+function fib4(n)
+	declare fibVals : array[1, n + 2] of int;
+
+	$fibVals[0] \leftarrow 0;$
+	$fibVals[1] \leftarrow 1;$
+	for $i \leftarrow 2$ to $n + 1$ do
+		$fibVals[i] = fibVals[i - 1] + fibVals[i - 2];$
+	return fibVals[n];
+		\end{algorithm}
+
+		\begin{itemize}
+			\item For the line 2, we declare (n + 2) $\cdot$ \textit{\textcolor{red}{sizeof}(\textcolor{blue}{int})} = (n + 2) * 4 \textit{Bytes} of memory. That's roughly 4 $\cdot$ n \textit{Bytes}.
+			\item Line 4 and 5 have a complexity of O(n).
+			\item The line 7 has 4 operations, that is another O(n).
+			\item The \textcolor{blue}{\textit{for}} loop is executed $n - 1$ times. So the inside part of the loop will have $4 \cdot (n - 1)$ operations. Resulting that the entire loop will have complexity of O(n).
+		\end{itemize}
+		\par Since the most significant part is the \textcolor{blue}{\textit{for}} loop, results that:
+		\[
+			T(n) = O(n)
+		\]
+		\myIncludeImg{0.5}{./imgs/PlotFib4.png}{Algorithm 4}{graph4}
+
+		\begin{center}
+			\par This method has a very big drawback: it needs more memory than other algorithms.
+		\end{center}
+
+	\newpage
+	\section{Conclusion}
+		\begin{itemize}
+			\item The fastest and the most eficient Fibonacci algorithm is the $O(\log_2 n)$ algorithm.
+			\item Sometimes, it's enough to have a very simple implemented algorithm, but less efficient, because we don't always need a huge performance.
+			\item The calculation of the time complexity of an algorithm helps us to choose which is the best algorithm of all.
+		\end{itemize}
+
+		\myIncludeImg{0.5}{./imgs/PlotFibAll.png}{All algorithms}{graph5}
+		\myIncludeImg{0.5}{./imgs/PlotFibAllButFact.png}{All algorithms but factorial}{graph6}
 \end{document}
