@@ -32,6 +32,10 @@
 \usepackage{calc}
 \usepackage[nomessages]{fp}
 \usepackage{pgfplots}
+\usepackage{geometry}
+\usepackage{python}
+\usepackage{float}
+\usepackage{colortbl}
 
 \graphicspath{{./}}
 
@@ -42,45 +46,12 @@
 
 \sectionfont{\bfseries\Large\center} 
 
-% Lstlisting configuartions for C++
-\lstset{
-	language=C++,
-	frame=single,
-	rulecolor=\color{gray},
-	basicstyle=\fontsize{5}{5}\ttfamily,
-	keywordstyle=\color{blue},
-	stringstyle=\color{orange},
-	commentstyle=\color{gray},
-	extendedchars=true,
-	keepspaces=true,
-	numbers=left,
-	numbersep=5pt,
-	numberstyle=\color{gray},
-	tabsize=4,
-	morecomment=[l][\color{gray}]{\#}
+\geometry{
+	a4paper,
+	total={170mm,257mm},
+	left=20mm,
+	top=20mm,
 }
-
-% Lstlisting configuartions for algorithm code
-\newcounter{nalg}[section]
-\renewcommand{\thenalg}{\arabic{nalg}}
-\DeclareCaptionLabelFormat{algocaption}{\textbf{Algorithm \thenalg}}
-\lstnewenvironment{algorithm}[1][]
-{
-    \refstepcounter{nalg}
-    \captionsetup{labelformat=algocaption,labelsep=colon}
-    \lstset{
-        mathescape=true,
-        frame=tB,
-        numbers=left, 
-        numberstyle=\tiny,
-        basicstyle=\scriptsize, 
-        keywordstyle=\color{blue}\bfseries\em,
-        keywords={,input, output, return, datatype, function, in, if, else, foreach, while, begin, end, then, }
-        numbers=left,
-        xleftmargin=.04\textwidth,
-        #1
-    }
-}{}
 
 \pgfplotsset{compat=1.13}
 
@@ -122,6 +93,19 @@
 	\makeatother
 	% </Square cases>
 
+	% My include img. (With frame and caption) 
+	\newcommand{\myIncludeImg}[4]{
+		\begin{center} \begin{figure}[H]
+			\begin{mdframed}[backgroundcolor=black!5, rightline=false, leftline=false]
+				\begin{center}
+					\includegraphics[scale=#1]{#2}
+					\caption{#3}
+				\end{center}
+			\end{mdframed}
+			\label{fig:#4}
+		\end{figure} \end{center}
+	}
+
 	% Begin of the document
 
 	\title{CDE laboratory\_01}
@@ -143,179 +127,236 @@
 
 	\raggedright
 	\section{Verificarea îndeplinirii legilor lui Ohm si Kirchhoff pentru circuitele electrice neramificate si ramificate.}
-		\begin{center}
-			\includegraphics[scale=0.7]{./imgs/ElectricCircuit1.jpg}
-		\end{center}
+		\myIncludeImg{0.7}{./imgs/ElectricCircuit1.jpg}{Circuit 1.1}{circuit1}
 
-	\subsection{}
-		\[
-			\begin{tabular}{|c|c|c|c|c|c|c|c|}
+		\subsection{}
+			\[
+				\begin{tabular}{|c|c|c|c|c|c|c|c|}
+					\hline
+					$R_1 (\Omega)$ & $R_2 (\Omega)$ & $R_3 (\Omega)$ & $I_1 (mA)$ & $I_2 (mA)$ & $U_{t1} (V)$ & $U_{t2} (V)$\\
+					\hline
+					\ROne & \RTwo & \RThree & \IPosOne & \IPosTwo& 15.01 & 15.01\\
+					\hline
+				\end{tabular}
+			\]
+
+		\subsection{}
+			\[
+				r_0 = \frac{U_{t2} - U_{t1}}{I_1 - I_2} = \frac{0}{I_1 - I_2} = 0
+			\]
+			Aparatele nu au fost destul de fixe si $r_0$ este o valoare prea mica pentru a fi masurata exact.
+
+		\subsection{}
+			% Calculates the total sum of resistances
+			\FPeval{\resistanceSum}{clip(\ROne + \RTwo + \RThree)}
+
+			% 15 / (sum of resistance)
+			\FPeval{\currentExThree}{clip(15 / \resistanceSum * 1000)}
+
+			% Round \currentExThree to 2 fractional digits
+			\FPround{\currentExThree}{\currentExThree}{2}
+
+			\[
+				I = \frac{E}{R_1 + R_2 + R_3 + r_0} = \frac{15}{\resistanceSum} = \currentExThree \ mA
+			\]
+			
+			\FPeval{\UOneCalc}{clip(\currentExThree * \ROne / 1000)}
+			\FPround{\UOneCalc}{\UOneCalc}{2}
+
+			\FPeval{\UTwoCalc}{clip(\currentExThree * \RTwo / 1000)}
+			\FPround{\UTwoCalc}{\UTwoCalc}{2}
+
+			\FPeval{\UThreeCalc}{clip(\currentExThree * \RThree / 1000)}
+			\FPround{\UThreeCalc}{\UThreeCalc}{2}
+
+			\[U_1 = IR_1 = \currentExThree \cdot \ROne = \UOneCalc \ V\]
+			\[U_2 = IR_2 = \currentExThree \cdot \RTwo = \UTwoCalc \ V\]
+			\[U_3 = IR_3 = \currentExThree \cdot \RThree = \UThreeCalc \ V\]
+
+		\subsection{}
+			\begin{center} \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
 				\hline
-				$R_1 (\Omega)$ & $R_2 (\Omega)$ & $R_3 (\Omega)$ & $I_1 (mA)$ & $I_2 (mA)$ & $U_{t1} (V)$ & $U_{t2} (V)$\\
+				\multicolumn{2}{|c|}{R ($\Omega$)} &$
+					I_{c}$(mA) &
+					\multicolumn{2}{c|}{$U_c$ (V)} &
+					$I_{m}$ (mA) &
+					\multicolumn{2}{c|}{$U_m$ (V)} \\
+
 				\hline
-				\ROne & \RTwo & \RThree & \IPosOne & \IPosTwo& 15.01 & 15.01\\
+				
+				$R_1$ & \ROne &
+					\multirow{3}{*}{\currentExThree} &
+					$U_1$ & \UOneCalc &
+					\multirow{3}{*}{\IPosOne} &
+					$U_1$ & \UExOneOne\\
+				
+				\cline{1-2} \cline{4-5} \cline{7-8}
+
+				$R_2$ & \RTwo & & $U_2$ & \UTwoCalc & & $U_2$ & \UExOneTwo\\		
+				\cline{1-2} \cline{4-5} \cline{7-8}
+				
+				$R_3$ & \RThree & & $U_3$ & \UThreeCalc & & $U_3$ & \UExOneThree\\
 				\hline
-			\end{tabular}
-		\]
+			\end{tabular} \end{center}
 
-	\subsection{}
-		\[
-			r_0 = \frac{U_{t2} - U_{t1}}{I_1 - I_2} = \frac{0}{I_1 - I_2} = 0
-		\]
-		Aparatele nu au fost destul de fixe si $r_0$ este o valoare prea mica pentru a fi masurata exact.
+		\subsection{}
+			\FPeval{\UTotalCalc}{clip(\UOneCalc + \UTwoCalc + \UThreeCalc)}
+			\FPeval{\UTotalMes}{clip(\UExOneOne + \UExOneTwo + \UExOneThree)}
 
-	\subsection{}
-		% Calculates the total sum of resistances
-		\FPeval{\resistanceSum}{clip(\ROne + \RTwo + \RThree)}
+			\[U_{c1} + U_{c2} + U_{c3} = \UOneCalc + \UTwoCalc + \UThreeCalc = \textbf{\UTotalCalc \ V}\]
+			\[U_{m1} + U_{m2} + U_{m3} = \UExOneOne + \UExOneTwo + \UExOneThree = \textbf{\UTotalMes \ V}\]
 
-		% 15 / (sum of resistance)
-		\FPeval{\currentExThree}{clip(15 / \resistanceSum * 1000)}
+		\subsection{}
+			\myIncludeImg{0.3}{./imgs/PotentialChart.jpg}{Potential Chart of Circuit 1}{potentialChart}
 
-		% Round \currentExThree to 2 fractional digits
-		\FPround{\currentExThree}{\currentExThree}{2}
+		\subsection{}
+			\myIncludeImg{0.7}{./imgs/ElectricCircuit2.jpg}{Circuit 1.2}{circuit2}
+			
+			\FPeval{\REtotal}{clip(\ROne + \RTwo * \RMax / (\RTwo + \RMax))}
+			\FPround{\REtotal}{\REtotal}{2}
+			\[
+				R_E = R_1 + \frac{R_2 R_3}{R_2 + R_3} = \ROne + \frac{\RTwo \cdot \RMax}{\RTwo + \RMax} = \REtotal \ \Omega
+			\]
 
-		\[
-			I = \frac{E}{R_1 + R_2 + R_3 + r_0} = \frac{15}{\resistanceSum} = \currentExThree \ mA
-		\]
+			\FPeval{\IExTwoCalcOne}{clip(15 / \REtotal * 1000)}
+			\FPround{\IExTwoCalcOne}{\IExTwoCalcOne}{2}
+
+			\[
+				I_1 = \frac{E}{r_0 + R_E} = \frac{15}{0 + \REtotal} = \IExTwoCalcOne \ mA
+			\]
+
+			\FPeval{\UExTwoCalcTwo}{clip(\IExTwoCalcOne * \RTwo * \RMax / (\RTwo + \RMax) / 1000)}
+			\FPround{\UExTwoCalcTwo}{\UExTwoCalcTwo}{2}
+
+			\[
+				U_2 = U_3 = I_1 \frac{R_2 R_3}{R_2 + R_3} =
+					\IExTwoCalcOne \cdot \frac{\RTwo \cdot \RMax}{\RTwo + \RMax} =
+					\UExTwoCalcTwo \ V
+			\]
+
+			\FPeval{\UExTwoCalcOne}{clip(\IExTwoOne * \ROne / 1000)}
+			\FPround{\UExTwoCalcOne}{\UExTwoCalcOne}{2}
+
+			\[
+				U_1 = I_1 \cdot R_1 = \IExTwoOne \cdot \ROne = \UExTwoCalcOne \ V
+			\]
+
+			%I_1
+			\FPeval{\IExTwoCalcTwo}{clip(\UExTwoCalcTwo / \RTwo * 1000)}
+			\FPround{\IExTwoCalcTwo}{\IExTwoCalcTwo}{2}
+
+			%I_2
+			\FPeval{\IExTwoCalcThree}{clip(\UExTwoCalcTwo / \RMax * 1000)}
+			\FPround{\IExTwoCalcThree}{\IExTwoCalcThree}{2}
+
+			\begin{center} \begin{tabular}{c|c}
+				\(I_2 = \frac{U_2}{R_2} = \frac{\UExTwoCalcTwo}{\RTwo} = \IExTwoCalcTwo \ mA\)
+				&
+				\(I_3 = \frac{U_3}{R_3} = \frac{\UExTwoCalcTwo}{\RMax} = \IExTwoCalcThree \ mA\)\\
+			\end{tabular} \end{center}
+
+			\begin{center} \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+				\hline
+					\multicolumn{2}{|c|}{R ($\Omega$)} &
+					\multicolumn{2}{c|}{$I_c (mA)$} &
+					\multicolumn{2}{c|}{$U_c (V)$} &
+					\multicolumn{2}{c|}{$I_m (mA)$} &
+					\multicolumn{2}{c|}{$U_m (V)$}\\
+				\hline
+
+				$R_1$ & \ROne & $I_1$ & \IExTwoCalcOne & $U_1$ & \UExTwoCalcOne & $I_1$ & \IExTwoOne & $U_1$ & \UExTwoOne\\
+				\hline
+
+				$R_2$ & \RTwo & $I_2$ & \IExTwoCalcTwo & $U_2$ & \UExTwoCalcTwo & $I_2$ & \IExTwoTwo & $U_2$ & \UExTwoTwo\\
+				\hline
+
+				$R_3$ & \RMax & $I_3$ & \IExTwoCalcThree & $U_3$ & \UExTwoCalcTwo & $I_3$ & \IExTwoThree & $U_3$ & \UExTwoThree\\
+				\hline
+			\end{tabular} \end{center}
 		
-		\FPeval{\UOneCalc}{clip(\currentExThree * \ROne / 1000)}
-		\FPround{\UOneCalc}{\UOneCalc}{2}
+		\subsection{}
+			\FPeval{\IExTwoKirchhoffDiff}{clip(\IExTwoTwo + \IExTwoThree - \IExTwoOne)}
+			\FPround{\IExTwoKirchhoffDiff}{\IExTwoKirchhoffDiff}{2}
 
-		\FPeval{\UTwoCalc}{clip(\currentExThree * \RTwo / 1000)}
-		\FPround{\UTwoCalc}{\UTwoCalc}{2}
+			\begin{minipage}{\textwidth}
+				\begin{center} \textbf{Kirchhoff's Law} \end{center}
+				\[
+					\sum_{1}^{n} I_k = 0 \Rightarrow I_2 + I_3 - I_1 = 0 \Rightarrow \IExTwoTwo + \IExTwoThree - \IExTwoOne = \IExTwoKirchhoffDiff \approx 0
+				\]
+				\hrule
+				\begin{center} \textbf{Power Balance} \end{center}
 
-		\FPeval{\UThreeCalc}{clip(\currentExThree * \RThree / 1000)}
-		\FPround{\UThreeCalc}{\UThreeCalc}{2}
+				%Left part
+				\FPeval{\ExTwoPowerEqL}{clip(15 * \IExTwoOne)}
+				\FPround{\ExTwoPowerEqL}{\ExTwoPowerEqL}{2}
 
-		\[U_1 = IR_1 = \currentExThree \cdot \ROne = \UOneCalc \ V\]
-		\[U_2 = IR_2 = \currentExThree \cdot \RTwo = \UTwoCalc \ V\]
-		\[U_3 = IR_3 = \currentExThree \cdot \RThree = \UThreeCalc \ V\]
+				%Right part
+				\FPeval{\ExTwoPowerEqR}{clip(\IExTwoOne * \IExTwoOne * (0 + \ROne))}
+				\FPeval{\ExTwoPowerEqR}{clip(\ExTwoPowerEqR + \IExTwoTwo * \IExTwoTwo * \RTwo)}
+				\FPeval{\ExTwoPowerEqR}{clip(\ExTwoPowerEqR + \IExTwoThree * \IExTwoThree * \RMax)}
+				\FPeval{\ExTwoPowerEqR}{clip(\ExTwoPowerEqR / 1000)}
+				\FPround{\ExTwoPowerEqR}{\ExTwoPowerEqR}{2}
 
-	\subsection{}
-		\begin{center} \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+				\[
+					E \cdot I_1 = I_1 ^ 2 (r_0 + R_1) + I_2 ^ 2 R_2 + I_3 ^ 2 R_3 \Rightarrow
+				\]
+				\[
+					15 \cdot \IExTwoOne = \frac{1}{10 ^ 3} \cdot (\IExTwoOne ^ 2 \cdot (0 + \ROne) + \IExTwoTwo ^ 2 \cdot \RTwo + \IExTwoThree ^ 2 \cdot \RMax)  \Leftrightarrow
+				\]
+				\[
+					\ExTwoPowerEqL \ W \approx \ExTwoPowerEqR \ W
+				\]
+			\end{minipage}
+
+		\subsection{}
+			\begin{center} \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+				\hline
+				\multicolumn{7}{|c}{\textbf{Measured}} & \multicolumn{3}{|c|}{\textbf{Calculated}}\\
+				\hline
+				$R_3$ & U & $U_1$ & $U_2$ & $I_1$ & $I_2$ & $I_3$ & $U_1 + U_2$ & $I_2 + I_3$ & P\\
+				\hline
+				$\Omega$ & \multicolumn{3}{c|}{V} & \multicolumn{3}{c|}{mA} & V & mA & mW\\	
+				\hline
+				0 & \multirow{6}{*}{15} & 14.93 & 0.06 & 144.3 & 0.2 & 143.5 & 14.99 & 143.7 & 2164.5\\
+				100 & & 9.06 & 5.88 & 88.4 & 29.4 & 59.2 & 14.94 & 88.6 & 1326\\
+				200 & & 7.57 & 7.42 & 74 & 37.1 & 36.7 & 14.99 & 73.8 & 1110\\
+				300 & & 6.9 & 8.0 & 67.2 & 40.5 & 26.7 & 14.9 & 67.2 & 1008\\
+				467 & & 6.35 & 8.64 & 62 & 43.3 & 18.6 & 14.99 & 61.9 & 930\\
+				\hline
+			\end{tabular} \end{center}
+			\[
+				P_{R_3} = U \cdot I_{R_3} 
+			\]
+
+			\myIncludeImg{0.34}{./imgs/U1U2_I1I2I3_R3_plot.jpg}{}{graph1}
+
+	\newpage
+	\section{De cercetat proprietatile elementelor pasive (R, L, C) în circuitul de curent alternativ.}
+		\myIncludeImg{0.7}{./imgs/ElectricCircuit3.jpg}{Circuit 2.1}{circuit3}
+		\myIncludeImg{0.7}{./imgs/ElectricCircuit4.jpg}{Circuit 2.2}{circuit4}
+
+		\begin{center} \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
 			\hline
-			\multicolumn{2}{|c|}{R ($\Omega$)} &$
-				I_{c}$(mA) &
-				\multicolumn{2}{c|}{$U_c$ (V)} &
-				$I_{m}$ (mA) &
-				\multicolumn{2}{c|}{$U_m$ (V)} \\
-
+			
+			\multirow{2}{*}{Element} & U & $U_m$ & I & $I_m$ & $\phi$ & Q & S & P & R & C & L & $X_C$ & $X_L$\\
+			\arrayrulecolor{gray!70}
+			\cline{2-14}
+			\arrayrulecolor{black}
+			
+			& \multicolumn{2}{c|}{V} & \multicolumn{2}{c|}{mA} & o & VAR & VA & W & $\Omega$ & nF & mH & $\Omega$ & $\Omega$\\
 			\hline
 			
-			$R_1$ & \ROne &
-				\multirow{3}{*}{\currentExThree} &
-				$U_1$ & \UOneCalc &
-				\multirow{3}{*}{\IPosOne} &
-				$U_1$ & \UExOneOne\\
+			$R = 510 \Omega$ & & 10.3 & & 20 & & & & & & & & &\\
+			\hline
 			
-			\cline{1-2} \cline{4-5} \cline{7-8}
-
-			$R_2$ & \RTwo & & $U_2$ & \UTwoCalc & & $U_2$ & \UExOneTwo\\		
-			\cline{1-2} \cline{4-5} \cline{7-8}
+			C = 56 nF & & 4.43 & & 186.3 & & & & & & & & &\\
+			\hline
 			
-			$R_3$ & \RThree & & $U_3$ & \UThreeCalc & & $U_3$ & \UExOneThree\\
+			L = 3.64 mH & & 11.34 & & 510 & & & & & & & & &\\
 			\hline
 		\end{tabular} \end{center}
 
-	\subsection{}
-		\FPeval{\UTotalCalc}{clip(\UOneCalc + \UTwoCalc + \UThreeCalc)}
-		\FPeval{\UTotalMes}{clip(\UExOneOne + \UExOneTwo + \UExOneThree)}
-
-		\[U_{c1} + U_{c2} + U_{c3} = \UOneCalc + \UTwoCalc + \UThreeCalc = \textbf{\UTotalCalc \ V}\]
-		\[U_{m1} + U_{m2} + U_{m3} = \UExOneOne + \UExOneTwo + \UExOneThree = \textbf{\UTotalMes \ V}\]
-
-	\subsection{}
-		%Potential chart for circuit 1
-		\begin{center} \begin{tikzpicture}
-			\begin{axis}[
-				title={Potential Chart of Circuit 1},
-				xlabel={R},
-				ylabel={I},
-				yticklabels={, , ,0},
-				xticklabels={},
-			]
-
-			\addplot[color=blue, mark=square]
-				coordinates {(0,0)(1,-1)(1,5)(6,1)(9,-2)(10,-4)}
-					node [pos=0/8, below]{A}
-					node [pos=0.6/8, below]{B}
-					node [pos=2.9/8, above]{C}
-					node [pos=5.7/8, above]{D}
-					node [pos=7.1/8, above]{E}
-					node [pos=1, below]{F};
-
-			\addplot[color=black, very thin, dashed]
-				coordinates {(-1, 0)(11, 0)};
-
-			\end{axis}
-		\end{tikzpicture} \end{center}
-
-	\subsection{}
-		\begin{center}
-			\includegraphics[scale=0.7]{./imgs/ElectricCircuit2.jpg}
-		\end{center}
-		
-		\FPeval{\REtotal}{clip(\ROne + \RTwo * \RMax / (\RTwo + \RMax))}
-		\FPround{\REtotal}{\REtotal}{2}
-		\[
-			R_E = R_1 + \frac{R_2 R_3}{R_2 + R_3} = \ROne + \frac{\RTwo \cdot \RMax}{\RTwo + \RMax} = \REtotal \ \Omega
-		\]
-
-		\FPeval{\IExTwoCalcOne}{clip(15 / \REtotal * 1000)}
-		\FPround{\IExTwoCalcOne}{\IExTwoCalcOne}{2}
-
-		\[
-			I_1 = \frac{E}{r_0 + R_E} = \frac{15}{0 + \REtotal} = \IExTwoCalcOne \ mA
-		\]
-
-		\FPeval{\UExTwoCalcTwo}{clip(\IExTwoCalcOne * \RTwo * \RMax / (\RTwo + \RMax) / 1000)}
-		\FPround{\UExTwoCalcTwo}{\UExTwoCalcTwo}{2}
-
-		\[
-			U_2 = U_3 = I_1 \frac{R_2 R_3}{R_2 + R_3} =
-				\IExTwoCalcOne \cdot \frac{\RTwo \cdot \RMax}{\RTwo + \RMax} =
-				\UExTwoCalcTwo \ V
-		\]
-
-		\FPeval{\UExTwoCalcOne}{clip(\IExTwoOne * \ROne / 1000)}
-		\FPround{\UExTwoCalcOne}{\UExTwoCalcOne}{2}
-
-		\[
-			U_1 = I_1 \cdot R_1 = \IExTwoOne \cdot \ROne = \UExTwoCalcOne \ V
-		\]
-
-		\FPeval{\IExTwoCalcTwo}{clip(\UExTwoCalcTwo / \RTwo * 1000)}
-		\FPround{\IExTwoCalcTwo}{\IExTwoCalcTwo}{2}
-
-		\[
-			I_2 = \frac{U_2}{R_2} = \frac{\UExTwoCalcTwo}{\RTwo} = \IExTwoCalcTwo \ mA
-		\]
-
-		\FPeval{\IExTwoCalcThree}{clip(\UExTwoCalcTwo / \RMax * 1000)}
-		\FPround{\IExTwoCalcThree}{\IExTwoCalcThree}{2}
-
-		\[
-			I_3 = \frac{U_3}{R_3} = \frac{\UExTwoCalcTwo}{\RMax} = \IExTwoCalcThree \ mA
-		\]
-
-
-		\begin{center} \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
-			\hline
-				\multicolumn{2}{|c|}{R ($\Omega$)} &
-				\multicolumn{2}{c|}{$I_c (mA)$} &
-				\multicolumn{2}{c|}{$U_c (V)$} &
-				\multicolumn{2}{c|}{$I_m (mA)$} &
-				\multicolumn{2}{c|}{$U_m (V)$}\\
-			\hline
-
-			$R_1$ & \ROne & $I_1$ & \IExTwoCalcOne & $U_1$ & \UExTwoCalcOne & $I_1$ & \IExTwoOne & $U_1$ & \UExTwoOne\\
-			\hline
-
-			$R_2$ & \RTwo & $I_2$ & \IExTwoCalcTwo & $U_2$ & \UExTwoCalcTwo & $I_2$ & \IExTwoTwo & $U_2$ & \UExTwoTwo\\
-			\hline
-
-			$R_3$ & \RMax & $I_3$ & \IExTwoCalcThree & $U_3$ & \UExTwoCalcTwo & $I_3$ & \IExTwoThree & $U_3$ & \UExTwoThree\\
-			\hline
-		\end{tabular} \end{center}
-
+		\myIncludeImg{0.1}{./imgs/Part2OscilographPos1.jpg}{Oscilograph pos 1}{oscil. 1}
+		\myIncludeImg{0.1}{./imgs/Part2OscilographPos2.jpg}{Oscilograph pos 2}{oscil. 2}
+		\myIncludeImg{0.1}{./imgs/Part2OscilographPos3.jpg}{Oscilograph pos 3}{oscil. 3}
 \end{document}

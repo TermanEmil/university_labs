@@ -14,6 +14,8 @@
 **/report/*.aux
 **/report/*.fls
 **/report/*.out
+latex.py
+report.py*
 
 #Python build stuff
 *.pyc
