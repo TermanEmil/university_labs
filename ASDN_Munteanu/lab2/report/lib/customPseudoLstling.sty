@@ -1,0 +1,36 @@
+\ProvidesPackage{customPseudoLstling}
+
+\RequirePackage{color}
+\RequirePackage{listings}
+\RequirePackage{caption}
+
+\newcounter{nalg}
+\renewcommand{\thenalg}{\arabic{nalg}}
+\DeclareCaptionLabelFormat{algocaption}{\textbf{Algorithm \thenalg}}
+\lstnewenvironment{algorithm}[1][]
+{
+	\refstepcounter{nalg}
+	\captionsetup{labelformat=algocaption,labelsep=colon}
+	\lstset{
+		mathescape=true,
+		frame=tB,
+		numbers=left, 
+		numberstyle=\tiny,
+		basicstyle=\scriptsize, 
+		keywordstyle=\color{blue}\bfseries\em,
+		keywords={,input,output,return,datatype,function,in,if,else,foreach,while,begin,end,then,to,do,for,div,\mod,mod,array,int,of,declare,}
+		numbers=left,
+		xleftmargin=.04\textwidth,
+		#1
+	}
+}{}
+
+% -Example:
+
+% \begin{algorithm}[caption={Recursive method}, label={Fibonacci1}]
+% function fib1(n)
+% 	if n < 2 then
+% 		return n
+% 	else
+% 		return fib1(n - 1) + fib1(n - 2)
+% \end{algorithm}

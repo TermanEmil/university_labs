@@ -26,6 +26,9 @@
 \usepackage{etoolbox}
 \usepackage{geometry}
 \usepackage{mdframed}
+\usepackage{mathptmx}
+\usepackage{anyfontsize}
+\usepackage{t1enc}
 
 \graphicspath{{./}}
 
@@ -104,6 +107,7 @@
 			#1
 		\end{center}
 	}
+
 	% <Square cases>
 	\makeatletter
 	\newenvironment{sqcases} {
@@ -121,23 +125,21 @@
 	% </Square cases>
 
 	% Begin of the document
-
-	\title{APA laboratory\_01}
-	\author{Terman Emil FAF161}
-	\maketitle
-
-	% Write at bottom
-	\vspace*{\fill}
-	
 	\begin{center}
-		\includegraphics{imgs/UTM_logo.png}
+		Technical University of Moldova\\
+		Inignerical department S.A.
+
+		\vfill {\fontsize{100}{1}\selectfont Report}\\
+		{\huge Analiza si proiectarea algoritmilor}\\
+		{\huge \textbf{Subject:} Algorithm analyzing - Fibbonaci}
+		\vfill
 	\end{center}
-
-	\begin{flushright}
-		Prof: M. Catruc
-	\end{flushright}
-
-	\begin{center} \LaTeX \end{center}
+	Author: \hfill Terman Emil FAF161\\
+	Prof: \hfill M. Catruc
+	\vfill
+	\begin{center}
+		Chisinau 2017
+	\end{center}
 	\pagebreak
 
 	\begin{center}
@@ -146,17 +148,17 @@
 
 	{\large \textbf{Purpose:}}
 	\begin{itemize}
-		\item Analiza empirică a algoritmilor.
-		\item Analiza teoretică a algoritmilor.
-		\item Determinarea complexităţii temporale şi asimptotice a algoritmilor
+		\item[--] analiza empirică a algoritmilor.
+		\item[--] analiza teoretică a algoritmilor.
+		\item[--] determinarea complexităţii temporale şi asimptotice a algoritmilor
 	\end{itemize}
 
 	{\large \textbf{Conditions:}}
 	\begin{enumerate}
-		\item Efectuaţi analiza empirică a algoritmilor propuşi.
-		\item Determinaţi relaţia ce determină complexitatea temporală pentru aceşti algoritmi.
-		\item Determinaţi complexitatea asimptotică a algoritmilor.
-		\item Faceţi o concluzie asupra lucrării efectuate.
+		\item[--] efectuaţi analiza empirică a algoritmilor propuşi.
+		\item[--] determinaţi relaţia ce determină complexitatea temporală pentru aceşti algoritmi.
+		\item[--] determinaţi complexitatea asimptotică a algoritmilor.
+		\item[--] faceţi o concluzie asupra lucrării efectuate.
 	\end{enumerate}
 
 	\newpage
@@ -195,7 +197,6 @@ function fib1(n)
 	\par This method is very uneficient since it has to recalculate multiple timess the same values. We can clearly see why it's not a good idea to use this algorithm:
 
 	\myIncludeImg{0.5}{./imgs/PlotFib1.png}{Algorithm 1}{graph1}
-
 
 	\newpage
 	\section{Iterative method}
@@ -272,10 +273,10 @@ function fib4(n)
 		\end{algorithm}
 
 		\begin{itemize}
-			\item For the line 2, we declare (n + 2) $\cdot$ \textit{\textcolor{red}{sizeof}(\textcolor{blue}{int})} = (n + 2) * 4 \textit{Bytes} of memory. That's roughly 4 $\cdot$ n \textit{Bytes}.
-			\item Line 4 and 5 have a complexity of O(n).
-			\item The line 7 has 4 operations, that is another O(n).
-			\item The \textcolor{blue}{\textit{for}} loop is executed $n - 1$ times. So the inside part of the loop will have $4 \cdot (n - 1)$ operations. Resulting that the entire loop will have complexity of O(n).
+			\item[--] for the line 2, we declare (n + 2) $\cdot$ \textit{\textcolor{red}{sizeof}(\textcolor{blue}{int})} = (n + 2) * 4 \textit{Bytes} of memory. That's roughly 4 $\cdot$ n \textit{Bytes}.
+			\item[--] line 4 and 5 have a complexity of O(n).
+			\item[--] the line 7 has 4 operations, that is another O(n).
+			\item[--] the \textcolor{blue}{\textit{for}} loop is executed $n - 1$ times. So the inside part of the loop will have $4 \cdot (n - 1)$ operations. Resulting that the entire loop will have complexity of O(n).
 		\end{itemize}
 		\par Since the most significant part is the \textcolor{blue}{\textit{for}} loop, results that:
 		\[
@@ -288,13 +289,19 @@ function fib4(n)
 		\end{center}
 
 	\newpage
-	\section{Conclusion}
-		\begin{itemize}
-			\item The fastest and the most eficient Fibonacci algorithm is the $O(\log_2 n)$ algorithm.
-			\item Sometimes, it's enough to have a very simple implemented algorithm, but less efficient, because we don't always need a huge performance.
-			\item The calculation of the time complexity of an algorithm helps us to choose which is the best algorithm of all.
-		\end{itemize}
+	\section{Summary}
+		\myIncludeImg{0.4}{./imgs/PlotFibAll.png}{All algorithms}{graph5}
+		\myIncludeImg{0.4}{./imgs/PlotFibAllButFact.png}{All algorithms but factorial}{graph6}
 
-		\myIncludeImg{0.5}{./imgs/PlotFibAll.png}{All algorithms}{graph5}
-		\myIncludeImg{0.5}{./imgs/PlotFibAllButFact.png}{All algorithms but factorial}{graph6}
+		In These graphs we can see how big is the difference between each algorithm.
+
+	\newpage
+	\section{Conclusion}
+		At this laboratory work, I compared different algorithms and found the best one, that is \(O(\log_2 n)\). This comparison helped me visualize how different are the algorithms, which made me draw the folowing conclusions:
+		\begin{itemize}
+			\item[--] the fastest and the most eficient Fibonacci algorithm is the $O(\log_2 n)$ algorithm.
+			\item[--] sometimes, it's enough to have a very simple implemented algorithm, but less efficient, like the recursive method, because we don't always need a huge performance.
+			\item[--] the calculation of the time complexity of an algorithm helps us to choose which is the best algorithm of all.
+			\item[--] an algorithm is also described by how much memory it needs. For example, the last method consumes more memory as n grows, making this algorithm less attractive.
+		\end{itemize}
 \end{document}

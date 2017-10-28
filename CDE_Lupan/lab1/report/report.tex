@@ -126,7 +126,10 @@
 	\pagebreak %-----------------------------------------------End of title page
 
 	\raggedright
-	\section{Verificarea îndeplinirii legilor lui Ohm si Kirchhoff pentru circuitele electrice neramificate si ramificate.}
+	\section{Verification of Kirchhoff and Ohm's laws for electrical circuits.}
+		\textbf{Kirchhoff first law:} The current entering any junction is equal to the current leaving that junction.
+		\textbf{Kirchhoff second law:} The sum of all the voltages around a loop is equal to zero.
+
 		\myIncludeImg{0.7}{./imgs/ElectricCircuit1.jpg}{Circuit 1.1}{circuit1}
 
 		\subsection{}
@@ -141,12 +144,14 @@
 			\]
 
 		\subsection{}
+			Internal resistance:
 			\[
 				r_0 = \frac{U_{t2} - U_{t1}}{I_1 - I_2} = \frac{0}{I_1 - I_2} = 0
 			\]
-			Aparatele nu au fost destul de fixe si $r_0$ este o valoare prea mica pentru a fi masurata exact.
+			The tools we had, weren't exact enough, that's why we got $r_0$ = 0. To find a more exact value of internal resistance, we need something better.
 
 		\subsection{}
+			The current in circuit and the tensions in each resistance by the Ohm's Laws.
 			% Calculates the total sum of resistances
 			\FPeval{\resistanceSum}{clip(\ROne + \RTwo + \RThree)}
 
@@ -199,7 +204,7 @@
 				\hline
 			\end{tabular} \end{center}
 
-		\subsection{}
+		\subsection{Verify the second Kirchhoff's law}
 			\FPeval{\UTotalCalc}{clip(\UOneCalc + \UTwoCalc + \UThreeCalc)}
 			\FPeval{\UTotalMes}{clip(\UExOneOne + \UExOneTwo + \UExOneThree)}
 
@@ -209,9 +214,10 @@
 		\subsection{}
 			\myIncludeImg{0.3}{./imgs/PotentialChart.jpg}{Potential Chart of Circuit 1}{potentialChart}
 
-		\subsection{}
+		\subsection{Verify the first law of Kirchhoff}
 			\myIncludeImg{0.7}{./imgs/ElectricCircuit2.jpg}{Circuit 1.2}{circuit2}
 			
+			The equivalent resistance of the circuit $R_E$:
 			\FPeval{\REtotal}{clip(\ROne + \RTwo * \RMax / (\RTwo + \RMax))}
 			\FPround{\REtotal}{\REtotal}{2}
 			\[
@@ -279,7 +285,7 @@
 			\FPround{\IExTwoKirchhoffDiff}{\IExTwoKirchhoffDiff}{2}
 
 			\begin{minipage}{\textwidth}
-				\begin{center} \textbf{Kirchhoff's Law} \end{center}
+				\begin{center} \textbf{Kirchhoff's first Law} \end{center}
 				\[
 					\sum_{1}^{n} I_k = 0 \Rightarrow I_2 + I_3 - I_1 = 0 \Rightarrow \IExTwoTwo + \IExTwoThree - \IExTwoOne = \IExTwoKirchhoffDiff \approx 0
 				\]
@@ -308,6 +314,7 @@
 				\]
 			\end{minipage}
 
+
 		\subsection{}
 			\begin{center} \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
 				\hline
@@ -330,6 +337,12 @@
 
 			\myIncludeImg{0.34}{./imgs/U1U2_I1I2I3_R3_plot.jpg}{}{graph1}
 
+			\subsection{Conclusion}
+				In this laboratory work we showed that the Kirchhoff's laws are true, by making our own circuits. The errors appeared mostly because of the human factor and because of the relatively bad equipment.
+				\par In the first graph is shown the second Kirchhoff's law: \(U_1 + U_2 = 15V\)
+				\par From the second graph, we can clearly see the first Kirchhoff's Law: \(I_1 = I_2 + I_3\).
+				
+
 	\newpage
 	\section{De cercetat proprietatile elementelor pasive (R, L, C) în circuitul de curent alternativ.}
 		\myIncludeImg{0.7}{./imgs/ElectricCircuit3.jpg}{Circuit 2.1}{circuit3}
@@ -346,13 +359,13 @@
 			& \multicolumn{2}{c|}{V} & \multicolumn{2}{c|}{mA} & o & VAR & VA & W & $\Omega$ & nF & mH & $\Omega$ & $\Omega$\\
 			\hline
 			
-			$R = 510 \Omega$ & & 10.3 & & 20 & & & & & & & & &\\
+			$R = 510 \Omega$ & 10.3 & & 20 &  & & & & & & & & &\\
 			\hline
 			
-			C = 56 nF & & 4.43 & & 186.3 & & & & & & & & &\\
+			C = 56 nF & 4.43 & & 186.3 & & & & & & & & & &\\
 			\hline
 			
-			L = 3.64 mH & & 11.34 & & 510 & & & & & & & & &\\
+			L = 3.64 mH & 11.34 & & 510 & & & & & & & & & &\\
 			\hline
 		\end{tabular} \end{center}
 
