@@ -9,9 +9,6 @@ def f2(x):
 def f3(x):
 	return 6.28 + np.sin(x)
 
-def normalForm(f, x):
-	return f(x)
-
 def fixedPointFinder(f, x0, tolerance, maxIters = 1000, verbose = False):
 	iterations = 0
 	x = x0

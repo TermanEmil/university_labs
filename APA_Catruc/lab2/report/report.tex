@@ -1,0 +1,19 @@
+\documentclass{article}
+
+\usepackage{silence}
+\WarningFilter{latex}{You have requested package}
+
+\usepackage{lib/defaultReportSettings}
+\usepackage{lib/myTitlePage}
+\usepackage{lib/customPseudoLstling}
+
+\begin{document}
+	\myTitlePage{APA}{Terman Emil FAF161}[M. Catruct][Divide et empera][2]
+
+	\section{Mergesort}
+		\includeAlgFile{./aux/mergeSort.pseudo}[Mergesort]
+
+	\section{Quicksort}
+		\includeAlgFile{./aux/quickSort.pseudo}[Quicksort]
+
+\end{document}

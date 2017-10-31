@@ -1,0 +1,37 @@
+function mergeSort(tab: array of int, int firstI, int lastI):
+	int mid
+
+	if (firstI < lastI):
+		mid = (firstI + lastI) / 2
+		mergeSort(tab, firstI, mid)
+		mergeSort(tab, mid + 1, lastI)
+		merge(tab, firstI, mid, lastI)
+
+function merge(tab: array of int, int firstI, int mid, int lastI):
+	tmp: array[lastI - firstI + 1] of int
+	int i, j, k
+
+	i := k := firstI
+	j := mid + 1
+	while (i <= mid and j <= lastI):
+		if (tab[i] <= tab[j]):
+			tmp[k - firstI] := tab[i]
+			i++
+		else:
+			tmp[k - firstI] := tab[j]
+			j++
+		k++
+
+	while (i <= mid):
+		tmp[k - firstI] := tab[i]
+		k++
+		i++
+
+	while (j <= lastI):
+		tmp[k - firstI] := tab[j]
+		k++
+		j++
+
+	for (i := firstI; i < lastI + 1; i++):
+		tab[i] := tmp[i - firstI]
+		
