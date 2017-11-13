@@ -1,0 +1,46 @@
+\documentclass{article}
+
+\usepackage{silence}
+\WarningFilter{latex}{You have requested package}
+
+\usepackage{lib/defaultReportSettings}
+\usepackage{lib/myTitlePage}
+\usepackage{lib/customCppLstling}
+
+\begin{document}
+	\def \reportSubj {Composition and Inheritance}
+	\myTitlePage{APA}{Terman Emil FAF161}[M. Kulev][\reportSubj][2]
+
+	\section{Objectives}
+		\begin{itemize}
+			\item study of inheritance, advantages and disadvantages
+			\item study of composition
+			\item study of inheritance patterns
+		\end{itemize}
+
+	\section{Main notions of theory and used methods}
+		\par One of the most important concepts in object-oriented programming is that of inheritance. Inheritance allows us to define a class in terms of another class, which makes it easier to create and maintain an application. This also provides an opportunity to reuse the code functionality and fast implementation time.
+
+		\par When creating a class, instead of writing completely new data members and member functions, the programmer can designate that the new class should inherit the members of an existing class. This existing class is called the base class, and the new class is referred to as the derived class.
+
+		\par The idea of inheritance implements the is a relationship. For example, mammal IS-A animal, dog IS-A mammal hence dog IS-A animal as well and so on.
+
+	\section{Task}
+\begin{enumerate}
+			\item Să se creeze o ierarhie a claselor joc – joc sportiv – volei. Determinaţi constructorii, destructorul, operatorul de atribuire şi alte funcţii necesare.
+			\item Să se creeze class rate,  care conţine rază. Determinaţi constructorii şi metodele de acces. Creaţi clasa automobil, care conţine roţi şi un câmp care reprezintă firma producătoare. Creaţi o clasă derivată autocamion care se deosebeşte prin tonaj. Determinaţi constructorii, destructorul şi alte funcţii necesare.
+		\end{enumerate}
+
+	\section{Data analysis}
+		\begin{itemize}
+			\item The class \textit{Car} is composed of a vector of wheels.
+
+			\item Since the class \textit{Lorry} inherits from \textit{Car}, the \textit{$\_$wheels} and \textit{$\_$mark} fields are \textit{protected} so that \textit{Lorry} can have access to these fields.
+
+			\item The \textit{Game} has its function \cppInLine{void play(void) const;} overriden by each of his superclasses, each time differently.
+		\end{itemize}
+
+\end{document}
+
+
+

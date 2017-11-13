@@ -20,9 +20,9 @@ def makeFile(size):
 		tab = generateRandomTab(size)
 		pickle.dump(tab, f)
 
-step = 1000
-pointsLen = 10
-lowerLimit = 10000
+step = 100
+pointsLen = 20
+lowerLimit = 1000
 points = [lowerLimit + step * i for i in range(pointsLen)]
 
 threads = []

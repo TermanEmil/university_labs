@@ -1,19 +1,235 @@
 \documentclass{article}
 
+\usepackage{amsmath}
+\usepackage{indentfirst}
+\usepackage{tabularx}
+\usepackage[hidelinks]{hyperref}
+
 \usepackage{silence}
 \WarningFilter{latex}{You have requested package}
 
 \usepackage{lib/defaultReportSettings}
 \usepackage{lib/myTitlePage}
+\usepackage{lib/customPythonLtling}
 \usepackage{lib/customPseudoLstling}
+\usepackage{lib/customHyperRef}
+\usepackage{lib/customImgInclude}
 
 \begin{document}
-	\myTitlePage{APA}{Terman Emil FAF161}[M. Catruct][Divide et empera][2]
+	\myTitlePage{APA}{Terman Emil FAF161}[I. Costiuc][Divide et empera][2]
 
+	{\Large \textbf{Objectives:}}
+	\begin{itemize}
+		\item to obtain skills in writing efficient code
+		\item to develop analytical thinking
+		\item to be able to correctly find the complexity of sorting algorithms
+		\item to learn the pros and cons of different sorting algorithms
+	\end{itemize}
+
+	{\Large \textbf{Tasks:}}
+	\begin{itemize}
+		\item to study the divide and conquer method
+		\item to implement algorithms based on this method
+	\end{itemize}
+
+	\begin{center}
+		{\Large \textbf{The procsess}}
+	\end{center}
+
+	\par In computer science, \textbf{divide and conquer} is an algorithm design paradigm based on multi-branched \textit{recursion}. A divide and conquer algorithm works by recursively breaking down a problem into two or more sub-problems of the same or related type, until these become simple enough to be solved directly. The solutions to the sub-problems are then combined to give a solution to the original problem.
+
+	\par This divide and conquer technique is the basis of efficient algorithms for all kinds of problems, such as sorting, merge sort, etc), multiplying large numbers (e.g. the Karatsuba algorithm), finding the closest pair of points, syntactic analysis (e.g., top-down parsers), and computing the discrete Fourier transform (FFTs).
+
+	\par The correctness of a divide and conquer algorithm is usually proved by mathematical induction, and its computational cost is often determined by solving recurrence relations.
+
+	\newpage
 	\section{Mergesort}
 		\includeAlgFile{./aux/mergeSort.pseudo}[Mergesort]
 
+		\begin{tabular}{cc}
+			\begin{minipage}{0.5\textwidth}
+				\labelRef{pyMergeSort}[Mergesort in python]
+			\end{minipage}
+			&
+			\begin{minipage}{0.5\textwidth}
+				\myHref{https://giphy.com/gifs/algorithm-WLkahNhIBzxJu/fullscreen}[Mergesort animation]
+			\end{minipage}
+		\end{tabular}
+
+		\subsection{Time complexity}
+			Line 6, 7: \(T \Big( \frac{n}{2} \Big) \)
+			\par Line 8: \(O(n)\)
+			\par Let T(n) be the sorting time of an array of length n, then:
+
+			\begin{equation*}
+			\begin{split}
+				& T(n) = 2T \Big( \frac{n}{2} \Big) + O(n) = 2T \Big( \frac{n}{2} \Big) + n \\
+				& n = 2^a; \ a = \log_2 {n} \\
+				& T(2^a) = 2T(2^{a - 1}) + 2^a \\
+				& t_a = 2t_{a - 1} + 2^a \\
+				& (x - 2) \cdot (x - 2) = 0 \\
+				& r_1 = 2; \ r_2 = 2\\
+				& t_a = C_1 \cdot 2^a + C_2 \cdot a \cdot 2^a\\
+				& t_x = C_1 \cdot n + C_2 \cdot n\log_2 {n} \Rightarrow\\
+				& T(n) = O(n\log_2 {n})
+			\end{split}
+			\end{equation*}
+
+		\begin{minipage}[t]{0.45\textwidth}
+			\subsection{Advantages}
+			\begin{itemize}
+					\item it's stable: the time complexity doesn't depend on the input
+					\item it's possible to implement an efficient multithreaded program
+			\end{itemize}
+		\end{minipage}
+		%
+		\begin{minipage}[t]{0.5\textwidth}
+			\subsection{Disadvantages}
+			\begin{itemize}
+				\item requires a lot of memory
+				\item requires additional stack memory for recursive calls
+			\end{itemize}
+		\end{minipage}
+
+	\newpage
 	\section{Quicksort}
 		\includeAlgFile{./aux/quickSort.pseudo}[Quicksort]
+
+		\begin{tabular}{cc}
+			\begin{minipage}{0.5\textwidth}
+				\labelRef{quickSort}[Quicksort in python]
+			\end{minipage}
+			&
+			\begin{minipage}{0.5\textwidth}
+				\myHref{https://upload.wikimedia.org/wikipedia/commons/6/6a/Sorting_quicksort_anim.gif}[Quicksort animation]
+			\end{minipage}
+		\end{tabular}
+
+		\subsection{Time complexity}
+			\def \timeComplexWorstCase {
+				\parbox{0.4\textwidth}{
+					\begin{equation*}
+					\begin{split}
+						& T(n) = O(n) + T(0) + T(n - 1) = O(n) + T(n - 1)\\
+						& T(n) = T(n - 1) + n\\
+						& (x - 1)(x - 1)^2 = 0\\
+						& r_1 = 1; \ r_2 = 1; \ r_3 = 1;\\
+						& t_n = C_1 \cdot 1^n + C_2 \cdot n \cdot 1^n + C_3 \cdot n^2 \cdot 1^n\\
+						& T(n) = O(n^2)\\
+					\end{split}
+					\end{equation*}
+				}
+			}
+
+			\def \timeComplexBestCase {
+				\parbox{0.4\textwidth}{
+					\begin{equation*}
+					\begin{split}
+						& T(n) = O(n) + 2T \Big( \frac{n}{2} \Big)\\
+						& n = 2^a; \ a = \log_2 {n}\\
+						& T(2^a) = 2T(2^{a - 1}) + O(2^a)\\
+						& ...\\
+						& T(n) = O(n\log_2 {n})
+					\end{split}
+					\end{equation*}
+				}
+			}
+
+			\begin{tabular}{c|c}
+				Worst case & Best case\\
+				\hline
+				\timeComplexWorstCase
+				&
+				\timeComplexBestCase
+			\end{tabular}
+
+		\begin{minipage}[t]{0.45\textwidth}
+			\subsection{Advantages}
+			\begin{itemize}
+					\item it doesn't require additional memory
+					\item quicksort's divide-and-conquer formulation makes it amenable to parallelization using task parallelism
+			\end{itemize}
+		\end{minipage}
+		%
+		\begin{minipage}[t]{0.5\textwidth}
+			\subsection{Disadvantages}
+			\begin{itemize}
+				\item it's not as stable as Mergesort, meaning that it may require more iterations. But since it requires less memory, it can still run in less time
+				\item requires additional stack memory for recursive calls
+			\end{itemize}
+		\end{minipage}
+
+	\newpage
+	\section{Insection sort}
+		\includeAlgFile{./aux/insertionSort.pseudo}[Insertion sort]
+
+		\begin{tabular}{cc}
+			\begin{minipage}{0.5\textwidth}
+				\labelRef{insertSort}[Insertion sort in python]
+			\end{minipage}
+			&
+			\begin{minipage}{0.5\textwidth}
+				\myHref{https://giphy.com/gifs/sort-of-wB7b5m0sNkKGI/fullscreen}[Insertion sort animation]
+			\end{minipage}
+		\end{tabular}
+
+		\subsection{Time complexity}
+			\begin{center}
+				\begin{tabular}{c|c}
+					Best case & $O(n)$\\
+					\hline
+					Worst case & $O(n^2)$\\
+					\hline
+					On Average & $O(n^2)$\\
+				\end{tabular}
+			\end{center}
+
+		\begin{minipage}[t]{0.45\textwidth}
+			\subsection{Advantages}
+			\begin{itemize}
+					\item a very short and intuitive algorithm
+					\item doesn't require any additional memory
+					\item it shows a better performance when the table is almost sorted
+					\item it can sort a list as it recives it
+			\end{itemize}
+		\end{minipage}
+		%
+		\begin{minipage}[t]{0.5\textwidth}
+			\subsection{Disadvantages}
+			\begin{itemize}
+				\item it's much less efficient on large tables than Quick or Merge sort
+			\end{itemize}
+		\end{minipage}
+
+	\newpage
+	\section{Exceution time diagram}
+		\def \QMDiagramName {Merge and Quick sort time diagrams}
+		\myIncludeImg{./imgs/Figure_1.png}[0.7][\QMDiagramName]
+
+		\def \MQIDiagramNm {Merge, Quick and Insert sort time diagrams}
+		\myIncludeImg{./imgs/MergeQuickInsertSort.png}[0.7][\MQIDiagramNm][AllAlgsTimes]
+
+		\par In this graph, the nLogN plots are calculated using:
+		\[
+			f(x) = x\log_2 {x} * K
+		\]
+		\par Where K is the minimum value divided by f($x_0$). The same goes for \(f(x) = x^2\).
+
+		% \par We can clearly see, that Quicksort is the most practical choice. Even though Mergesort has a stable \(\log_2{n}\) complexity, it looses a lot of time managing the additional memory it needs.
+
+	\newpage
+	\section{Conclusion}
+		\def \hyperRefToImgTwo {
+			\hyperref[fig:AllAlgsTimes]{\textbf{{\color{blue} Img 2}}}
+		}
+		\par In this laboratory work, 3 different algorithms were studied: Mergesort, Quicksort and Insertion sort. From the time diagrams, it can be noticed that Quicksort has the least coputation time and Mergesort required almost twice the amount of time, even though, it has a stable \(log_2 {n}\) complexity. The reason why Mergesort is slower, is that it requires additional time to manage the additional memory it needs. So, the fastest and most practical method would be Quicksort.
+		\par But, insertion sort isn't too bad too. It can be seen on the \hyperRefToImgTwo time diagram, that it doesn't stand a chance agains the divide and conquer algorithms in execution time, but it doesn't negate its most important advantage: more elements can be added while sorting, which can prove much more efficient in practice.
+		\par The reason why Divide and conquer algorithms are fast, is that it divides a very complex problem in many, very simple problems. This concept is a basic rule in general: Divide the complex problems in many small problems, until those little problems are simple enough to be resolved.
+
+	\newpage
+	\section{Anexes}
+		\includePyFile{./../code/mergeSort.py}[Mergesort][pyMergeSort]
+		\includePyFile{./../code/quickSort.py}[Quicksort][quickSort]
+		\includePyFile{./../code/insertionSort.py}[InsertionSort][insertSort]
 
 \end{document}

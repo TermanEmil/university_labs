@@ -1,0 +1,10 @@
+function insertionSort(tab: array of int[0..n], int size):
+	int i, j
+
+	i := 1
+	for i in range(1, size):
+		j := i
+		while (j > 0):
+			if tab[j] < tab[j - 1]:
+				Swap tab[j] and tab[j - 1]
+			j := j - 1

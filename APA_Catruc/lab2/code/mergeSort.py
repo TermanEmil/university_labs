@@ -1,12 +1,11 @@
 def mergeSort(tab, firstI, lastI):
-	iterations = 0
 	if firstI < lastI:
-		iterations += 1
 		mid = int((firstI + lastI) / 2)
-		iterations += mergeSort(tab, firstI, mid)
-		iterations += mergeSort(tab, mid + 1, lastI)
+
+		mergeSort(tab, firstI, mid)
+		mergeSort(tab, mid + 1, lastI)
+
 		_merge(tab, firstI, mid, lastI)
-	return iterations
 
 def _merge(tab, firstI, mid, lastI):
 	tmp = [0] * (lastI - firstI + 1)
@@ -20,7 +19,7 @@ def _merge(tab, firstI, mid, lastI):
 			tmp[k - firstI] = tab[j]
 			j += 1
 		k += 1
-	
+
 	while i <= mid:
 		tmp[k - firstI] = tab[i]
 		k, i = k + 1, i + 1

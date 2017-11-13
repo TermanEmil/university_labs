@@ -34,3 +34,4 @@ function merge(tab: array of int, int firstI, int mid, int lastI):
 
 	for (i := firstI; i < lastI + 1; i++):
 		tab[i] := tmp[i - firstI]
+		
