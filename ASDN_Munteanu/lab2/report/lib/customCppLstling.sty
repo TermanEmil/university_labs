@@ -1,7 +1,7 @@
 \ProvidesPackage{customCppLstling}
 
 \RequirePackage{listings}
-\RequirePackage{color}
+\RequirePackage{xcolor}
 
 \lstset{
 	language=C++,
@@ -18,4 +18,9 @@
 	numberstyle=\color{gray},
 	tabsize=4,
 	morecomment=[l][\color{gray}]{\#}
+}
+
+\newcommand{\cppInLine}[1]
+{
+	{\lstinline[basicstyle=\small]|#1|}
 }
