@@ -2,8 +2,6 @@
 
 \RequirePackage{listings}
 \RequirePackage{xcolor}
-\RequirePackage{xparse}
-\RequirePackage{caption}
 
 \lstset{
 	language=C++,
@@ -25,19 +23,4 @@
 \newcommand{\cppInLine}[1]
 {
 	{\lstinline[basicstyle=\small]|#1|}
-}
-
-\newcounter{nCppFileCout}
-\DeclareCaptionLabelFormat{cppCaption}{\textbf{CPP \arabic{nCppFileCout}}}
-
-% #1 file path
-% #2 caption
-% #3 label (no need to bother with this)
-
-\DeclareDocumentCommand{\includeCPPFile}{m O{} O{cpp\arabic{nCppFileCout}} O{}}
-{
-	\refstepcounter{nCppFileCout}
-	\captionsetup{labelformat=cppCaption,labelsep=colon}
-	\lstset{language=C++, caption={#2}, label={#3}, #4}
-	\lstinputlisting{#1}
 }

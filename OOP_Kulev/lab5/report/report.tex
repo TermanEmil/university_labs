@@ -1,0 +1,80 @@
+\documentclass{article}
+
+\usepackage{caption}
+\usepackage{booktabs}
+
+\usepackage{silence}
+\WarningFilter{latex}{You have requested package}
+
+\usepackage{lib/myIncludeImg}
+\usepackage{lib/defaultReportSettings}
+\usepackage{lib/myTitlePage}
+\usepackage{lib/myFigure}
+\usepackage{lib/customCppLstling}
+
+\begin{document}
+	\def \reportSubj{Multiple inheritance}
+	\myTitlePage{OOP}{Terman Emil FAF161}[M. Kulev][\reportSubj][5]
+
+	\section{Objectives}
+		\begin{itemize}
+			\item studierea regulilor de determinare a moştenirii multiple.
+			\item studierea avantajelor şi neajunsurilor moştenirii multiple.
+			\item probleme legate de utilizarea moştenirii multiple.
+		\end{itemize}
+
+	\section{Main notions of theory and used methods}
+		\par Multiple Inheritance is a feature of C++ where a class can inherit from more than one classes.
+
+		\par \textbf{The diamond problem} occurs when two superclasses of a class have a common base class. For example, in the following diagram, the TA class gets two copies of all attributes of Person class, this causes ambiguities.
+
+	\section{Task}
+		Să se creeze, o ierarhie de moştenire: om - student, colaborator - practicant
+
+	\section{Data analysis}
+		\begin{itemize}
+			\item the \textit{Human} class has a \textit{name} string.
+
+			\item the \textit{Student} and \textit{Collaborator} \underline{virtualy} inherit from \textit{Humane}, because we have the \textbf{diamond} problem and we need to resolve the problem whith the Human constructor.
+
+			\item both \textit{Student} and \textit{Collaborator} have a \textit{grade} field. Because they both have something with the same name, when \textit{Intern} inherits from both of them, we must also specify the class we are refering to.
+		\end{itemize}
+
+	\section{The actual code}
+		\begin{center}
+
+		\begin{minipage}{\textwidth}
+			\includeCPPFile{../code/includes/Human.hpp}[Human.hpp]
+		\end{minipage}
+
+		\begin{minipage}{\textwidth}
+			\includeCPPFile{../code/includes/Student.hpp}[Student.hpp]
+		\end{minipage}
+
+		\begin{minipage}{\textwidth}
+			\includeCPPFile{../code/includes/Collaborator.hpp}[Collaborator.hpp]
+		\end{minipage}
+
+		\begin{minipage}{\textwidth}
+			\includeCPPFile{../code/includes/Intern.hpp}[Intern.hpp]
+		\end{minipage}
+
+		\begin{minipage}{\textwidth}
+			\includeCPPFile{../code/src/Intern.cpp}[Intern.cpp]
+		\end{minipage}
+
+		\begin{minipage}{\textwidth}
+			\includeCPPFile{../code/src/main.cpp}[main.cpp]
+		\end{minipage}
+
+		\end{center}
+
+	\section{Analysis of the results and conclusions}
+		\begin{itemize}
+			\item because multiple inheritance makes more problems than it solves, it is eliminated in more advanced languages, so it's not a necessary feature.
+
+			\item it is useful in some particular cases, but mostly, we can workaround them by using composition.
+
+			\item despite that, I think, it would be better if modern languages had this feature, because with it, we may find a more elegant solution to our problems.
+		\end{itemize}
+\end{document}

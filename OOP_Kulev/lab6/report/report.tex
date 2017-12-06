@@ -1,0 +1,91 @@
+\documentclass{article}
+
+\usepackage{caption}
+\usepackage{booktabs}
+
+\usepackage{silence}
+\WarningFilter{latex}{You have requested package}
+
+\usepackage{lib/myIncludeImg}
+\usepackage{lib/defaultReportSettings}
+\usepackage{lib/myTitlePage}
+\usepackage{lib/myFigure}
+\usepackage{lib/customCppLstling}
+
+\begin{document}
+	\def \reportSubj{Polymorfism and virtual functions}
+	\myTitlePage{OOP}{Terman Emil FAF161}[M. Kulev][\reportSubj][6]
+
+	\section{Objectives}
+		\begin{itemize}
+			\item studierea polimorfismului.
+			\item studierea principiilor legăturii întîrziate.
+			\item studierea funcţiilor virtuale.
+			\item polimorfismul ad-hoc.
+			\item realizarea funcţiilor virtuale.
+			\item studierea claselor abstracte.
+		\end{itemize}
+
+	\section{Main notions of theory and used methods}
+		\par In programming languages, ad hoc polymorphism is a kind of polymorphism in which polymorphic functions can be applied to arguments of different types, because a polymorphic function can denote a number of distinct and potentially heterogeneous implementations depending on the type of argument(s) to which it is applied. It is also known as function overloading or operator overloading. The term ad hoc in this context is not intended to be pejorative; it refers simply to the fact that this type of polymorphism is not a fundamental feature of the type system. This is in contrast to parametric polymorphism, in which polymorphic functions are written without mention of any specific type, and can thus apply a single abstract implementation to any number of types in a transparent way.
+
+		\par In programming languages and type theory, polymorphism is the provision of a single interface to entities of different types.A polymorphic type is one whose operations can also be applied to values of some other type, or types. There are several fundamentally different kinds of polymorphism:
+
+		\begin{itemize}
+			\item Ad hoc polymorphism: when a function denotes different and potentially heterogeneous implementations depending on a limited range of individually specified types and combinations. Ad hoc polymorphism is supported in many languages using function overloading.
+
+			\item Parametric polymorphism: when code is written without mention of any specific type and thus can be used transparently with any number of new types. In the object-oriented programming community, this is often known as generics or generic programming. In the functional programming community, this is often shortened to polymorphism.
+
+			\item Subtyping (also called subtype polymorphism or inclusion polymorphism): when a name denotes instances of many different classes related by some common superclass.[3] In the object-oriented programming community, this is often referred to as simply Inheritance.
+		\end{itemize}
+
+	\section{Task}
+		\par Creaţi clasa abstractă de bază Worker cu funcţia virtuală calcularea salariului. Creaţi clasele derivate StateWorker, HourlyWorker şi CommissionWorker, în care funcţia dată este redefinită. În funcţia main determinaţi masivul de pointeri la clasa abstractă, cărei i se atribuie adresele obiectelor claselor derivate.
+
+	\section{Data analysis}
+		\begin{itemize}
+			\item \textit{Worker} is an abstract class, with a virtual, nonimplemented function \textit{Salary()}.
+
+			\item the other 3 classes inherit from \textit{Worker}, implementing the \textit{Salary} function.
+		\end{itemize}
+
+	\section{The actual code}
+		\begin{center}
+
+		\begin{minipage}{\textwidth}
+			\includeCPPFile{../code/includes/Worker.hpp}[Worker.hpp]
+		\end{minipage}
+
+		\begin{minipage}{\textwidth}
+			\includeCPPFile{../code/includes/StateWorker.hpp}[StateWorker.hpp]
+		\end{minipage}
+
+		\begin{minipage}{\textwidth}
+			\includeCPPFile{../code/includes/HourlyWorker.hpp}[HourlyWorker.hpp]
+		\end{minipage}
+
+		\begin{minipage}{\textwidth}
+			\includeCPPFile{../code/includes/CommissionWorker.hpp}[CommissionWorker.hpp]
+		\end{minipage}
+
+		\begin{minipage}{\textwidth}
+			\includeCPPFile{../code/src/StateWorker.cpp}[StateWorker.cpp]
+		\end{minipage}
+
+		\begin{minipage}{\textwidth}
+			\includeCPPFile{../code/src/main.cpp}[main.cpp]
+		\end{minipage}
+
+		\end{center}
+
+	\section{Analysis of the results and conclusions}
+		\begin{itemize}
+			\item an Interface represents a class purly made out of virtual methods.
+
+			\item an Abstract class is a class with at least one pure virtual method, that is, a method with \textit{= 0} at the end.
+
+			\item an Abstract class cannot be instantiated, only another class which inherits from it and implements the virtual methods can be instantiated.
+
+			\item using a virtual function, we benefit from the polymorphism. If we don't use virtual and we try to override a simple method in the superclass, and then try to call the method from the base class, then the base class' method will be called, whereas if using virtual, we would've recived the superclass' overriden method instead.
+		\end{itemize}
+\end{document}

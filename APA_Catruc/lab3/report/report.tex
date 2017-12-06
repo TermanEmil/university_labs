@@ -1,0 +1,67 @@
+\documentclass{article}
+
+\usepackage{caption}
+\usepackage{booktabs}
+
+\usepackage{silence}
+\WarningFilter{latex}{You have requested package}
+
+\usepackage{lib/defaultReportSettings}
+\usepackage{lib/myTitlePage}
+\usepackage{lib/customPythonLtling}
+\usepackage{lib/customPseudoLstling}
+\usepackage{lib/customHyperRef}
+\usepackage{lib/customImgInclude}
+
+\begin{document}
+	\def \reportSubj{Greedy algorithms}
+	\myTitlePage{OOP}{Terman Emil FAF161}[I. Costiuc][\reportSubj][3]
+
+	{\Large \textbf{Objectives:}}
+	\begin{itemize}
+		\item study Greedy algorithms;
+		\item implementation of Greedy algorithms: Kruskal and Primal MST
+	\end{itemize}
+
+	{\Large \textbf{Greedy algorithm:}}
+	\par Greedy algorithms are used in optimization problems , as to find the shortest path in a graph , etc. Greedy algorithms build the solution piece by piece, and such an example is computing the spanning tree.
+
+	\par These types of algorithms, have the following steps:
+	\begin{enumerate}
+		\item a candidate set, from which a solution is created;
+		\item a selection function, which chooses the best candidate to be added to the solution;
+		\item an objective function, which assigns a value to the solution, or a partial solution;
+		\item a solution function, which will indicate when the solution is completely computed;
+	\end{enumerate}
+
+	\newpage
+	\section{Kruskal algorithm}
+		\subsection{Complexity}
+		\begin{center}
+			\par Small number of vertexes: \( O(m \log_2 n) \)
+			\par Large number of vertexes: \( O(n^2 \log_2 n) \)
+			\par Where \textit{m} is the number of edges
+		\end{center}
+
+		\subsection{Python implementation}
+		\includePyFile{./../code/MinSpanTreeKruskal.py}[Kruskal][pyKruskal]
+
+	\newpage
+	\section{Prim's algorithm}
+		\subsection{Complexity}
+		\begin{center}
+			\par Small number of vertexes: \( O(n^2) \)
+			\par Large number of vertexes: \( O(n^2) \)
+		\end{center}
+		\subsection{Python implementation}
+		\includePyFile{./../code/MinSpanTreePrim.py}[Prim][pyPrim]
+
+	\newpage
+	\section{Time diagram}
+		\def \timeDiagram {Kruskal and Prim Time Diagram}
+		\myIncludeImg{./imgs/KruskalAndPrim.png}[0.7][\timeDiagram]
+
+	\newpage
+	\section{Conclusion}
+		\par In this laboratory work, two Greedy algorithms for findning the minimal spaning tree were implemented: Kruskal and Prim's. From the time diagram, it can be clearly seen that Kruskal is much faster and it is also simplier to implement. But for large numbers, Prim's algorithm is said to work faster of graphs.
+\end{document}

@@ -1,15 +1,20 @@
 \documentclass{article}
 
+\usepackage{caption}
+\usepackage{booktabs}
+
 \usepackage{silence}
 \WarningFilter{latex}{You have requested package}
 
+\usepackage{lib/myIncludeImg}
 \usepackage{lib/defaultReportSettings}
 \usepackage{lib/myTitlePage}
+\usepackage{lib/myFigure}
 \usepackage{lib/customCppLstling}
 
 \begin{document}
-	\def \reportSubj {Composition and Inheritance}
-	\myTitlePage{APA}{Terman Emil FAF161}[M. Kulev][\reportSubj][2]
+	\def \reportSubj{Inheritance and composition}
+	\myTitlePage{OOp}{Terman Emil FAF161}[M. Kulev][\reportSubj][4]
 
 	\section{Objectives}
 		\begin{itemize}
@@ -26,21 +31,69 @@
 		\par The idea of inheritance implements the is a relationship. For example, mammal IS-A animal, dog IS-A mammal hence dog IS-A animal as well and so on.
 
 	\section{Task}
-\begin{enumerate}
+		\begin{enumerate}
 			\item Să se creeze o ierarhie a claselor joc – joc sportiv – volei. Determinaţi constructorii, destructorul, operatorul de atribuire şi alte funcţii necesare.
 			\item Să se creeze class rate,  care conţine rază. Determinaţi constructorii şi metodele de acces. Creaţi clasa automobil, care conţine roţi şi un câmp care reprezintă firma producătoare. Creaţi o clasă derivată autocamion care se deosebeşte prin tonaj. Determinaţi constructorii, destructorul şi alte funcţii necesare.
 		\end{enumerate}
 
 	\section{Data analysis}
+		\subsection{Ex00}
 		\begin{itemize}
-			\item The class \textit{Car} is composed of a vector of wheels.
-
-			\item Since the class \textit{Lorry} inherits from \textit{Car}, the \textit{$\_$wheels} and \textit{$\_$mark} fields are \textit{protected} so that \textit{Lorry} can have access to these fields.
+			\item \textit{VolleyBall} inherits from \textit{SportGame} and this class inherits from \textit{Game}.
 
 			\item The \textit{Game} has its function \cppInLine{void play(void) const;} overriden by each of his superclasses, each time differently.
 		\end{itemize}
 
+		\subsection{Ex01}
+		\begin{itemize}
+			\item The class \textit{Car} is composed of a vector of wheels because there can be vehicles with different number of wheels.
+
+			\item Since the class \textit{Lorry} inherits from \textit{Car}, the \textit{$\_$wheels} and \textit{$\_$mark} fields are \textit{protected} so that \textit{Lorry} can have access to these fields.
+
+			\item Starting with the \textit{Car}, we have a composition of 2 different classes: \textit{Wheel} and \textit{Car}.
+		\end{itemize}
+
+	\section{The actual code}
+		\subsection{Ex00}
+		\begin{center}
+			\begin{minipage}{\linewidth}
+				\includeCPPFile{../code/ex00/includes/Game.hpp}[Game.hpp]
+			\end{minipage}
+
+			\begin{minipage}{\linewidth}
+				\includeCPPFile{../code/ex00/includes/SportGame.hpp}[SportGame.hpp]
+			\end{minipage}
+
+			\begin{minipage}{\linewidth}
+				\includeCPPFile{../code/ex00/includes/VolleyBall.hpp}[VolleyBall.hpp]
+			\end{minipage}
+
+			\begin{minipage}{\linewidth}
+				\includeCPPFile{../code/ex00/src/VolleyBall.cpp}[VolleyBall.cpp]
+			\end{minipage}
+		\end{center}
+
+		\subsection{Ex01}
+			\begin{center}
+				\begin{minipage}{\linewidth}
+					\includeCPPFile{../code/ex01/includes/Car.hpp}[Car.hpp]
+				\end{minipage}
+
+				\begin{minipage}{\linewidth}
+					\includeCPPFile{../code/ex01/includes/Lorry.hpp}[Lorry.hpp]
+				\end{minipage}
+
+				\begin{minipage}{\linewidth}
+					\includeCPPFile{../code/ex01/includes/Wheel.hpp}[Wheel.hpp]
+				\end{minipage}
+			\end{center}
+
+	\section{Analysis of the results and conclusions}
+		\begin{itemize}
+			\item inheritance is a very good way of reusing the code and it also helps to keep an intuitive structure.
+
+			\item alongside \textit{public} and \textit{private}, in this laboratory work we discovered a new keyword: ``\textit{protected}''. It makes the fields withing this section accessible to superclasses but private to any other class.
+
+			\item it's possible to override the function of the inherited class and we also have the option to keep either keep or override the previous method definition.
+		\end{itemize}
 \end{document}
-
-
-
