@@ -1,0 +1,52 @@
+\documentclass{article}
+
+\usepackage{caption}
+\usepackage{booktabs}
+
+\usepackage{silence}
+\WarningFilter{latex}{You have requested package}
+
+\usepackage{lib/defaultReportSettings}
+\usepackage{lib/myTitlePage}
+\usepackage{lib/customPythonLtling}
+\usepackage{lib/customPseudoLstling}
+\usepackage{lib/customHyperRef}
+\usepackage{lib/customImgInclude}
+\usepackage{lib/myFigure}
+
+\begin{document}
+	\def \reportSubj{Trolleybus problem}
+	\myTitlePage{MMC}{Terman Emil FAF161}[V. Turcan][\reportSubj][5]
+
+	\section{Optimization of trolleybus schedule}
+		\def \firstAlgCaption {Schedule optimization algorithm}
+		\includeAlgFile{./aux/algorithm_ex01_ex02.alg}[\firstAlgCaption][alg1]
+
+		\par The result represents some delta times that should be added to each trolleybus in order for the waiting time between a trolleybus and the next one, is minimum.
+		\begin{myFigure}
+			\begin{flushleft}
+				Ex01 delta time in minutes:\\
+				{24: 0, 25: 0, 10: 6, 7: 3}\\
+				\bigskip
+				Ex02 delta time in minutes:\\
+				{2: 6, 3: 7, 7: 8, 24: 0, 25: 5, 10: 4}\\
+			\end{flushleft}
+			\caption{Output}
+		\end{myFigure}
+
+		\par The first exercise can be solved as a specific case of the second problem.
+
+	\section{Traffic load}
+		\def \secondAlgCaption {Trolleybus count algorithm}
+		\includeAlgFile{./aux/algorithm_ex03.alg}[\secondAlgCaption][alg2]
+
+		\begin{myFigure}
+			\begin{flushleft}
+				Ex03 required number of transports:\\
+				{2: 9, 3: 7, 7: 5, 24: 19, 25: 9, 10: 0}
+			\end{flushleft}
+			\caption{Output}
+		\end{myFigure}
+
+		\par As we can see, it's possible to exclude the trolleybus 10 for this exercise. Actually it's possible to exclude either trolleybus 10 or trolleybus 24, as there isn't any station where either only the trolleybus 10 or 24 comes.
+\end{document}
