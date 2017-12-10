@@ -12,8 +12,8 @@ A = np.array([
 	[1.0, -2.0],
 	[2.0, 1.0]])
 
-b = [-1.0, 3.0]
-x = [0, 0]
+eq_result = [-1.0, 3.0]
+roots = [0, 0]
 
-print("Last iteration: ", gauss(A, b, x, 20))
-print("Solution:\t", solve(A, b))
+print("Last iteration: ", gauss(A, eq_result, roots, 100))
+print("Solution:\t", solve(A, eq_result))

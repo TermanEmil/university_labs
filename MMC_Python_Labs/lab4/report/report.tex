@@ -36,4 +36,33 @@
 
 	\section{Quadratic and Cubic}
 		\myIncludeImg{./imgs/Ex1_2.png}[0.7][Quadratic and Cubic plots]
+
+		\par For these problems, \textbf{General Divided Difference} method was used.
+		\par Given \(n + 1\) distinct points $x_0, ..., x_n$ with n $\geqslant$ 2, define:
+		\[
+			f[x_0, ..., x_n] =
+				\frac{f[x_1, ..., x_n] - f[x_0, ..., x_{n-1}]}{x_n - x_0}
+		\]
+		\par This is a recursive definition of the $n^{th}$-order divided difference of $f(x)$, using divided differences of order n.
+
+	\newpage
+	\section{Splines}
+		\myIncludeImg{./imgs/Ex3.png}[0.7][Splines]
+
+		\par In this exercise, the same function, as in the previous exercise, was used. From this exercise, it can be seen how convinient are the interpolations: instead of simple lines, we recive a smooth function, which can be used in multiple problems, like finding the area or other stuff.
+		\par From the graph, it can be seen the drawback of this method: in the area x = (0.2; 0.3) we have 2 points that are pretty close to each other (y = (33.5, 33)), resulting in a big deviation.
+
+	\section{Matrices Gauss-Seidel}
+		\begin{myResult}{Gauss-Seidel last iteration and actual solution}
+			Last iteration:  [  8.03469022e+59  -1.60693804e+60]\\
+			Solution:	 [ 1.  1.]\\
+		\end{myResult}
+
+		\par From the results, it can be seen that Gauss-Seidel method failed to find the solution, therefore the Gauss-Seidel method diverges when the roots are equal to 0.
+
+	\section{Matrices equation solutions}
+		\begin{myResult}{The solutions of the given equations}
+			First system: No solution\\
+			Second system: [(0, 0, 0, 1)]\\
+		\end{myResult}
 \end{document}
