@@ -1,0 +1,84 @@
+\documentclass{article}
+
+\usepackage{caption}
+\usepackage{verbatim}
+\usepackage{xparse}
+\usepackage{indentfirst}
+
+\usepackage{silence}
+\WarningFilter{latex}{You have requested package}
+
+\usepackage{lib/defaultReportSettings}
+\usepackage{lib/myTitlePage}
+\usepackage{lib/customHyperRef}
+\usepackage{lib/myFigure}
+\usepackage{lib/myIncludeImg}
+\usepackage{lib/customPythonLtling}
+
+\begin{document}
+	\myTitlePage{APA}{Terman Emil FAF161}[M. Catruc][Dynamic programming][4]
+
+	\section{Objectives}
+		\begin{itemize}
+			\item study of dynamic programming;
+			\item implementation of a few dynamic programming algorithms;
+			\item comparison of greedy and dynamic programming;
+		\end{itemize}
+
+	\section{Definition}
+		\par In computer science, mathematics, management science, economics and bioinformatics, dynamic programming (also known as dynamic optimization) is a method for solving a complex problem by breaking it down into a collection of simpler subproblems, solving each of those subproblems just once, and storing their solutions. The next time the same subproblem occurs, instead of recomputing its solution, one simply looks up the previously computed solution, thereby saving computation time at the expense of a (hopefully) modest expenditure in storage space. (Each of the subproblem solutions is indexed in some way, typically based on the values of its input parameters, so as to facilitate its lookup.) The technique of storing solutions to subproblems instead of recomputing them is called "memoization".
+
+		\par Dynamic programming algorithms are often used for optimization. A dynamic programming algorithm will examine the previously solved subproblems and will combine their solutions to give the best solution for the given problem. In comparison, a greedy algorithm treats the solution as some sequence of steps and picks the locally optimal choice at each step. Using a greedy algorithm does not guarantee an optimal solution, because picking locally optimal choices may result in a bad global solution, but it is often faster to calculate. Some greedy algorithms (such as Kruskal's or Prim's for minimum spanning trees) are however proven to lead to the optimal solution.
+
+	\section{Dijkstra algorithm}
+		\myIncludeImg{./imgs/dijkstra.png}[0.5][Dijkstra execution time]
+
+		\begin{minipage}{\textwidth}
+			\includePyFile{./../code/shortest_path_dijkstra.py}[Dijkstra code]
+		\end{minipage}
+
+		\begin{center}
+			\textbf{Complexity:}
+			\[
+				Time: O(E\log_2V)
+			\]
+			\[
+				Space: O(E + V)
+			\]
+			Where E are edges and V are vertices.
+		\end{center}
+
+		\par It works very fast, but it doesn't work with negative weights. Another drawback, is that it does a blind search, which may consume a lot of computation time.
+		\par This algorithm is used in:
+		\begin{itemize}
+			\item Google maps;
+			\item Geographical maps;
+			\item IP routing to find Open shortest Path First;
+			\item the telephone network;
+		\end{itemize}
+
+	\section{Floyd algorithm}
+		\begin{minipage}{\textwidth}
+			\includePyFile{./../code/shortest_path_floyd.py}[Floyd code]
+		\end{minipage}
+
+		\def \secondGraphName {Dijkstra and Floyd execution time}
+		\myIncludeImg{./imgs/floyd_and_dijkstra.png}[0.45][\secondGraphName]
+
+		\par \textbf{Complexity: } \( n^3 \) where $n$ is the number of nodes.
+
+		\par It works much slower, but:
+		\begin{itemize}
+			\item supports negative edges;
+			\item supports directioned edges;
+		\end{itemize}
+
+		\par Applications:
+		\begin{itemize}
+			\item shortest paths in directed graphs;
+			\item optimal routing. In this application one is interested in finding the path with the maximum flow between two vertices. This means that, rather than taking minima as in the pseudocode above, one instead takes maxima. The edge weights represent fixed constraints on flow. Path weights represent bottlenecks; so the addition operation above is replaced by the minimum operation;
+		\end{itemize}
+
+	\section{Conclusion}
+		\par In this laboratory work we studied dymaic programming. We implemented two shortest path algorithms: Dijkstra and Floyd algorithms. The Floyd–Warshall algorithm is a good choice for computing paths between all pairs of vertices in dense graphs, in which most or all pairs of vertices are connected by edges. For sparse graphs with non-negative edge weights, a better choice is to use Dijkstra's algorithm from each possible starting vertex, since the running time of repeated Dijkstra is better than the running time of the Floyd–Warshall algorithm when \(|E|\) is significantly smaller.
+\end{document}
