@@ -1,0 +1,39 @@
+\documentclass{article}
+
+\usepackage{caption}
+\usepackage{verbatim}
+\usepackage{xparse}
+
+\usepackage{silence}
+\WarningFilter{latex}{You have requested package}
+
+\usepackage{lib/defaultReportSettings}
+\usepackage{lib/myTitlePage}
+\usepackage{lib/customPseudoLstling}
+\usepackage{lib/customHyperRef}
+\usepackage{lib/myFigure}
+\usepackage{lib/myIncludeImg}
+
+\newcounter{ResultCounter}
+\DeclareCaptionLabelFormat{RSCaption}{\textbf{Result \arabic{ResultCounter}}}
+
+% #1 captions
+\NewDocumentEnvironment{myResult}{m}
+{
+	\begin{myFigure}
+		\begin{flushleft}
+}
+{
+		\end{flushleft}
+		\refstepcounter{ResultCounter}
+		\captionsetup{labelformat=RSCaption}
+		\caption{#1}
+	\end{myFigure}
+}
+
+\begin{document}
+	\myTitlePage{MMC}{Terman Emil FAF161}[V. Turcan][Interpolations][4]
+
+	\section{Quadratic and Cubic}
+		\myIncludeImg{./imgs/Ex1_2.png}[0.7][Quadratic and Cubic plots]
+\end{document}

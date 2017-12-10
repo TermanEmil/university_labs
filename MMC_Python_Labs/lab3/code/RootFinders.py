@@ -23,7 +23,7 @@ def bisection(xL, xR, tolerance, f, sol = None, verbose = False):
 				print(" |x - x*| = %.20f" % np.fabs(xMid - sol))
 			else:
 				print("")
-	
+
 	if verbose: print("\t x = %.20f" % xMid)
 	return (xMid, xVals)
 

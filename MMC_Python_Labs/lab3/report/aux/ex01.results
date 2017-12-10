@@ -1,0 +1,8 @@
+[fixed_point_finder] f1: x = 0.85261 |x - f(x)| = 0.00000; iterations = 102
+[aitken_extrapolation] f1: x = 0.85261 |x - f(x)| = 0.00000; iterations = 4
+
+[fixed_point_finder] f2: x = 0.71419 |x - f(x)| = 0.00000; iterations = 83
+[aitken_extrapolation] f2: x = 0.71419 |x - f(x)| = 0.00000; iterations = 4
+
+[fixed_point_finder] f3: x = 6.01550 |x - f(x)| = 0.00000; iterations = 300
+[aitken_extrapolation] f3: x = 6.01550 |x - f(x)| = 0.00000; iterations = 4

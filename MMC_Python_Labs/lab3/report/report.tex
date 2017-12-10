@@ -1,25 +1,63 @@
 \documentclass{article}
 
+\usepackage{caption}
+\usepackage{verbatim}
+\usepackage{xparse}
+
 \usepackage{silence}
 \WarningFilter{latex}{You have requested package}
 
 \usepackage{lib/defaultReportSettings}
 \usepackage{lib/myTitlePage}
-\usepackage{lib/customCppLstling}
+\usepackage{lib/customPseudoLstling}
+\usepackage{lib/customHyperRef}
+\usepackage{lib/myFigure}
 
-\usepackage{enumitem}
+\newcounter{ResultCounter}
+\DeclareCaptionLabelFormat{RSCaption}{\textbf{Result \arabic{ResultCounter}}}
+
+% #1 captions
+\NewDocumentEnvironment{myResult}{m}
+{
+	\begin{myFigure}
+		\begin{flushleft}
+}
+{
+		\end{flushleft}
+		\refstepcounter{ResultCounter}
+		\captionsetup{labelformat=RSCaption}
+		\caption{#1}
+	\end{myFigure}
+}
 
 \begin{document}
-	\def \obj {Calculation Methods and Models}
-	\myTitlePage{\obj}{Terman Emil FAF161}[V. Munteanu][][3]
+	\myTitlePage{MMC}{Terman Emil FAF161}[V. Turcan][][3]
 
-	\section{Fixed point functions}
-		\begin{tabular}[|c|c|c|]
-		\end{tabular}
-		\begin{enumerate}[label=\alph*)]
-			\item \(f(x) = 2 e^{-x}\) \hfill \(x_0 = 0.8\) \hfill
-		\end{enumerate}
+	\section{Fixed point}
+		\begin{myResult}{Fixed point iteration and Aitken method}
+			\verbatiminput{./aux/ex01.results}
+		\end{myResult}
+
+		\par It can be clearly seen that Aitken extrapolation converges much faster (by the number of iterations). This algorithm is used to accelerate the rate of convergence of a sequence.
+
+		\def \algOnePath {./aux/fixed_point_iteration.alg}
+		\includeAlgFile{\algOnePath}[fixed\_point\_finder()]
+
+		\includeAlgFile{./aux/aitken.alg}[aitken\_extrapolation()]
+
+		\begin{center}
+			\myHref{./../code/ex01.py}[Fixed point python code]
+		\end{center}
+
+	\section{Banking}
+		\begin{myResult}{Banking results}
+			\verbatiminput{./aux/ex02.results}
+		\end{myResult}
+
+		\par For this exercise, \textit{Newton} method was used.
+		\par Knowing the at least the basics of numerical analysis, we can solve diverse problems, that seem to be a bit complicated at first.
+
+		\begin{center}
+			\myHref{./../code/ex02.py}[Banking python code]
+		\end{center}
 \end{document}
-
-
-

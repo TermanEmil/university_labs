@@ -1,9 +1,10 @@
-\ProvidesPackage{customImgInclude}
+\ProvidesPackage{myIncludeImg}
 
 \RequirePackage{graphicx}
 \RequirePackage{mdframed}
-\RequirePackage[usenames,dvipsnames]{xcolor}
+\RequirePackage{xcolor}
 \RequirePackage{xparse}
+\RequirePackage{caption}
 
 \definecolor{myLightGray}{rgb}{0.85,0.85,0.85}
 
@@ -34,13 +35,7 @@
 				\end{center}
 			\end{mdframed}
 
-			\IfNoValueTF{#4}
-			{
-			}
-			% else
-			{
-				\label{fig:#4}
-			}
+			\label{fig:#4}
 		\end{figure}
 	\end{center}
 }
