@@ -1,0 +1,43 @@
+\documentclass{article}
+
+\usepackage{indentfirst} 
+\usepackage{silence}
+\WarningFilter{latex}{You have requested package}
+
+\usepackage{lib/defaultReportSettings}
+\usepackage{lib/myTitlePage}
+\usepackage{lib/customHyperRef}
+
+\begin{document}
+	\myTitlePage{AMOO}{Terman Emil FAF161}[R. Melnic][][1]
+
+	\section{Project description}
+		\par In this project I want to work on a little API that will ease the use of some Machine Learning algorithms with some tools for Unity. The algorithms I want to focus most in this project are Genetic Algorithms. These are some reinforcement learning algorithms that basically find a good, but not the best solution to a problem.
+
+		\par These algorithms are inspired from real world evolution: a certain population is randomly generated, then their score (fitness) is calculated (how far did it jump, or how long did it walk), then, based on fitness, the individs (genomes) of this population gets to mate (crossover) - the best individuals mates the most. From crossover, a new \textit{child} is made - combine the data of the 2 parents. Finally, this child is mutated and a new generations starts. This loop continues until a certain fitness or goal is reached.
+
+		\par Some iconic problems that can be solved with these algorithms are:
+		\begin{itemize}
+			\item teaching a robot to walk, jump, etc;
+			\item teaching a car to drive;
+			\item teaching a game agent to play;
+			\item evolving virtual trees;
+		\end{itemize}
+
+		\par So the user is aimed to be a developer. He is able to create a \textbf{IPopulation} and define the \textbf{IGenome} and its \textbf{Genes}. The population must contain a container of Genomes and have \textbf{Evolve} method, which will move the population to the next generation (the fitness of each individual must be calculated beforehand). The Genome must define a container for genes and a \textbf{Fitness} field.
+		\par The IPopulation comes with a \textbf{PopulationBase} class, which defines \textbf{IRandGenomeGenerator} and a \textbf{IGenerationGenerator} fields. The GenerationGenerator defines a \textit{Generate} method, which creates the genomes for the next Generation.
+		\par The user is expected:
+		\begin{itemize}
+			\item to evaluate the genomes;
+			\item define a list of genome producers. This can include mating, selection from previous generation and other;
+		\end{itemize}
+		\par The user can use Neural networks by defining synapses in Genes. For this, a \textbf{INeuralGenome} is specified, which the user can feed an array of floats as inputs and receive another array of floats as outputs from the network.
+
+	\section{References}
+		\begin{itemize}
+			\item \myHref{https://www.youtube.com/watch?v=pgaEE27nsQw&t=6s}[Robot walking]
+			\item \myHref{https://www.youtube.com/watch?v=OVGvdIe6TWk}[Self driving car]
+			\item \myHref{https://www.youtube.com/watch?v=qv6UVOQ0F44&t=157s}[Evolving game agents]
+			\item \myHref{https://www.youtube.com/watch?v=CrvKuLDFn6w&t=1513s}[Evolving virtual trees]
+		\end{itemize}
+\end{document}
