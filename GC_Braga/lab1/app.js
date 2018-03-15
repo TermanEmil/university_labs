@@ -95,7 +95,7 @@ function initBuffers(gl, verts, colors)
 	var buffers = new Object();
 
 	buffers.verts = [];
-	buffers.verts.push(newTriag(gl, verts, [0, 0.0, -10.0]));
+	buffers.verts.push(newTriag(gl, verts, [-2, 0.0, -5.0]));
 	buffers.verts.push(newTriag(gl, verts, [2, 0.0, -15.0]));
 	buffers.verts.push(newTriag(gl, verts, [2, 1.0, -15.0]));
 
