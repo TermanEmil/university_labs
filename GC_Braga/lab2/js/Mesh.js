@@ -1,14 +1,20 @@
 class Mesh
 {
-	constructor(verts = [], itemSize = 3, numItems = 3)
+	constructor(verts, color)
 	{
 		this.verts = verts;
-	
-		this.vertsBuf = gl.createBuffer();
-		gl.bindBuffer(gl.ARRAY_BUFFER, this.vertsBuf);
-		gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(verts), gl.STATIC_DRAW);
-		this.itemSize = itemSize;
-		this.numItems = numItems;
+		this.verts.buf = gl.createBuffer();
+		gl.bindBuffer(gl.ARRAY_BUFFER, this.verts.buf);
+		gl.bufferData(
+			gl.ARRAY_BUFFER,
+			new Float32Array(this.verts.array), gl.STATIC_DRAW);
+
+		this.color = color;
+		this.color.buf = gl.createBuffer();
+		gl.bindBuffer(gl.ARRAY_BUFFER, this.color.buf);
+		gl.bufferData(
+			gl.ARRAY_BUFFER,
+			new Float32Array(this.color.array), gl.STATIC_DRAW);
 	}
 
 	Update()
@@ -27,26 +33,26 @@ class Mesh
 		mat4.scale(gameController.mvMatrix, this.transform.scale);
 		this.ApplyRotation();
 
-		gl.bindBuffer(gl.ARRAY_BUFFER, this.vertsBuf);
+		gl.bindBuffer(gl.ARRAY_BUFFER, this.verts.buf);
 		gl.vertexAttribPointer(
 			shaderProgram.vertexPositionAttribute,
-			this.itemSize,
+			this.verts.itemSize,
 			gl.FLOAT,
 			false,
 			0,
 			0);
 
-		// gl.bindBuffer(gl.ARRAY_BUFFER, buffers.color);
-		// gl.vertexAttribPointer(
-		// 	shaderProgram.vertexColorAttribute,
-		// 	buffers.color.itemSize,
-		// 	gl.FLOAT,
-		// 	false,
-		// 	0,
-		// 	0);
+		gl.bindBuffer(gl.ARRAY_BUFFER, this.color.buf);
+		gl.vertexAttribPointer(
+			shaderProgram.vertexColorAttribute,
+			this.color.itemSize,
+			gl.FLOAT,
+			false,
+			0,
+			0);
 
 		Mesh.SetMatrixUniforms();
-		gl.drawArrays(gl.TRIANGLES, 0, this.numItems);
+		gl.drawArrays(gl.TRIANGLE_STRIP, 0, this.verts.numItems);
 
 		gameController.PopMvMatrix();
 	}

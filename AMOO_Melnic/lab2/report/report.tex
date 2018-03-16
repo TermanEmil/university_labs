@@ -1,0 +1,58 @@
+\documentclass{article}
+
+\usepackage{enumitem}
+\usepackage{indentfirst} 
+\usepackage{silence}
+\WarningFilter{latex}{You have requested package}
+
+\usepackage{lib/defaultReportSettings}
+\usepackage{lib/myTitlePage}
+\usepackage{lib/customHyperRef}
+\usepackage{lib/myIncludeImg}
+
+\setlist[itemize]{noitemsep, topsep=0pt}
+
+\begin{document}
+	\myTitlePage{AMOO}{Terman Emil FAF161}[R. Melnic][][2]
+
+	\section{Theory}
+		\par \textbf{Use case diagrams} are usually referred to as behavior diagrams used to describe a set of actions (use cases) that some system or systems (subject) should or can perform in collaboration with one or more external users of the system (actors). Each use case should provide some observable and valuable result to the actors or other stakeholders of the system.
+
+		\bigskip
+		\textbf{Modeling language}: can be graphical or textual:
+		\begin{itemize}
+			\item Graphical modeling languages use a diagram technique with named symbols that represent concepts and lines that connect the symbols and represent relationships and various other graphical notation to represent constraints;
+			\item Textual modeling languages may use standardized keywords accompanied by parameters or natural language terms and phrases to make computer-interpretable expressions;
+		\end{itemize}
+
+	\newpage
+	\section{Tasks}
+		\subsection{Use case diagram}
+			\myIncludeImg{imgs/UseCaseDiagram_Basic.png}[0.2][Diagram: basic]
+			This diagram represents how the population is configured. It includes the definition of genomes, breeding and how random genomes are generated. Then next generation may be created from a list of Producers: these may include selection, crossover and other user defined methods.
+			\myIncludeImg{imgs/UseCaseNeural.jpeg}[0.3][Diagram: NeuralNet]
+			In this diagram is described how the Genome can be configured to work with neural networks. Basically, it feeds on some floats and returns another list of floats as outputs. The algorithm may be configured: it may use a \textbf{Fixed nueral net}, an \textbf{Augmented neural net} or another user-defined algorithm.
+			\myIncludeImg{imgs/UseCaseDiagram_GA.png}[0.3][Diagram: Algorithm use]
+			Here is described what can be done with this library. Generally it can train, save/load a genome, or reset the population if needed.
+
+		\newpage
+		\subsection{Basic flow}
+			\begin{enumerate}
+				\item a population is created;
+				\item the population creates some random genomes;
+				\item the population lets the genomes perform a task;
+				\item the genomes are then evaluated, calculating their fitness;
+				\item the next generation is formed depending on the previous genomes;
+				\item repeat from the 3rd point until a certain goal is reached;
+			\end{enumerate}
+		\subsection{Alternate flow}
+			\begin{enumerate}
+				\item if the user (dev) doesn't specify how the next generation is formed, then the classic methods are used, that is: Reinsertion, Breeding (Selection, Crossover and Mutation);
+				\item bias, Sigmoid function and Recurrent connections are used by default;
+			\end{enumerate}
+
+	\newpage
+	\section{Conclusion}
+		In this laboratory work I learned how usesful the \textbf{use case} diagrams are. After I made the diagrams, I realized that I may have some bugs. Also, I could clearly see how I can improve my project because of the graphical representation. In the end, the general conclusion is that the use case diagrams are a useful tool for managing and developing a project, especially when working in a team, since it may be quite hard to understand what the goal is.
+
+\end{document}

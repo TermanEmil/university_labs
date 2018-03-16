@@ -20,4 +20,11 @@ class Animator
 		else
 			this.animations[this.currentAnim].Update();
 	}
+
+	AddAnim(key, newAnim)
+	{
+		newAnim.transform = this.transform;
+		newAnim.gameObject = this.gameObject;
+		this.animations[key] = newAnim;
+	}
 }
