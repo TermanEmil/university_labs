@@ -2,19 +2,25 @@ class Mesh
 {
 	constructor(verts, color)
 	{
-		this.verts = verts;
-		this.verts.buf = gl.createBuffer();
-		gl.bindBuffer(gl.ARRAY_BUFFER, this.verts.buf);
-		gl.bufferData(
-			gl.ARRAY_BUFFER,
-			new Float32Array(this.verts.array), gl.STATIC_DRAW);
+		if (verts != null && verts != undefined)
+		{
+			this.verts = verts;
+			this.verts.buf = gl.createBuffer();
+			gl.bindBuffer(gl.ARRAY_BUFFER, this.verts.buf);
+			gl.bufferData(
+				gl.ARRAY_BUFFER,
+				new Float32Array(this.verts.array), gl.STATIC_DRAW);
+		}
 
-		this.color = color;
-		this.color.buf = gl.createBuffer();
-		gl.bindBuffer(gl.ARRAY_BUFFER, this.color.buf);
-		gl.bufferData(
-			gl.ARRAY_BUFFER,
-			new Float32Array(this.color.array), gl.STATIC_DRAW);
+		if (color != null && color != undefined)
+		{
+			this.color = color;
+			this.color.buf = gl.createBuffer();
+			gl.bindBuffer(gl.ARRAY_BUFFER, this.color.buf);
+			gl.bufferData(
+				gl.ARRAY_BUFFER,
+				new Float32Array(this.color.array), gl.STATIC_DRAW);
+		}
 	}
 
 	Update()
@@ -51,8 +57,13 @@ class Mesh
 			0,
 			0);
 
+		// Mesh.SetMatrixUniforms();
+		// gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.verts.buf);
+		// Mesh.SetMatrixUniforms();
+		// gl.drawElements(gl.TRIANGLES, this.verts.numItems, gl.UNSIGNED_SHORT, 0);
+
 		Mesh.SetMatrixUniforms();
-		gl.drawArrays(gl.TRIANGLE_STRIP, 0, this.verts.numItems);
+		gl.drawArrays(gl.TRIANGLES, 0, this.verts.numItems);
 
 		gameController.PopMvMatrix();
 	}
