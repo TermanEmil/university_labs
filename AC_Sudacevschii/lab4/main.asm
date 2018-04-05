@@ -1,42 +1,65 @@
 .model small
 
 .DATA
-    a DW    0014h
-    b DB      01h
-    n DW    0005
-    x DW    0000
+    ;X DB    01h
+    ;Z DB    02h
+    
+    X DB    54h
+    Z DB    57h
+    
+    Y DW    0000h
     
 .CODE
 begin:
     mov ax, @DATA
     mov ds, ax
     
-    mov si, 0
-    mov x[si], 0
+    ;    8(Z + X) - 17  if Z - X <= 2
+    ;Y = 
+    ;    X / 2 - 42 + Z if Z - X > 2
     
-    ; xi = xi-1 - 3b + a/4
-    ; 3b
-    mov AL, 3
-    mov BL, b
-    mul BL
-    mov DX, AX
+    ; cmp Z, X + 2
+    mov al, Z
+    mov ah, X
+    add ah, 2
+    cmp al, ah
     
-    ; a / 4 == a << 2
-    mov AX, a
-    mov CL, 2
-    shr AX, CL
-
+    je EQUAL
+    jg GREATER
+    jmp LESS
     
-    ; a/4 - 3b
-    sub AX, DX 
+    EQUAL:
+        jmp LESS
+    GREATER:
+        mov ax, 0h
+        mov bx, 0h
+        
+        mov al, X
+        shr ax, 1
+        sub ax, 42
+        
+        mov bl, Z
+        add ax, bx
+        
+        mov Y, ax
+        jmp ENDPROG
+    LESS:
+        mov ax, 0h
+        mov bx, 0h
+        
+        mov al, Z
+        mov bl, X
+        
+        add ax, bx
+        mov cl, 3
+        shl ax, cl
+        
+        sub ax, 17
+        mov Y, ax
+        
+        jmp ENDPROG
     
-    mov cx, n
-    sum_loop:
-        mov x[si + 2], AX
-        mov BX, x[si]
-        add x[si + 2], BX
-        add si, 2
-        loop sum_loop
+    ENDPROG:
     
 end begin    
     
