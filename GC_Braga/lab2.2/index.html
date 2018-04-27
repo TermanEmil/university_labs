@@ -13,8 +13,8 @@
 
 		void main(void)
 		{
-			gl_FragColor = vec4(0.0, 1.0, 1.0, 1.0);
-			// gl_FragColor = vColor;
+			// gl_FragColor = vec4(0.0, 1.0, 1.0, 1.0);
+			gl_FragColor = vColor;
 			// gl_FragColor = texture2D(uSampler, vec2(vTextureCoord.s, vTextureCoord.t));
 		}
 	</script>
@@ -24,14 +24,13 @@
 		attribute vec4 aVertexColor;
 
 		uniform mat4 uModelMatrix;
-		uniform mat4 uViewMatrix;
-		uniform mat4 uProjMatrix;
+		uniform mat4 uPMatrix;
 
 		varying vec4 vColor;
 
 		void main(void)
 		{
-			gl_Position = uProjMatrix * uViewMatrix * uModelMatrix  * vec4(aVertexPosition, 1.0);
+			gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
 			vColor = aVertexColor;
 		}
 	</script>

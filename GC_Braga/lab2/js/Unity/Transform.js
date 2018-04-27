@@ -1,9 +1,9 @@
 class Transform
 {
 	constructor(
-		coords = [0, 0, -10],
-		rotation = [0, 0, 0],
-		scale = [1, 1, 1])
+		coords = [0.0, 0.0, 0.0],
+		rotation = [0.0, 0.0, 0.0],
+		scale = [1.0, 1.0, 1.0])
 	{
 		this.coords = coords;
 		this.rotation = rotation;

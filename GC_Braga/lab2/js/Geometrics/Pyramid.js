@@ -1,8 +1,8 @@
-class Pyramid // : GameObject
+class Pyramid extends GameObject
 {
 	constructor()
 	{
-		Object.setPrototypeOf(this, new GameObject());
+		super();
 
 		var verts = new ArrayBuffer(
 		[

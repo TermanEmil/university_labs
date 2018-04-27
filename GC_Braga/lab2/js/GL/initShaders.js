@@ -5,7 +5,7 @@ function getShader(gl, id)
 	var shaderScript = document.getElementById(id);
 	var str = "";
 	var k = shaderScript.firstChild;
-	
+
 	while (k)
 	{
 		if (k.nodeType == 3)
@@ -59,12 +59,15 @@ function initShaders(gl)
 		"aVertexColor");
 	gl.enableVertexAttribArray(shaderProgram.vertexColorAttribute);
 
-	shaderProgram.pMatrixUniform = gl.getUniformLocation(
+	shaderProgram.modelMatrixUniform = gl.getUniformLocation(
 		shaderProgram,
-		"uPMatrix");
-	shaderProgram.mvMatrixUniform = gl.getUniformLocation(
+		"uModelMatrix");
+	shaderProgram.viewMatrixUniform = gl.getUniformLocation(
 		shaderProgram,
-		"uMVMatrix");
+		"uViewMatrix");
+	shaderProgram.projMatrixUniform = gl.getUniformLocation(
+		shaderProgram,
+		"uProjMatrix");
 
 	return shaderProgram;
 }

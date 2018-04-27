@@ -1,12 +1,21 @@
+var cam;
 class GameController
 {
 	constructor()
 	{
-		this.objs = [new Time()];
+		GameController.instance = this;
+	}
 
-		this.mvMatrix = mat4.create();
-		this.pMatrix = mat4.create();
+	Init()
+	{
+		this.objs = [new Time()];
 		this.mvMatrixStack = [];
+
+		this.input = new Input();
+		this.camera = new Camera();
+		cam = this.camera;
+		cam.a = 0;
+		//this.camera.transform.coords[Z] = 100;
 	}
 
 	Update()
@@ -36,13 +45,18 @@ class GameController
 	{
 		gl.viewport(0, 0, gl.viewportWidth, gl.viewportHeight);
 		gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+
+		// mat4.identity(Camera.instance.projMatrix);
 		mat4.perspective(
-			45,
+			45.0,
 			gl.viewportWidth / gl.viewportHeight,
 			0.1,
 			100.0,
-			this.pMatrix);
-
-		mat4.identity(this.mvMatrix);
+			Camera.instance.projMatrix);
+		// mat4.identity(Camera.instance.projMatrix);
+		// console.log(Camera.instance.projMatrix);
+		
+		// console.log(GameController.instance.mvMatrix);
+		// console.log(GameController.instance.pMatrix);
 	}
 }

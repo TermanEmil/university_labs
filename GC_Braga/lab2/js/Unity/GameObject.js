@@ -6,7 +6,7 @@ class GameObject
 		this.components = [];
 		this.AddComponent(this.transform);
 
-		gameController.objs.push(this);
+		GameController.instance.objs.push(this);
 	}
 
 	Update()

@@ -1,6 +1,5 @@
 var gl;
 var shaderProgram;
-var gameController;
 
 function tick()
 {
@@ -8,7 +7,7 @@ function tick()
 	{
 		tick();
 	});
-	gameController.Update();
+	GameController.instance.Update();
 }
 
 function webGLStart()

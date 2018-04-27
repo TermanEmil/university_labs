@@ -1,8 +1,8 @@
-class Triangle // : GameObject
+class Triangle extends GameObject
 {
 	constructor()
 	{
-		Object.setPrototypeOf(this, new GameObject());
+		super();
 
 		var verts = new ArrayBuffer(
 		[
