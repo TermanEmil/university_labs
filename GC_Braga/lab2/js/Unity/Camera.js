@@ -10,8 +10,11 @@ class Camera extends GameObject
     this.projMatrix = mat4.create();
     mat4.identity(this.viewMatrix);
 
+    this.transform.rotation[X] = -90;
+
     this.xRotSpeed = 0.5;
     this.yRotSpeed = 0.5;
+    this.moveSpeed = glm.vec3(0.1, 0.1, 0.1);
 
     this.fieldOfViewInRadians = Math.PI * 0.5;
     this.aspectRatio = gl.viewportWidth / gl.viewportHeight;
@@ -19,33 +22,56 @@ class Camera extends GameObject
     this.farClippingPlaneDistance = 50;
   }
 
-  Mat4ApplyPresence(mvMatrix)
+  ComputeViewMatrix()
   {
-    mat4.rotate(mvMatrix, degToRad(-this.transform.rotation[X]), [1, 0, 0]);
-    mat4.rotate(mvMatrix, degToRad(-this.transform.rotation[Y]), [0, 1, 0]);
-    mat4.translate(mvMatrix,
-      [
-        -this.transform.coords[X],
-        -this.transform.coords[Y],
-        -this.transform.coords[Z]
-      ]);
+    var eye = glm.vec3(
+      this.transform.coords[0],
+      this.transform.coords[1],
+      this.transform.coords[2]);
+
+    var up = glm.vec3(0, 1, 0);
+    var front = this.Front();
+
+    this.viewMatrix = glm.lookAt(eye, eye['+'](front), up).elements;
   }
 
-  GetPerspectiveMatrix()
+  ApplyRotation(rotation, matrix)
+	{
+		var rotationIndexes = [0, 0, 0];
+
+		for (var i = 0; i < rotation.length; i++)
+		{
+			rotationIndexes[i] = 1;
+			mat4.rotate(
+				matrix,
+				degToRad(rotation[i]),
+				rotationIndexes);
+			rotationIndexes[i] = 0;
+		}
+	}
+
+  ComputeProjMatrix()
   {
-    var f = 1.0 / Math.tan(this.fieldOfViewInRadians / 2);
-    var rangeInv = 1 / (near - far);
+    // this.projMatrix = glm.perspective(glm.radians(60), 1, 0.1, 100.0).elements;
+  }
 
-    var near = this.nearClippingPlaneDistance;
-    var far = this.farClippingPlaneDistance;
-    var aspectRatio = this.aspectRatio;
+  Move(direction)
+  {
+    this.transform.Translate(
+      this.moveSpeed['*'](this.Front()['*'](direction)));
+  }
 
-    return
-    [
-      f / aspectRatio, 0,                          0,   0,
-      0,               f,                          0,   0,
-      0,               0,    (near + far) * rangeInv,  -1,
-      0,               0,  near * far * rangeInv * 2,   0
-    ];
+  Front()
+  {
+    var rotation = glm.vec3(
+      this.transform.rotation[0],
+      this.transform.rotation[1],
+      this.transform.rotation[2]);
+
+    return glm.vec3(
+      Math.cos(glm.radians(rotation.x)) * Math.cos(glm.radians(rotation.y)),
+      Math.sin(glm.radians(rotation.y)),
+      Math.sin(glm.radians(rotation.x)) * Math.cos(glm.radians(rotation.y))
+    );
   }
 }

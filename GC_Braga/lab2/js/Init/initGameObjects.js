@@ -71,17 +71,18 @@ function initGameObjects()
 	triag.transform.scale = [0.2, 0.2, 0.2];
 	objRotationAnim(triag, [100, 300, -20]);
 	
-	// var triag2 = new Triangle();
-	// triag2.transform.Translate([1, 2, 0]);
-	// triag2.transform.scale = [0.2, 0.2, 0.2];
-	// objRotationAnim(triag2, rotation = [-500, 100, 100]);
-	//
-	// var pyramid1 = new Pyramid();
-	// pyramid1.transform.Translate([-7, 5, -10]);
-	// pyramid1.transform.Rotate([40, 0, 0]);
-	// objRotationAnim(pyramid1, [0, 50, 0]);
-	// pyramid1.transform.scale = [1.5, 1.5, 1.5];
+	var triag2 = new Triangle();
+	triag2.transform.Translate([1, 2, -7.0]);
+	triag2.transform.scale = [0.5, 0.5, 0.5];
+	objRotationAnim(triag2, rotation = [-500, 100, 100]);
+	
+	var pyramid1 = new Pyramid();
+	pyramid1.transform.Translate([-2, 0, -10]);
+	pyramid1.transform.Rotate([40, 0, 0]);
+	objRotationAnim(pyramid1, [0, 50, 0]);
+	pyramid1.transform.scale = [1.5, 1.5, 1.5];
 
-	// var cube1 = new Cube();
-	// objRotationAnim(cube1, [10, 50, 10]);
+	var cube1 = new Cube();
+	cube1.transform.Translate([2, 0, -10]);
+	objRotationAnim(cube1, [10, 50, -10]);
 }

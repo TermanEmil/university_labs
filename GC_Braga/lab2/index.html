@@ -13,8 +13,8 @@
 
 		void main(void)
 		{
-			gl_FragColor = vec4(0.0, 1.0, 1.0, 1.0);
-			// gl_FragColor = vColor;
+			// gl_FragColor = vec4(0.0, 1.0, 1.0, 1.0);
+			gl_FragColor = vColor;
 			// gl_FragColor = texture2D(uSampler, vec2(vTextureCoord.s, vTextureCoord.t));
 		}
 	</script>
@@ -51,7 +51,9 @@
 		loadScripts("./js/Utils/",
 		[
 			"glMatrix-0.9.5.min",
-			"utils"
+			"glm-js.min",
+			"utils",
+			"Vec3"
 		]);
 
 		// GL
@@ -95,6 +97,7 @@
 			"initInputs"
 		]);
 	</script>
+
 	<script type="text/javascript" src="./js/main.js"></script>
 
 </body>

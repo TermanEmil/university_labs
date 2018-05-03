@@ -1,4 +1,5 @@
 var cam;
+
 class GameController
 {
 	constructor()
@@ -15,12 +16,14 @@ class GameController
 		this.camera = new Camera();
 		cam = this.camera;
 		cam.a = 0;
-		//this.camera.transform.coords[Z] = 100;
+		// this.camera.transform.coords[Z] = 100;
 	}
 
 	Update()
 	{
 		this.Redraw();
+		Camera.instance.ComputeViewMatrix();
+		Camera.instance.ComputeProjMatrix();
 		this.objs.forEach(function(obj)
 		{
 			obj.Update();

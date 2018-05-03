@@ -48,8 +48,6 @@ class Mesh
 	{
 		mat4.identity(this.modelMatrix);
 		mat4.translate(this.modelMatrix, this.transform.coords);
-
-		// GameController.instance.PushMvMatrix();
 		mat4.scale(this.modelMatrix, this.transform.scale);
 		this.ApplyRotation();
 
@@ -77,27 +75,18 @@ class Mesh
 				0);
 		}
 
-		this.DrawBuf();
-		// GameController.instance.PopMvMatrix();
-	}
-
-	DrawBuf()
-	{
 		if (this.elementIndices != null && this.elementIndices != undefined)
-		{
 			gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.elementIndices.buf);
-			this.SetMatrixUniforms();
+
+		this.SetMatrixUniforms();
+		if (this.elementIndices != null && this.elementIndices != undefined)
 			gl.drawElements(
 				gl.TRIANGLES,
 				this.elementIndices.numItems,
 				gl.UNSIGNED_SHORT,
 				0);
-		}
 		else
-		{
-			this.SetMatrixUniforms();
 			gl.drawArrays(gl.TRIANGLES, 0, this.verts.numItems);
-		}
 	}
 
 	SetMatrixUniforms()
