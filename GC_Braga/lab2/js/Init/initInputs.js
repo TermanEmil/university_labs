@@ -34,20 +34,16 @@ function onAxisKeyDown(event)
     case 'D':
       break;
     case '1':
-      Camera.instance.transform.rotation[0] += 0.2;
-      console.log(Camera.instance.transform.rotation);
+      Camera.instance.rb.angularVel[0] -= 0.2;
       break;
     case '2':
-      Camera.instance.transform.rotation[0] -= 0.2;
-      console.log(Camera.instance.transform.rotation);
+      Camera.instance.rb.angularVel[0] += 0.2;
       break;
     case '3':
-      Camera.instance.transform.rotation[1] += 0.2;
-      console.log(Camera.instance.transform.rotation);
+    Camera.instance.rb.angularVel[1] -= 0.2;
       break;
     case '4':
-      Camera.instance.transform.rotation[1] -= 0.2;
-      console.log(Camera.instance.transform.rotation);
+    Camera.instance.rb.angularVel[1] += 0.2;
       break;
   }
 }

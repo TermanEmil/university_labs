@@ -22,6 +22,6 @@ class Transform
 	Rotate(rotation)
 	{
 		for (var i = 0; i < rotation.elements.length; i++)
-			this.rotation.elements[i] += rotation.elements[i];
+			this.rotation[i] += rotation[i];
 	}
 }
