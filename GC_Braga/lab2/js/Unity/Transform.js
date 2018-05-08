@@ -1,11 +1,11 @@
 class Transform
 {
 	constructor(
-		coords = [0.0, 0.0, 0.0],
-		rotation = [0.0, 0.0, 0.0],
-		scale = [1.0, 1.0, 1.0])
+		coords = glm.vec3([0.0, 0.0, 0.0]),
+		rotation = glm.vec3([0.0, 0.0, 0.0]),
+		scale = glm.vec3([1.0, 1.0, 1.0]))
 	{
-		this.coords = coords;
+		this.pos = coords;
 		this.rotation = rotation;
 		this.scale = scale;
 
@@ -15,13 +15,13 @@ class Transform
 
 	Translate(coords)
 	{
-		for (var i = 0; i < this.coords.length; i++)
-			this.coords[i] += coords[i];
+		for (var i = 0; i < coords.elements.length; i++)
+			this.pos.elements[i] += coords.elements[i];
 	}
 
 	Rotate(rotation)
 	{
-		for (var i = 0; i < this.rotation.length; i++)
-			this.rotation[i] += rotation[i];
+		for (var i = 0; i < rotation.elements.length; i++)
+			this.rotation.elements[i] += rotation.elements[i];
 	}
 }

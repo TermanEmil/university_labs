@@ -47,8 +47,8 @@ class Mesh
 	Render()
 	{
 		mat4.identity(this.modelMatrix);
-		mat4.translate(this.modelMatrix, this.transform.coords);
-		mat4.scale(this.modelMatrix, this.transform.scale);
+		mat4.translate(this.modelMatrix, this.transform.pos.elements);
+		mat4.scale(this.modelMatrix, this.transform.scale.elements);
 		this.ApplyRotation();
 
 		if (this.verts != null && this.verts != undefined)
@@ -107,7 +107,7 @@ class Mesh
 
 	ApplyRotation()
 	{
-		var rotation = this.transform.rotation;
+		var rotation = this.transform.rotation.elements;
 		var rotationIndexes = [0, 0, 0];
 
 		for (var i = 0; i < rotation.length; i++)

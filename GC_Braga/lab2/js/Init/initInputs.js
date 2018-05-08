@@ -24,16 +24,14 @@ function onAxisKeyDown(event)
   {
     case 'W':
       Camera.instance.Move(1);
-      console.log(Camera.instance.transform.coords);
+      console.log(Camera.instance.transform.pos);
       break;
     case 'S':
       Camera.instance.Move(-1);
       break;
     case 'A':
-      // Camera.instance.Move(glm.vec3(-1, -1, 0));
       break;
     case 'D':
-      // Camera.instance.Move(glm.vec3(1, 1, 0));
       break;
     case '1':
       Camera.instance.transform.rotation[0] += 0.2;

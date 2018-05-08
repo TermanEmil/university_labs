@@ -20,15 +20,14 @@ class Camera extends GameObject
     this.aspectRatio = gl.viewportWidth / gl.viewportHeight;
     this.nearClippingPlaneDistance = 1;
     this.farClippingPlaneDistance = 50;
+
+    this.rb = new RigidBody();
+    this.AddComponent(this.rb);
   }
 
   ComputeViewMatrix()
   {
-    var eye = glm.vec3(
-      this.transform.coords[0],
-      this.transform.coords[1],
-      this.transform.coords[2]);
-
+    var eye = this.transform.pos;
     var up = glm.vec3(0, 1, 0);
     var front = this.Front();
 
@@ -57,16 +56,12 @@ class Camera extends GameObject
 
   Move(direction)
   {
-    this.transform.Translate(
-      this.moveSpeed['*'](this.Front()['*'](direction)));
+    this.rb.velocity = this.rb.velocity['+'](this.moveSpeed['*'](this.Front()['*'](direction)));
   }
 
   Front()
   {
-    var rotation = glm.vec3(
-      this.transform.rotation[0],
-      this.transform.rotation[1],
-      this.transform.rotation[2]);
+    var rotation = this.transform.rotation;
 
     return glm.vec3(
       Math.cos(glm.radians(rotation.x)) * Math.cos(glm.radians(rotation.y)),

@@ -23,7 +23,7 @@ class Sphere
 				cj = Math.cos(ai);
 
 				verts.push(si * sj);	// X
-				verts.push(cj);				// Y
+				verts.push(cj);			// Y
 				verts.push(ci * sj);	// Z
 			}
 		}
@@ -53,7 +53,7 @@ function objRotationAnim(targetObj, rotation)
 	var anim = new Animation();
 	anim.Update = function()
 	{
-		this.transform.Rotate(rotation.map(x => x * Time.deltaTime));
+		this.transform.Rotate(rotation['*'](Time.deltaTime));
 	}
 
 	var animator = new Animator();
@@ -67,22 +67,22 @@ var triag;
 function initGameObjects()
 {
 	triag = new Triangle();
-	triag.transform.Translate([0.0, 0.0, -7.0]);
-	triag.transform.scale = [0.2, 0.2, 0.2];
-	objRotationAnim(triag, [100, 300, -20]);
+	triag.transform.Translate(glm.vec3([0.0, 0.0, -7.0]));
+	triag.transform.scale = glm.vec3([0.2, 0.2, 0.2]);
+	objRotationAnim(triag, glm.vec3([100, 300, -20]));
 	
 	var triag2 = new Triangle();
-	triag2.transform.Translate([1, 2, -7.0]);
-	triag2.transform.scale = [0.5, 0.5, 0.5];
-	objRotationAnim(triag2, rotation = [-500, 100, 100]);
+	triag2.transform.Translate(glm.vec3([1, 2, -7.0]));
+	triag2.transform.scale = glm.vec3([0.5, 0.5, 0.5]);
+	objRotationAnim(triag2, glm.vec3([-500, 100, 100]));
 	
 	var pyramid1 = new Pyramid();
-	pyramid1.transform.Translate([-2, 0, -10]);
-	pyramid1.transform.Rotate([40, 0, 0]);
-	objRotationAnim(pyramid1, [0, 50, 0]);
-	pyramid1.transform.scale = [1.5, 1.5, 1.5];
+	pyramid1.transform.Translate(glm.vec3([-2, 0, -10]));
+	pyramid1.transform.Rotate(glm.vec3([40, 0, 0]));
+	objRotationAnim(pyramid1, glm.vec3([0, 50, 0]));
+	pyramid1.transform.scale = glm.vec3([1.5, 1.5, 1.5]);
 
 	var cube1 = new Cube();
-	cube1.transform.Translate([2, 0, -10]);
-	objRotationAnim(cube1, [10, 50, -10]);
+	cube1.transform.Translate(glm.vec3([2, 0, -10]));
+	objRotationAnim(cube1, glm.vec3([10, 50, -10]));
 }
