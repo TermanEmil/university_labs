@@ -51,7 +51,12 @@ class Camera extends GameObject
 
   ComputeProjMatrix()
   {
-    // this.projMatrix = glm.perspective(glm.radians(60), 1, 0.1, 100.0).elements;
+    mat4.perspective(
+			45.0,
+			gl.viewportWidth / gl.viewportHeight,
+			0.1,
+			100.0,
+			this.projMatrix);
   }
 
   Move(direction)

@@ -22,8 +22,10 @@ class GameController
 	Update()
 	{
 		this.Redraw();
+
 		Camera.instance.ComputeViewMatrix();
 		Camera.instance.ComputeProjMatrix();
+		
 		this.objs.forEach(function(obj)
 		{
 			obj.Update();
@@ -48,18 +50,5 @@ class GameController
 	{
 		gl.viewport(0, 0, gl.viewportWidth, gl.viewportHeight);
 		gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-
-		// mat4.identity(Camera.instance.projMatrix);
-		mat4.perspective(
-			45.0,
-			gl.viewportWidth / gl.viewportHeight,
-			0.1,
-			100.0,
-			Camera.instance.projMatrix);
-		// mat4.identity(Camera.instance.projMatrix);
-		// console.log(Camera.instance.projMatrix);
-		
-		// console.log(GameController.instance.mvMatrix);
-		// console.log(GameController.instance.pMatrix);
 	}
 }
