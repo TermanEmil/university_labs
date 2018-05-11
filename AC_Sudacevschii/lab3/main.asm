@@ -7,7 +7,7 @@
     b   DB    01h
     n   DW    50
     SUM DD    0000h
-    x   DW    0000
+    x   DW    ?
     
 .CODE
 begin:

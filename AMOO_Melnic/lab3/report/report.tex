@@ -1,0 +1,81 @@
+\documentclass{article}
+
+\usepackage{enumitem}
+\usepackage{indentfirst} 
+\usepackage{silence}
+\WarningFilter{latex}{You have requested package}
+
+\usepackage{lib/defaultReportSettings}
+\usepackage{lib/myTitlePage}
+\usepackage{lib/customHyperRef}
+\usepackage{lib/myIncludeImg}
+
+\setlist[itemize]{noitemsep, topsep=0pt}
+
+\begin{document}
+	\myTitlePage{AMOO}{Terman Emil FAF161}[R. Melnic][SEQUENCE DIAGRAMS][3]
+
+	\section{Theory}
+		\subsection{Sequence diagrams}
+			In UML, collaboration between objects is explored in the informative aspect of their communications. In other words, the objects that interact, do nothing but a simple exchange of messages between them. In UML there are 2 types of interaction charts:
+			\begin{enumerate}
+				\item the objects collaborate with each other in time and then  the sequence diagram is used to present the temporal peculiarities;
+
+				\item the structural particularities of collaborations between objects (the exchange of messages in space) can be investigated;
+			\end{enumerate}
+
+		\subsection{Object Oriented Analysis}
+			OOA is an iterative stage of analysis, which takes place during the software development life cycle, that aims to model the functional requirements of the software while remaining completely independent of any potential implementation requirements. OOA can be described in two parts:
+			\begin{enumerate}
+				\item \textbf{Conceptual Object Oriented Analysis}
+				So, what does this concept mean?
+				Once we have created the use-case diagrams, we should describe the functionality of our application, in other words: to create the conceptual model. The main idea of this model is to describe the relations between classes and objects. To perform the conceptual model we should:
+				\begin{itemize}
+					\item identify the objects;
+					\item refine the objects (remove duplicates);
+					\item draw the objects;
+					\item identify the relations;
+					\item identify their roles;
+				\end{itemize}
+
+				\item \textbf{Technical Object Oriented Analysis}
+				The process of planning a system of interacting objects for the purpose of solving a software problem.
+
+				It should answer the question of how the conceptual model of the app should work and and what are its methods. For this purpose, an UML language is used, so that everyone can understand the main idea of the model.
+			\end{enumerate}
+
+	\section{Tasks}
+		\subsection{Subdiagrams}
+
+		\myIncludeImg{imgs/reg.png}[0.5][Seq Diag: Registration]
+		In \textbf{Figure 1} is explained how the process of registration looks like. The actor is an unregistred user, and he interacts only with the site. While the Facebook platform, has interactions with both user and the database. First, the user tries to submit some registration data. Then the platform validates the input and loads the \textit{Terms of use} from the database. The user then accepts the terms and the platform validates the registration data on the server. After a successful validation, the user is then registred in the database as an unconfirmed user. After that, a message requesting email confirmation is sent back.
+		
+		\myIncludeImg{imgs/friend-request.png}[0.5][Seq Diag: Friend request]
+		Moving on to user interaction, we have in \textbf{Figure 2} a friend request \textit{sequence diagram}. In this case, two actors are involved: the sender (A) and the receiver (B). First, the sender tries to access the target. The platform then, returns a list of possible matches. After that, the first user submits a friend request. Then a validation is run and the request is registred on the database, followed by a notification to the \textit{receiver}. Finally, the first user receives a \textit{success} message.
+
+		\myIncludeImg{imgs/create-event.png}[0.5][Seq Diag: Create event]
+		Finally, in the last image (\textbf{Figure 3}), the diagram of creating an event is shown. First, the user starts with accessing the \textit{Create event} page. Then, he submits the event's data, followed by a validation on the platform. The event is then created in the database. After that, the user, ussually decides to invite people to his event: invitations are sent and the requests are registred in the database.
+
+		\subsection{Functional requirements}
+		\textbf{What will happen?}
+		\begin{enumerate}
+			\item Register user on the platform;
+			\item Register a friend request;
+			\item Register an event;
+			\item Send email confirmation;
+			\item Find requested users;
+		\end{enumerate}
+
+		\subsection{Non-functional requirements}
+		\textbf{How will it happen?}
+		\begin{enumerate}
+			\item Only registred users can send friend requests;
+			\item Users can cancel the friend request, until it is accepted;
+			\item Users can receive notifications;
+			\item An event invite can be set to be public or private;
+			\item Event invites can be canceled;
+		\end{enumerate}
+
+	\section{Conclusion}
+		In this laboratory work, I studied how to use sequence diagrams. I've learned how to properly use synchronous, asynchronous and return calls. I've also acumulated practical skills of developping time based diagrams.
+\end{document}

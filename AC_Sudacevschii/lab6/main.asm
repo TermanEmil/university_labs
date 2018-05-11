@@ -10,12 +10,20 @@ org 100h
     matching_msg        db 'Matching: $'
     notmatching_msg     db 'Not Matching: $'
     
+    color               db 1h
+    bg_color            db 5h
+    
+    square_w            dd 30
+    square_h            dd 50
+    
 .CODE
 begin:
     mov ax, @DATA
     mov ds, ax
     
-    call find_chars
+    call draw_square
+    ;call find_chars
+    
     hlt
 
 find_chars proc
@@ -70,7 +78,8 @@ find_chars proc
             jne substr_loop
         
         PRINT_ON_SECOND_LINE_IF_NO_MATCH:
-            mov dh, 1
+            mov dh, notmatching_pos
+            sub dh, 13
             mov dl, notmatching_pos
             mov ah, 02h
             int 10h
@@ -92,12 +101,68 @@ endp find_chars
 
 ; print the character in AL
 print_al_char proc
+    ; increment color and if it's greater than
+    ; 0Fh, set it to 01h
+    inc color
+    
+    cmp color, 0Fh
+    jl LESS_COLOR        
+        mov color, 01h
+    
+    LESS_COLOR:
+    
+    inc bg_color
+    cmp bg_color, 0Fh
+    jl LESS_BG_COL
+        mov bg_color, 01h
+    
+    LESS_BG_COL:
+    
+    ; combine the color fron color and bg_color into bl
+    mov bl, bg_color
+    shl bl, 4
+    add bl, color
+    
     mov bh, 0                   ; leave it 0
-    mov bl, 5Ch                 ; color: high = bg | low = font
     mov cx, 1                   ; nr of times
     mov ah, 09h                 ; interrupt value
     int 10h
     RET        
 endp print_al_char
+
+draw_square proc
+    ; set graphics video mode
+    mov al, 13h
+    mov ah, 0
+    int 10h
+    
+    mov cx, square_w
+    width_loop:
+        mov si, cx
+        
+        mov cx, square_h
+        height_loop:
+            mov di, cx
+        
+            mov al, 1100b
+            mov cx, 0
+            mov dx, cx
+            mov ah, 0ch
+            int 10h
+            
+            mov al, 1100b
+            mov cx, square_w
+            mov dx, cx
+            mov ah, 0ch
+            int 10h
+            
+            mov cx, di
+            loop height_loop 
+        
+        mov cx, si
+        loop width_loop
+    
+    RET   
+endp draw_square
 
 end begin

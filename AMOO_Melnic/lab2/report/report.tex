@@ -25,34 +25,84 @@
 			\item Textual modeling languages may use standardized keywords accompanied by parameters or natural language terms and phrases to make computer-interpretable expressions;
 		\end{itemize}
 
-	\newpage
 	\section{Tasks}
 		\subsection{Use case diagram}
-			\myIncludeImg{imgs/UseCaseDiagram_Basic.png}[0.2][Diagram: basic]
-			This diagram represents how the population is configured. It includes the definition of genomes, breeding and how random genomes are generated. Then next generation may be created from a list of Producers: these may include selection, crossover and other user defined methods.
-			\myIncludeImg{imgs/UseCaseNeural.jpeg}[0.3][Diagram: NeuralNet]
-			In this diagram is described how the Genome can be configured to work with neural networks. Basically, it feeds on some floats and returns another list of floats as outputs. The algorithm may be configured: it may use a \textbf{Fixed nueral net}, an \textbf{Augmented neural net} or another user-defined algorithm.
-			\myIncludeImg{imgs/UseCaseDiagram_GA.png}[0.3][Diagram: Algorithm use]
-			Here is described what can be done with this library. Generally it can train, save/load a genome, or reset the population if needed.
+			\myIncludeImg{imgs/enter-fb.png}[0.4][Diagram: Enter FB]
+			This is the \textit{Use Case Diagram} for a user, when he wants to enter FB. The most basic features are \textit{Login} and \textit{Register}. The login can be done through Email or Phone number. If the user forgets his password/email/phone number, he is able to recover it. Registration may be done either through an external provider, like Google account or like the usual.
 
-		\newpage
+
+			\myIncludeImg{imgs/general-use.png}[0.5][Diagram: general use]
+			In this diagram is represented the most basic features a user can access. The first, most natural option, is to log out. He is also able to edit FB settings, like notifications. Moving on to \textit{Modify user data}, this option offers to add photos or videos, change the avatar photo, change birthday and other such data. As many other social platforms, the user is able to post on the timeline, with configurable publicity. As well as \textbf{Interact with other users}.
+
+			\myIncludeImg{imgs/interact-with-others.png}[0.5][Diagram: Interact with other users]
+			A logged user, can chat. He is able to interact with some Facebook Content, like reacting to a post, comment or share. He is also able to invite users to groups, events or chat groups.
+
 		\subsection{Basic flow}
+
+			\textbf{Uploading a new photo}
 			\begin{enumerate}
-				\item a population is created;
-				\item the population creates some random genomes;
-				\item the population lets the genomes perform a task;
-				\item the genomes are then evaluated, calculating their fitness;
-				\item the next generation is formed depending on the previous genomes;
-				\item repeat from the 3rd point until a certain goal is reached;
+				\item log in;
+				\item go to user profile;
+				\item press \textit{photos};
+				\item press \textit{Add photos/video};
+				\item choose file;
+				\item set as public;
+				\item add comment;
+				\item add tags;
+				\item upload photo;
 			\end{enumerate}
+
+			\textbf{Inviting a user to a chat grup}
+			\begin{enumerate}
+				\item log in;
+				\item create a chat grup;
+				\item search for the desired user;
+				\item go to his profile;
+				\item press the invite button on his profile;
+				\item choose the \textit{Invite to a chat} option;
+			\end{enumerate}
+
+			\textbf{Post on facebook}
+			\begin{enumerate}
+				\item log in;
+				\item choose the \textit{Create post} option;
+				\item write post content;
+				\item add a local image;
+				\item tag some friends;
+				\item write how you feel;
+				\item set publicity as \textit{friends-only};
+				\item post;
+			\end{enumerate}
+
 		\subsection{Alternate flow}
+			\textbf{Log in with the wrong credentials}
 			\begin{enumerate}
-				\item if the user (dev) doesn't specify how the next generation is formed, then the classic methods are used, that is: Reinsertion, Breeding (Selection, Crossover and Mutation);
-				\item bias, Sigmoid function and Recurrent connections are used by default;
+				\item user goes to log in page;
+				\item enters wrong credentials;
+				\item the platform displays an error;
+				\item the user tries again;
+				\item another error is displayed;
+				\item a robot detection test is required this time;
+				\item user chooses to recover the password trough email;
 			\end{enumerate}
 
-	\newpage
-	\section{Conclusion}
-		In this laboratory work I learned how usesful the \textbf{use case} diagrams are. After I made the diagrams, I realized that I may have some bugs. Also, I could clearly see how I can improve my project because of the graphical representation. In the end, the general conclusion is that the use case diagrams are a useful tool for managing and developing a project, especially when working in a team, since it may be quite hard to understand what the goal is.
+			\textbf{Post rejected by group admin}
+			\begin{enumerate}
+				\item log in;
+				\item enter the desired group;
+				\item submit a post;
+				\item wait for approval;
+				\item post gets rejected for being irrelevant to the group;
+			\end{enumerate}
 
+			\textbf{Registering with an existing email}
+			\begin{enumerate}
+				\item go to register page;
+				\item enter credentials;
+				\item submit the request;
+				\item get an error that the email is already taken by another user;
+			\end{enumerate}
+
+	\section{Conclusion}
+		In this laboratory work I learned how usesful the \textbf{use case} diagrams are. It helped me to better understand how Facebook works. Using such diagrams, I can create my own social app, with a better planification. I can clearly see now from where I would start the application. The general conclusion is that the use case diagrams are useful for managing and developing a project, especially when working in a team, since it may be quite hard to understand what the goal is.
 \end{document}

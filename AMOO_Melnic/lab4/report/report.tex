@@ -1,0 +1,116 @@
+\documentclass{article}
+
+\usepackage{enumitem}
+\usepackage{indentfirst} 
+\usepackage{silence}
+\WarningFilter{latex}{You have requested package}
+
+\usepackage{lib/defaultReportSettings}
+\usepackage{lib/myTitlePage}
+\usepackage{lib/customHyperRef}
+\usepackage{lib/myIncludeImg}
+
+\setlist[itemize]{noitemsep, topsep=0pt}
+
+\begin{document}
+	\myTitlePage{AMOO}{Terman Emil FAF161}[R. Melnic][Collaboration diagrams][4]
+
+	\section{Theory}
+		\subsection{Collaboration diagrams}
+			Unlike sequence diagrams, the collaborations has no indication of the interaction time of the objects. This kind of diagram is more focused to represent WHAT are the interactions between objects than when.
+
+		\subsection{Design principles}
+			All the following concepts represent basic analysis and design techniques. They are interrelated and normally used together during software development. We use them even though we are not always aware of it. Deeper understanding of these concepts helps us to be more accurate and effective.
+
+			\begin{enumerate}
+				\item \textbf{Abstraction} - in general, it's the process of consciously ignoring some aspects of a subject under analysis in order to better understand other aspects of it. In other words, it is some kind of a simplification of a subject. In software in particular, analysis and design are all about abstraction.
+					\begin{itemize}
+						\item when the architecture is modeled, you concentrate on high-level modules and their relationships and ignore their internal structure;
+
+						\item each UML diagram gives a special, limited view on the system. Therefore, it focuses on a single aspect and ignores all other things (sequences abstract objects and messages, deployment abstracts network and servers, use cases abstract system users and their interactions with a system, etc);
+
+						\item so, abstraction is used to generalize objects into one category in the design phase. For example in a travel management system you can use Vehicle as an abstract object or entity that generalizes how you travel from one place to another;
+					\end{itemize}
+
+				\item \textbf{Encapsulation} - refers to the process of an object controlling outside access to its internal data. This also means to hide functions and methods of a class;
+
+				\item \textbf{Generalization} - is a relationship in which one model element (the child) is based on another model element (the parent). Generalization relationships are used in classes, components, deployments and use-case diagrams to indicate that the child receives all of the attributes, operations and relationships that are defined in the parent. This also doesn’t have names.
+
+				\item \textbf{Decomposition} - is an application of the old good principle "divide and conquer" in software development. It is a technique of classifying, structuring and grouping complex elements in order to form more atomic ones, organized in a certain fashion and easier to manage. In all phases there are lots of examples:
+					\begin{itemize}
+						\item functional decomposition of a complex process to hierarchical structure of smaller sub-processes and activities;
+
+						\item  high-level structure of an complex application to 3 tiers - UI, logic and data;
+
+						\item UML packages are a direct use of decomposition on the model level - use packages to organize your model;
+
+						\item to have a good level of understanding of decomposition, you should first understand the concepts of association, composition, and aggregation;
+					\end{itemize}
+			\end{enumerate}
+
+	\section{Tasks}
+		The following diagrams are the exact copy from the previous laboratory work, but transformed in collaboration diagrams. For a more detailed description, please refer to my previous laboratory work.
+
+		\begin{itemize}
+			\item \textbf{Figure 1 - Registration}
+			\begin{enumerate}
+				\item open reg. page;
+				\item show reg. page;
+				\item enter reg. data;
+				\item validate reg. data;
+				\item load terms;
+				\item return terms;
+				\item show terms;
+				\item accept terms;
+				\item server validate reg. data;
+				\item valid reg. data;
+				\item register user;
+				\item user registered;
+				\item send email confirmation;
+				\item confimation sent;
+			\end{enumerate}
+
+			\item \textbf{Figure 2 - Friend request}
+			\begin{enumerate}
+				\item access target user;
+				\item find user;
+				\item return matching users;
+				\item show possible users;
+				\item send friend request;
+				\item validate request;
+				\item register friend request;
+				\item registered friend request;
+				\item notify user;
+				\item successful friend request;
+			\end{enumerate}
+
+			\item \textbf{Figure 3 - Create an event}
+			\begin{enumerate}
+				\item access \textit{new event} option;
+				\item load \textit{new event} page;
+				\item submit event data;
+				\item validate request;
+				\item create event;
+				\item created event;
+				\item successful event creation;
+				\item invite users;
+				\item validate requests;
+				\item send invitation requests;
+				\item invitations sent;
+			\end{enumerate}
+		\end{itemize}
+
+		\myIncludeImg{imgs/reg.png}[0.5][Registration]
+		\myIncludeImg{imgs/friend-request.png}[0.5][Friend request]
+		\myIncludeImg{imgs/create-event.png}[0.5][Create event]
+
+	\section{Technologies}
+		Facebook is a social web platform, so I suppose that a user privatness shoul come first. With that said, I will use \textit{Triple DES} or \textit{RSA} encryption algorithms, to ensure everything stays private.
+		
+		Moving on to profit, like the current facebook, I will sell ads. For that, I would use Google Ads, because they are quite profitable and easy to use.
+
+		Since I need to work in a team and continually maintain the web app, I would need a platform where I can easily collaborate with other developers. And \textbf{Github} comes with plenty of tools, that fit just right for this problem. Using git, I can create different branches and descriptively commit my changes.
+
+	\section{Conclusion}
+		This laboratory work helped me better understand the difference between collaboration and sequence diagrams: collab is much more focused on \textbf{who} interacts than \textbf{when}. Unlike collab, on sequence diagram it's much easier to see the flow of actions. This led me to the conclusion, that if I were to work on big projects, it would be useful to have both collaborative and sequence diagrams, so that the whole team doesn't get conffused with different ideas.
+\end{document}

@@ -1,7 +1,7 @@
 .model small
 
 .DATA
-    X   DW  05h, 01h, 02h, 03h, 04h, 05h, 06h, 07h, 09h, 09h
+    X   DW  05h, 01h, 02h, 03h, 04h, 05h, 06h, 07h, 08h, 09h
     N   DW  10
     l1  DW  0
     l2  DW  0
@@ -34,13 +34,10 @@ endp sum_proc
 ; If ax is even: multiply first 3 numbers
 ;          else: multiply last 3 numbers
 odd_even proc
-    mov dl, 2
-    div dl
     
-    ; After division, AH contains the remainder
-    cmp ah, 0
-    je EVEN
-    jg ODD
+    test ax, 1
+    jz  EVEN
+    jnz ODD
     
     ; Set L1 to n - 3 and L2 to n
     ODD:        

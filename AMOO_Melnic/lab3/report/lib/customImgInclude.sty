@@ -1,11 +1,9 @@
-\ProvidesPackage{myIncludeImg}
+\ProvidesPackage{customImgInclude}
 
 \RequirePackage{graphicx}
 \RequirePackage{mdframed}
-\RequirePackage{xcolor}
+\RequirePackage[usenames,dvipsnames]{xcolor}
 \RequirePackage{xparse}
-\RequirePackage{caption}
-\RequirePackage{float}
 
 \definecolor{myLightGray}{rgb}{0.85,0.85,0.85}
 
@@ -26,7 +24,7 @@
 	\captionsetup{labelformat=ImgCaption,labelsep=colon}
 
 	\begin{center}
-		\begin{figure}[H]
+		\begin{figure}[!ht]
 			\begin{mdframed}[backgroundcolor=black!5,
 							rightline=false,
 							leftline=false]
@@ -36,7 +34,13 @@
 				\end{center}
 			\end{mdframed}
 
-			\label{fig:#4}
+			\IfNoValueTF{#4}
+			{
+			}
+			% else
+			{
+				\label{fig:#4}
+			}
 		\end{figure}
 	\end{center}
 }
