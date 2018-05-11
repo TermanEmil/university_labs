@@ -1,0 +1,148 @@
+\documentclass{article}
+
+\usepackage{enumitem}
+\usepackage{indentfirst}
+\usepackage[export]{adjustbox}
+\usepackage{silence}
+\WarningFilter{latex}{You have requested package}
+
+\usepackage{lib/defaultReportSettings}
+\usepackage{lib/myTitlePage}
+\usepackage{lib/customHyperRef}
+\usepackage{lib/customPseudoLstling}
+\usepackage{lib/myIncludeImg}
+
+\setlist[itemize]{noitemsep, topsep=0pt}
+
+\begin{document}
+	\myTitlePage{AMOO}{Terman Emil FAF161}[R. Melnic][Class diagrams \& SWOT analysis][5]
+
+
+	\section{Tasks}
+		\begin{itemize}
+			\item model your application using Class Diagrams;
+			\item perform the SWOT analysis of your project;
+		\end{itemize}
+
+	\section{Theory}
+		\subsection{Class diagrams}
+			Also known as structural diagrams, represent the static view of an application. Class diagrams describe the attributes and operations of a class and also the constraints imposed on the system. They are widely used in modeling object-oriented systems, because they are the only UML diagrams, which can be mapped directly with object-oriented languages. Because of that, they are widely used at the time of construction. These diagrams show a collection of classes, interfaces, associations, collaborations and constraints.
+
+			\bigskip
+			Class diagram's main purpose:
+			\begin{itemize}
+				\item describe responsibilities of a system;
+				\item forward and reverse engineering;
+				\item base for component and deployment diagrams;
+				\item analysis and design of the static view of an application;
+			\end{itemize}
+
+			\bigskip
+			Possible relations:
+			\begin{itemize}
+				\item \textbf{Dependence}: relation where one entity is dependent and another independent;
+				\item \textbf{Association}: represents a family of links. A binary association (with two ends) is normally represented as a line;
+				\item \textbf{Generalization}: indicates that one of the two related classes (the subclass) is considered to be a specialized form of the other (the super type) and the superclass is considered a Generalization of the subclass;
+				\item \textbf{Realization}: is a relationship between two model elements, in which one model element (the client) realizes (implements or executes) the behavior that the other model element (the supplier) specifies;
+			\end{itemize}
+
+		\subsection{SWOT analysis}
+			It is a strategic planning technique used to help a person or an organization to identify the Strengths, Weaknesses, Opportunities and Threats related to business competition or project planning. Strengths and Weakness are frequently internally-related, while Opportunities and Threats commonly focus on environmental placement.
+
+			\begin{itemize}
+				\item \textit{\textbf{S}trenghs}: characteristics of the business or project that give it an advantage over others;
+				\item \textit{\textbf{W}eaknesses}: characteristics of the business which can place the business or project at a disadvantage relative to others;
+				\item \textit{\textbf{O}pportunities}: elements in the environment that the business or project could exploit to its advantage;
+				\item \textit{\textbf{T}hreats}: elements in the environment that could cause trouble for the business or project;
+			\end{itemize}
+
+		\subsection{Design principles}
+			\textbf{Cohesion} and \textbf{Coupling} deal with the quality of an OO design. Generally, a good OO design should be loosely coupled and highly cohesive. The aim of the design should be to make the application: easier to develop, maintain, extend and for it to be less fragile to changes.
+
+			\bigskip
+			\textbf{Cohesion} is used to indicate the degree to which a class has a single, well-focused purpose. Coupling is all about how classes interact with each other, on the other hand cohesion focuses on how single class is designed. Higher the cohesiveness of the class, better is the OO design.
+
+			\bigskip
+			\textbf{Coupling}Coupling is the degree to which one class knows about another class. Let us consider two classes class A and class B. If class A knows class B through its interface only i.e it interacts with class B through its API then class A and class B are said to be loosely coupled. If on the other hand class A apart from interacting class B by means of its interface also interacts through the non-interface stuff of class B then they are said to be tightly  coupled. Suppose the developer changes the class B‘s non-interface part i.e non API stuff then in case of loose coupling class A does not breakdown but tight coupling causes the class A to break.
+
+			\bigskip
+			\textbf{Concerns} are the different aspects of software functionality. For instance, the "business logic" of software is a concern, and the interface through which this logic being used is another. The separation of concerns is keeping the code for each of these concerns separate. Changing the interface should not require changing the business logic code, and vice versa. Model-View-Controller (MVC) design pattern is an excellent example of separating these concerns for better software maintainability.
+
+			\bigskip
+			\textbf{Information hiding} is the process of hiding details of an object or function. Information hiding is a powerful programming technique because it reduces complexity. One of the chief mechanisms for hiding information is encapsulation - combining elements to create a larger entity. The programmer can then focus on the new object without worrying about the hidden details. In a sense, the entire hierarchy of programming languages, from machine languages to high-level languages, can be seen as a form of information hiding. Information hiding is also used to prevent programmers from intentionally or unintentionally changing parts of a program.
+
+			\bigskip
+			\textbf{Conceptual integrity} is the principle that anywhere you look in your system, you can tell that the design is part of the same overall design. This includes low-level issues such as formatting and identifier naming, but also issues such as how modules and classes are designed, etc. This is vitally important because inevitably unanticipated issues come up that must be resolved quickly.
+
+	\section{Class Diagram}
+		\myIncludeImg{imgs/ClassDiagram.png}[0.55][\textbf{MiniFacebook} class diagram - user related][class-diagram]
+
+		In \labelRef{fig:class-diagram}[Figure 1] it's represented the general structure of Facebook that is related to the user. It contains:
+		\begin{itemize}
+			\item Account;
+			\item Profile;
+			\item Converstaion;
+			\item Message;
+			\item Comment;
+			\item RCSContent (React Comment Share content)
+			\item Photo;
+			\item Share;
+			\item Reaction;
+			\item Account State interface;
+			\item Active account state;
+			\item Banned account state;
+			\item IssuedContent interface;
+		\end{itemize}
+
+		\bigskip
+		The most important class, is the \textbf{Profile}. It has an \textit{Agregation} from \textbf{Account}. (Why not \textit{Composition}? Because the account may get deleted, but the profile may still remain. The profile is also used to identify comments, reactions, shares, converstations and other things). All the user's friends are stored inside the Friends list. FriendRequests list is a container for pending friend requests. The user may \textit{ProcessFriendRequest()} and set it as accepted or rejected. The profile may be also deleted. In this case, all its public \textit{Issued content} will become anonymus.
+
+		\bigskip
+		The \textbf{Account} class contains all the user's identity. Some of its fields may be set to public in the profile settings. The boolean which indicates if the phone is confirmed is used when the user tries to LogIn with his phone number. The Role is used to diffirenciate between a simple or a special account, like an Admin. Moving on to \textit{Account state}: this represents an interface which shows if the account is available. For example, when some people try to find a user A, before they can see him, \textbf{accountState.isAvailable()} is checked first.
+
+		\bigskip
+		\textbf{AccountState} is an interface which is realized by \textbf{Active} or \textbf{Banned} classes. When a user is banned by an admin or multiple reports, an expiration time is set. If he is banned undefinetly, the \textit{endDate} is set to its maximum value.
+
+		\bigskip
+		\textbf{IssuedContent} is an interface assigned to anything that has an Owner and a creation time.
+
+		\bigskip
+		\textbf{RCSContent} is a base class for anything that can be Commented, Reacted or Shared.
+
+		\bigskip
+		The \textbf{Comment} class inherits from both \textit{Message} and \textit{RCSContent} and has a protected opperation which checks if the content is Uncensured. If there are problems, the comment is hidden until a special user can approve. It also has the option to be reported by anyone who sees the comment, which may lead to banning the owner's account. The \textit{TargetId} is the Id of the content that the comment was issued to. Any content on this platform has a unique ID. As said before, this class inherits from \textbf{Message}. This class has a protected string which represents the content. If the message contains a link to a video, or an image, or it's an audio/video message, then \textit{Read()} opperation will properly display it.
+
+	\begin{samepage}
+	\section{SWOT Analysis}
+		\begin{enumerate}
+			\item \textbf{Strength}:
+				\begin{itemize}
+					\item saves a lot of time;
+					\item provides a large varity of configurations;
+					\item user friendly interface;
+					\item the project does not require our office to be in a specific region;
+				\end{itemize}
+
+			\item \textbf{Weaknesses}:
+				\begin{itemize}
+					\item there are content restrictions;
+					\item accounts may get banned;
+				\end{itemize}
+
+			\item \textbf{Opportunities}:
+				\begin{itemize}
+					\item user feedback will greatly help with the application development;
+					\item during the recent incident with privacy at Facebook, many users will try to find a more secure platform;
+				\end{itemize}
+
+			\item \textbf{Threats}:
+				\begin{itemize}
+					\item big fishes like Twiter and Instagram may be enough to saturate the market;
+					\item little budget means we can be easily manipulated;
+				\end{itemize}
+		\end{enumerate}
+	\end{samepage}
+
+	\section{Conclusion}
+		In this laboratory work, I got a very good grasp of what are Class Diagrams and how they are useful. During this lab, I learned more about all the Design Principles mentioned before. While implementing the UML diagram, I asked myself over and over if my classes are Cohetic enough and how independent are they. It forces the developer to think one more time about the structure, which is a huge help for later development: in my opinion, it's better to think very careful about the structure first, than refactoring the app later. It also helps the developer to better see what he can generalize and what can be isolated. I am sure that from this laboratoy on, I will start using Class Diagrams for my projects.
+\end{document}
