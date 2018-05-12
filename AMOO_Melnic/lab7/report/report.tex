@@ -1,0 +1,71 @@
+\documentclass{article}
+
+\usepackage{enumitem}
+\usepackage{indentfirst}
+\usepackage[export]{adjustbox}
+\usepackage{silence}
+\WarningFilter{latex}{You have requested package}
+
+\usepackage{lib/defaultReportSettings}
+\usepackage{lib/myTitlePage}
+\usepackage{lib/customHyperRef}
+\usepackage{lib/customPseudoLstling}
+\usepackage{lib/myIncludeImg}
+\usepackage{lib/unumberedSectionsAndSubsections}
+
+\setlist[itemize]{noitemsep, topsep=0pt}
+
+\begin{document}
+	\myTitlePage{AMOO}{Terman Emil FAF161}[R. Melnic][Activity Diagrams. Application delivery. Software life-cycle.][7]
+
+	\section{Tasks}
+		\begin{itemize}
+			\item model your application using 3 Activity Diagrams;
+			\item document the Application Delivery / Installation;
+		\end{itemize}
+
+	\section{Theory}
+		\subsection{Activity diagram}
+			It is another important diagram in UML to describe the dynamic aspects of the system.
+
+			Activity diagram is basically a flowchart to represent the flow from one activity to another activity. The activity can be described as an operation of the system.
+
+			The control flow is drawn from one operation to another. This flow can be sequential, branched, or concurrent. Activity diagrams deal with all type of flow control by using different elements such as fork, join, etc
+
+			\bigskip
+			The purpose of an activity diagram can be described as:
+			\begin{itemize}
+				\item draw the activity flow of a system;
+				\item describe the sequence from one activity to another;
+				\item describe the parallel, branched and concurrent flow of the system;
+			\end{itemize}
+
+		\subsection{Software Development Process}
+			It is the process of dividing software development work into distinct phases to improve design, product management and project management. It is also known as a software development life cycle. The methodology may include the pre-definition of specific deliverables and artifacts that are created and completed by a project team to develop or maintain an application.
+
+			Most modern development processes can be vaguely described as agile. Other methodologies include waterfall, prototyping, iterative and incremental development, spiral development, rapid application development and extreme programming.
+
+	\section{The Activity diagrams}
+		\labelRef{fig:login-activity}[Figure 1] represents the Activity diagram of a user trying to login into the platform. If he fails 2 times, a capcha must be completed for additional attempts. If he fails 5 times, the access is locked for futher tries and an Email warning is sent to the account's user. Otherwise, the messages, notifications and other necessary data is load to display the user's Home page.
+
+		\bigskip
+		In \labelRef{fig:registration-activity}[Figure 2] is shown the activity of registration. After successfully submiting the registration data, an email confirmation is sent. If in the following 10 minutes the user doesn't validate his account, the registration data is removed from the Database.
+
+		\bigskip
+		In \labelRef{fig:write-a-comment-activity}[Figure 3] I tried to separate what activities are done in the controller and view. When the comment is submited, in the controller, it is validated. If it is found to be inappropriate, then an email notification is sent to an admin and a warning is displayed in View. Otherwise, the comment is registred in the DB and notifications are sent to users interested in this comment. After that, the comment is displayed.
+
+		\myIncludeImg{imgs/login.png}[0.55][Login][login-activity]
+		\myIncludeImg{imgs/registration.png}[0.55][Registration][registration-activity]
+		\myIncludeImg{imgs/write-a-comment.png}[0.55][Write a comment][write-a-comment-activity]
+
+
+	\section{Software Development Process}
+		\textit{Application delivery}: This application must fulfill requests from thousands of users at the same time, in a fast and reliable way. In order to satisfy this need, multiple servers must be used across the world. For begginning, AWS can be used, as it is will be easier and cheaper to maintain. It will also have the option to set a local server. This will give the option to companies to establish a local, private and safe way of comunicating between workers. I'm sure many will use this options, as the risk of information leaking is very big. As it will be open source, everyone can adjust the platform to their specific needs: perhaps they may want to add additional logic on detecting from who the information has most likey leaked. Additionally, external laws can't interfere with such local social networks.
+
+		\textit{Installation}: The platform will be available as a web site. The mobile phones will have the option to install the application. For those who want to locally deploy the platform, they will need to simply run a few commands.
+
+	\section{Conclusion}
+		In this laboratory work I have learned about Activity diagrams. It can be used as an additional tool of explaining and visualizing what an app should do.
+
+		While writing the "Software Development Process", I had to reanalyse my app: since it will be mostly a comunity product, there won't be much funds, so I came up with the idea of local deployment as a reliable source of money. Going through such an analysis, really helps to tackle even more problems and features.
+\end{document}
