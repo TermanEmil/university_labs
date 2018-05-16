@@ -48,8 +48,8 @@ class Mesh
 	{
 		mat4.identity(this.modelMatrix);
 		mat4.translate(this.modelMatrix, this.transform.pos.elements);
-		mat4.scale(this.modelMatrix, this.transform.scale.elements);
 		this.ApplyRotation();
+		mat4.scale(this.modelMatrix, this.transform.scale.elements);		
 
 		if (this.verts != null && this.verts != undefined)
 		{
