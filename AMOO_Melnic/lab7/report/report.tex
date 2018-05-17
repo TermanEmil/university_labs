@@ -46,17 +46,17 @@
 			Most modern development processes can be vaguely described as agile. Other methodologies include waterfall, prototyping, iterative and incremental development, spiral development, rapid application development and extreme programming.
 
 	\section{The Activity diagrams}
-		\labelRef{fig:login-activity}[Figure 1] represents the Activity diagram of a user trying to login into the platform. If he fails 2 times, a capcha must be completed for additional attempts. If he fails 5 times, the access is locked for futher tries and an Email warning is sent to the account's user. Otherwise, the messages, notifications and other necessary data is load to display the user's Home page.
+		\labelRef{fig:login-activity}[Figure 1] represents the Activity diagram of a user trying to login into the platform. If he fails 2 times, a capcha must be completed for additional attempts. If he fails 5 times, the access is locked for futher tries and an Email warning is sent to the account's user and the action is terminated. Otherwise, messages, notifications and other necessary data is loaded to display the user's Home page.
 
 		\bigskip
-		In \labelRef{fig:registration-activity}[Figure 2] is shown the activity of registration. After successfully submiting the registration data, an email confirmation is sent. If in the following 10 minutes the user doesn't validate his account, the registration data is removed from the Database.
+		In \labelRef{fig:registration-activity}[Figure 2] is shown the activity of registration. After successfully submiting the registration details, an email confirmation is sent. If in the following 10 minutes the user doesn't validate his account, the registration data is removed from the Database. Otherwise, the account is set as active.
 
 		\bigskip
-		In \labelRef{fig:write-a-comment-activity}[Figure 3] I tried to separate what activities are done in the controller and view. When the comment is submited, in the controller, it is validated. If it is found to be inappropriate, then an email notification is sent to an admin and a warning is displayed in View. Otherwise, the comment is registred in the DB and notifications are sent to users interested in this comment. After that, the comment is displayed.
+		In \labelRef{fig:write-a-comment-activity}[Figure 3] I tried to separate what activities are done in the controller and view. When the comment is submited, it is validated in the controller. If it is found to be inappropriate, then an email notification is sent to an admin and a warning is displayed in View. Otherwise, the comment is registred in the DB and notifications are sent to users interested in this comment. After that, the comment is displayed.
 
-		\myIncludeImg{imgs/login.png}[0.55][Login][login-activity]
-		\myIncludeImg{imgs/registration.png}[0.55][Registration][registration-activity]
-		\myIncludeImg{imgs/write-a-comment.png}[0.55][Write a comment][write-a-comment-activity]
+		\myIncludeImg{imgs/login.png}[0.5][Login][login-activity]
+		\myIncludeImg{imgs/registration.png}[0.5][Registration][registration-activity]
+		\myIncludeImg{imgs/write-a-comment.png}[0.5][Write a comment][write-a-comment-activity]
 
 
 	\section{Software Development Process}
