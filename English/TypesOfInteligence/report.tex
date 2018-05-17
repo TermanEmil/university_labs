@@ -1,0 +1,63 @@
+\documentclass{article}
+
+\usepackage{enumitem}
+\usepackage{indentfirst}
+\usepackage[export]{adjustbox}
+\usepackage{silence}
+\WarningFilter{latex}{You have requested package}
+
+\usepackage{lib/defaultReportSettings}
+\usepackage{lib/myTitlePage}
+\usepackage{lib/customHyperRef}
+\usepackage{lib/customPseudoLstling}
+\usepackage{lib/myIncludeImg}
+\usepackage{lib/unumberedSectionsAndSubsections}
+
+\setlist[itemize]{noitemsep, topsep=0pt}
+
+\begin{document}
+	\section{Types of inteligence}
+		In Machine Learning there are usually distinguished 3 types of inteligence or ways of learning:
+		\begin{itemize}
+			\item Supervised learning;
+			\item Unsupervised learning;
+			\item Reinforcemnt learning;
+		\end{itemize}
+
+		\subsection{Supervised learning}
+			As the name suggests, this is the process of teaching a machine to learn from some given examples. The most common problems solved with this are data recognitions, like Image and Speech recognition.
+
+			Let's take a real problem: for example, a developer wants to teach a machine to recognize hand written numbers from 0 to 9. For that, he will have a \textbf{Data Set} which consists of thousand of examples of labeled hand-written numbers. The neural network, used for this problem, is initialized with random weights. It will have as inputs the pixels of the image, let's say 32x32 = 1024 input nodes, and 10 outputs. In the beginning, the machine will make no sense at all, but with each image, it learns to adjust its weights, so that it has a very low error. How does it adjust its weights? For example, an image labeled as 8 is passed to the network. It gives the following result (as an example):
+			\begin{enumerate}
+				\setcounter{enumi}{-1}
+				\item 0.5
+				\item 0.13
+				\item 0.23
+				\item 0.97
+				\item 0.01
+				\item 0.21
+				\item 0.53
+				\item 0.73
+				\item 0.12
+				\item 0.03
+			\end{enumerate}
+			For this output, the machine will say that the given number is 3. The error is computed for each output and the backpropagation process is launched. In this process, the weights are adjusted to minimize the error.
+			And this process is repetead thousands of times, until the machine learns to generalize and come up with satisfactory results.
+
+		\subsection{Reinforcement learning}
+			The most significant feature is that the machine comes up with its own solutions.
+			Some of the most popular algorithms are:
+			\begin{itemize}
+				\item Q-learning (Q = quality function);
+				\item Genetic algorithms;
+				\item other
+			\end{itemize}
+			The Genetic Algorithms come with a very interesting and natural aproach: it evolves the weights trough crossover and mutation, just like real evolution.
+			The problems that Reinforcement learning usually deals with are: AI for Game Bots, Robotic movement and many other problems. Some of my favorite examples are: evolution of virtual trees are evolution of virtual animals that learn to cooperate to reach a common goal.
+			
+	\section{What is memory?}
+		Practically, if a network has inputs from previous neurons, then it is said to have memory. Such connections are called Recursive Connections. The memory is needed in Video processing for example, where previous frames also matter. Or for speech processing, to understand what a person means. If we speak about fixed neural networks, then many Recurent Connections are added in the network. If it's an augmented network, where the machine develops it's own connections, then the developer doesn't need to specify anything: if the machine decides that it needs some memory, it will \textbf{evolve} some recurrent connections of its own.
+
+	\section{Conclusion}
+		Studying reinfocement learning is very interesting, as it can come up with very interesting solutions, that we humans, would have never thought about. It's interesting to set a problem where memory is required and see how the agents \textbf{evolve} memory connections. It's fascinating to see, that a virtual human skeleton with muscles learns to walk just like a real human, on its feet only, not on his hands too.
+\end{document}
