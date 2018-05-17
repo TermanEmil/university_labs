@@ -1,3 +1,5 @@
+// SpicySnail - Miculet ViteOOk
+
 class Sphere extends GameObject
 {
 	constructor(radius, edgeCount = 36)
