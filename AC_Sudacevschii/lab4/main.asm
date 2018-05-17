@@ -24,26 +24,9 @@ begin:
     add ah, 2
     cmp al, ah
     
-    je EQUAL
     jg GREATER
-    jmp LESS
     
-    EQUAL:
-        jmp LESS
-    GREATER:
-        mov ax, 0h
-        mov bx, 0h
-        
-        mov al, X
-        shr ax, 1
-        sub ax, 42
-        
-        mov bl, Z
-        add ax, bx
-        
-        mov Y, ax
-        jmp ENDPROG
-    LESS:
+    LESS_OR_EQUAL:
         mov ax, 0h
         mov bx, 0h
         
@@ -55,11 +38,22 @@ begin:
         shl ax, cl
         
         sub ax, 17
-        mov Y, ax
+        
+        jmp ENDPROG
+    GREATER:
+        mov ax, 0h
+        mov bx, 0h
+        
+        mov al, X
+        shr ax, 1
+        sub ax, 42
+        
+        mov bl, Z
+        add ax, bx
         
         jmp ENDPROG
     
     ENDPROG:
-    
+        mov Y, ax
 end begin    
     

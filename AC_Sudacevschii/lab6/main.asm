@@ -7,41 +7,109 @@ org 100h
     matching_pos        DB 10
     notmatching_pos     DB 14
     
+    welcome_msg         db 'Welcome, press any key to continue$'
+    
     matching_msg        db 'Matching: $'
     notmatching_msg     db 'Not Matching: $'
+    
+    draw_square_msg     db 'Press y to draw square$'
+    find_chars_msg      db 'Press y to find chars: $'
     
     color               db 1h
     bg_color            db 5h
     
-    square_w            dd 30
-    square_h            dd 50
+    square_w            dd 50
+    square_h            dd 70
+    
+    square_padding_x    dd 130
+    square_padding_y    dd 130
+    
+    add_tmp             dd ?
     
 .CODE
+
+SET_CURS_POS MACRO pos_x, pos_y
+    mov dh, pos_y
+    mov dl, pos_x
+    mov ah, 02h 
+    int 10h    
+ENDM
+
+PRINT_STR MACRO str
+    mov dx, offset str
+    mov ah, 9
+    int 21h        
+ENDM               
+
+SET_PIXEL MACRO color, pos_x, pos_y
+    mov dx, pos_y
+    mov cx, pos_x
+    mov al, color
+    mov ah, 0ch
+    int 10h    
+ENDM
+
+END_PROG MACRO
+    mov ax, 4c00h
+    int 21h    
+ENDM
+
 begin:
     mov ax, @DATA
     mov ds, ax
     
-    call draw_square
-    ;call find_chars
+    PRINT_STR welcome_msg
     
-    hlt
-
-find_chars proc
-    ; Print first msg
-    mov dx, offset matching_msg
-    mov ah, 9
-    int 21h     
-    
-    ; set cursor pos
-    mov dh, 1
-    mov dl, 0
-    mov ah, 02h 
+    ; Disable blinking
+    mov ch, 32
+    mov ah, 1
     int 10h
     
-    ; Print second msg
-    mov dx, offset notmatching_msg
-    mov ah, 9
-    int 21h 
+    ; Wait for keyboard stroke
+    mov ah, 00h
+    int 16h
+    
+    ; set graphics video mode
+    mov al, 13h
+    mov ah, 0
+    int 10h
+    
+    PRINT_STR draw_square_msg
+    
+    ; Wait for keyboard input (without echo)
+    mov ah, 00h
+    int 16h
+    
+    ; Check for keystroke in keyboard buffer
+    mov ah, 01h
+    int 16h
+        
+        ; If Yes ('y') then draw square
+        cmp al, 'y'
+        jne DONT_DRAW_SQUARE
+            call draw_square
+        DONT_DRAW_SQUARE:
+    
+    SET_CURS_POS 0, 0
+    PRINT_STR find_chars_msg
+    
+    ; read character from standard input, with echo, result is stored in AL
+    mov ah, 1
+    int 21h
+        
+        ; If Yes then find chars
+        cmp al, 'y'
+        jne DONT_FIND_CHARS
+            call find_chars
+        DONT_FIND_CHARS:
+        
+    END_PROG
+
+find_chars proc
+    SET_CURS_POS 0, 1
+    PRINT_STR matching_msg
+    SET_CURS_POS 0, 2
+    PRINT_STR notmatching_msg
       
     mov si, 0
     main_string_loop:      
@@ -55,12 +123,7 @@ find_chars proc
             jne CHAR_NOT_EQ
             
             CHAR_EQ:
-                ; set cursor pos to row = 0 | col = matching_pos
-                mov dh, 0
-                mov dl, matching_pos
-                mov ah, 02h
-                int 10h
-                
+                SET_CURS_POS matching_pos, 1
                 inc matching_pos
                 
                 mov al, student_name[si]
@@ -79,10 +142,8 @@ find_chars proc
         
         PRINT_ON_SECOND_LINE_IF_NO_MATCH:
             mov dh, notmatching_pos
-            sub dh, 13
-            mov dl, notmatching_pos
-            mov ah, 02h
-            int 10h
+            sub dh, 12
+            SET_CURS_POS notmatching_pos, dh
             
             inc notmatching_pos
             
@@ -127,37 +188,44 @@ print_al_char proc
     mov cx, 1                   ; nr of times
     mov ah, 09h                 ; interrupt value
     int 10h
+    
     RET        
 endp print_al_char
 
 draw_square proc
-    ; set graphics video mode
-    mov al, 13h
-    mov ah, 0
-    int 10h
+    
+    mov cx, square_h
+    height_loop:
+        mov si, cx
+        
+        mov bx, si
+        add bx, square_padding_y 
+        SET_PIXEL 1100b, square_padding_x, bx
+        
+        mov dx, si
+        add dx, square_padding_y
+        
+        mov cx, square_padding_x
+        add cx, square_w
+        SET_PIXEL 1100b, cx, dx
+        
+        mov cx, si
+        loop height_loop
     
     mov cx, square_w
     width_loop:
         mov si, cx
         
-        mov cx, square_h
-        height_loop:
-            mov di, cx
+        mov cx, si
+        add cx, square_padding_x  
+        SET_PIXEL 1100b, cx, square_padding_x
         
-            mov al, 1100b
-            mov cx, 0
-            mov dx, cx
-            mov ah, 0ch
-            int 10h
-            
-            mov al, 1100b
-            mov cx, square_w
-            mov dx, cx
-            mov ah, 0ch
-            int 10h
-            
-            mov cx, di
-            loop height_loop 
+        mov dx, square_padding_y
+        add dx, square_h
+        
+        mov cx, square_padding_x
+        add cx, si
+        SET_PIXEL 1100b, cx, dx
         
         mov cx, si
         loop width_loop
