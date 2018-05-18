@@ -15,42 +15,28 @@
 \setlist[itemize]{noitemsep, topsep=0pt}
 
 \begin{document}
-	\myTitlePage{AMOO}{Terman Emil FAF161}[R. Melnic][Component Diagrams. Project setup. Top-down and bottom-up design.][8]
+	\myTitlePage{AMOO}{Terman Emil FAF161}[M. Gavrilita][Deployment Diagrams. Data Flow Diagrams. OntoUML.][9]
 
 	\section{Theory}
-		\subsection{Component diagrams}
-			Component diagrams are different in terms of nature and behavior. Component diagrams are used to model the physical aspects of a system. Now the question is, what are these physical aspects? Physical aspects are the elements such as executables, libraries, files, documents, etc. which reside in a node.
+		\subsection{Deployment diagrams}
+			Deployment diagrams are used to visualize the topology of the physical components of a system, where the software components are deployed.
 
-			Component diagrams are used to visualize the organization and relationships among components in a system. These diagrams are also used to make executable systems.
+			Deployment diagrams are used to describe the static deployment view of a system. Deployment diagrams consist of nodes and their relationships.
 
-			\textbf{Purpose?} Component diagram is a special kind of diagram in UML. The purpose is also different from all other diagrams discussed so far. It does not describe the functionality of the system but it describes the components used to make those functionalities.
+			The term Deployment itself describes the purpose of the diagram. Deployment diagrams are used for describing the hardware components, where software components are deployed. Component diagrams and deployment diagrams are closely related.
 
-			\textbf{Benefits}
-			\begin{itemize}
-				\item imagine the system’s physical structure;
-				
-				\item emphasize the service behavior as it relates to the interface;
-				
-				\item pay attention to the system’s components and how they relate;
-			\end{itemize}
+			Component diagrams are used to describe the components and deployment diagrams shows how they are deployed in hardware.
+			UML is mainly designed to focus on the software artifacts of a system. However, these two diagrams are special diagrams used to focus on software and hardware components.
 
-		\subsection{Top-down and bottom-up design}
-			\textbf{Top-down} and \textbf{bottom-up} are both strategies of information processing and knowledge ordering, used in a variety of fields including software, humanistic and scientific theories (see systemics), and management and organization. In practice, they can be seen as a style of thinking, teaching, or leadership.
+			Most of the UML diagrams are used to handle logical components but deployment diagrams are made to focus on the hardware topology of a system. Deployment diagrams are used by the system engineers.
 
-			\begin{itemize}
-				\item a \textbf{top-down} approach (also known as stepwise design and in some cases used as a synonym of decomposition) is essentially the breaking down of a system to gain insight into its compositional sub-systems in a reverse engineering fashion. In a top-down approach an overview of the system is formulated, specifying, but not detailing, any first-level subsystems. Each subsystem is then refined in yet greater detail, sometimes in many additional subsystem levels, until the entire specification is reduced to base elements. A top-down model is often specified with the assistance of "black boxes", which makes it easier to manipulate. However, black boxes may fail to clarify elementary mechanisms or be detailed enough to realistically validate the model. Top down approach starts with the big picture. It breaks down from there into smaller segments;
+		\subsection{OntoUML}
+			OntoUML is a ontologically well-founded language for Ontology-driven Conceptual Modeling. OntoUML is built as a UML extension based on the Unified Foundational Ontology (UFO). OntoUML has been adopted by many academic, corporate and governmental institutions worldwide for the development of conceptual models in a variety of domains. It has also been considered as a candidate for addressing the OMG SIMF (Semantic Information Model Federation) Request for Proposal, as is explicitly recognized as the foundations for the Data Modeling Guide (DMG) For An Enterprise Logical Data Model (ELDM) initiative. Finally, some of the foundational theories underlying OntoUML have also influenced other popular conceptual modeling languages such as ORM 2.0.
 
-				\item a \textbf{bottom-up} approach is the piecing together of systems to give rise to more complex systems, thus making the original systems sub-systems of the emergent system. Bottom-up processing is a type of information processing based on incoming data from the environment to form a perception. From a cognitive psychology perspective, information enters the eyes in one direction (sensory input, or the "bottom"), and is then turned into an image by the brain that can be interpreted and recognized as a perception (output that is "built up" from processing to final cognition). In a bottom-up approach the individual base elements of the system are first specified in great detail. These elements are then linked together to form larger subsystems, which then in turn are linked, sometimes in many levels, until a complete top-level system is formed. This strategy often resembles a "seed" model, by which the beginnings are small but eventually grow in complexity and completeness. However, "organic strategies" may result in a tangle of elements and subsystems, developed in isolation and subject to local optimization as opposed to meeting a global purpose;
-			\end{itemize}
+	\section{Deployment diagrams}
+		\labelRef{fig:deploy-diag}[Figure \ref{fig:deploy-diag}] represents a general Deployment Diagram conerning the \textit{Media Manager}. The \textit{Photos} and the \textit{Videos} are saved on the server and only the paths are stored in the Database. The Database has Proxy which comunicates with our program. The client accesses the web app through a Web Browser. The Browser then communicates through a \textit{Data Access} "interface", which represents the actual requests with its headers.
+		\myIncludeImg{imgs/DeploymentDiagram.png}[0.3][Deployment Diagram][deploy-diag]
 
-	\section{Component Diagrams}
-		In \labelRef{fig:login}[Figure 1] is represented the component diagram of Login. I tried to keep to the MVC patern. With that being said, the user interacts with the \textbf{Login} \textit{View}, which sends the \textit{Credentials} to the \textit{Authentication}. It then communicates with the \textit{UserManager} to authenticate and then form the user's \textit{Claims}. A \textit{Session} is formed and it is used for further user identification. Finally, the \textit{Profile View} is fed with a \textit{Profile View Model}.
-
-		\labelRef{fig:comment}[Figure 2] represents the components of commenting. It interacts with the \textit{Authorization Manager} to check if the user is able for such an action. To check if the content does not contain anything inappropriate, the contents are sent to a checker. If it is found to have problems, a notification email can be sent to an admin through the \textit{Email Service}.
-
-		\myIncludeImg{imgs/Login-to-profile.png}[0.5][Login Component Diagra][login]
-
-		\myIncludeImg{imgs/Comment.png}[0.4][Login Component Diagra][comment]
-
-		\myIncludeImg{imgs/UploadPhoto.png}[0.4][Upload Photo Component Diagra][upload-photo]
+	\section{Conclusion}
+		With \textbf{Deployment diagrams} it's easier to create an even more general view on the project. In this laboratory work, I have learned what hardware oriented diagrams there are. Despite the previous UNL schemes, in this one, it is clearly shown that the User uses his \textbf{Web Browser} to interact with the server. Another important thing is that this type of diagram visualizes where the \textit{Photos} and \textit{Videos} are located, which wasn't quite possible in the previous diagrams.
 \end{document}

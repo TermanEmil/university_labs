@@ -7,14 +7,21 @@
 % label ref
 % reflink text
 
-\DeclareDocumentCommand{\labelRef}{m O{#1}}
-{
-	\def\refText{#2}
-	\let \OldRefTexA \refText
-	\renewcommand{\refText}{\underline{\textit{\OldRefTexA}}}
+	% \let \OldRefTexA \refText
+	% \renewcommand{\refText}{\underline{\textit{\OldRefTexA}}}
 	% \let \OldRefTexB \refText
 	% \renewcommand{\refText}{{\small \color{blue} \OldRefTexB}}
-	\hyperref[#1]{\refText}
+
+% \def\refText{#2}
+% 	\let \OldRefTexA \refText
+% 	\renewcommand{\refText}{\underline{\textit{\OldRefTexA}}}
+
+\DeclareDocumentCommand{\labelRef}{m O{#1}}
+{%
+	\def\refText{#2}%
+	\let \OldRefTexA \refText%
+	\renewcommand{\refText}{\underline{\textit{\OldRefTexA}}}%
+	\hyperref[#1]{\refText}%
 }
 
 \DeclareDocumentCommand{\myHref}{m O{#1}}

@@ -21,22 +21,19 @@
 % #3 caption
 % #4 label
 
-\DeclareDocumentCommand{\myIncludeImg}{m O{1} O{} O{Img\nImg} O{}}{
-	\refstepcounter{nImg}
-	\captionsetup{labelformat=ImgCaption,labelsep=colon}
-
-	\begin{center}
-		\begin{figure}[#5]
-			\begin{mdframed}[backgroundcolor=black!5,
-							rightline=false,
-							leftline=false]
-				\begin{center}
-					\includegraphics[scale=#2]{#1}
-					\caption{#3}
-				\end{center}
-			\end{mdframed}
-
-			\label{fig:#4}
-		\end{figure}
-	\end{center}
+\DeclareDocumentCommand{\myIncludeImg}{m O{1} O{} O{Img\nImg} O{!ht}}{%
+	\captionsetup{labelformat=ImgCaption,labelsep=colon}%
+	\begin{center}%
+		\begin{figure}[#5]%
+			\refstepcounter{nImg}\label{fig:#4}%
+			\begin{mdframed}[backgroundcolor=black!5,%
+							rightline=false,%
+							leftline=false]%
+				\begin{center}%
+					\includegraphics[scale=#2]{#1}%
+					\caption{#3}%
+				\end{center}%
+			\end{mdframed}%
+		\end{figure}%
+	\end{center}%
 }

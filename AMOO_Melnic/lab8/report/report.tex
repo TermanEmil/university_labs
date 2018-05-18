@@ -1,10 +1,12 @@
+% \documentclass[draft]{article}
 \documentclass{article}
+
+\usepackage{silence}
+\WarningFilter{latex}{You have requested package}
 
 \usepackage{enumitem}
 \usepackage{indentfirst}
 \usepackage[export]{adjustbox}
-\usepackage{silence}
-\WarningFilter{latex}{You have requested package}
 
 \usepackage{lib/defaultReportSettings}
 \usepackage{lib/myTitlePage}
@@ -12,10 +14,9 @@
 \usepackage{lib/myIncludeImg}
 \usepackage{lib/unumberedSectionsAndSubsections}
 
-\setlist[itemize]{noitemsep, topsep=0pt}
-
+\hypersetup{final}
 \begin{document}
-	\myTitlePage{AMOO}{Terman Emil FAF161}[R. Melnic][Component Diagrams. Project setup. Top-down and bottom-up design.][8]
+	\myTitlePage{AMOO}{Terman Emil FAF161}[M. Gavrilita][Component Diagrams. Project setup. Top-down and bottom-up design.][8]
 
 	\section{Theory}
 		\subsection{Component diagrams}
@@ -44,13 +45,25 @@
 			\end{itemize}
 
 	\section{Component Diagrams}
-		In \labelRef{fig:login}[Figure 1] is represented the component diagram of Login. I tried to keep to the MVC patern. With that being said, the user interacts with the \textbf{Login} \textit{View}, which sends the \textit{Credentials} to the \textit{Authentication}. It then communicates with the \textit{UserManager} to authenticate and then form the user's \textit{Claims}. A \textit{Session} is formed and it is used for further user identification. Finally, the \textit{Profile View} is fed with a \textit{Profile View Model}.
+		In \labelRef{fig:login}[Figure \ref{fig:login}] is represented the component diagram of Login. I tried to keep to the MVC patern. With that being said, the user interacts with the \textbf{Login} \textit{View}, which sends the \textit{Credentials} to the \textit{Authentication}. It then communicates with the \textit{UserManager} to authenticate and then form the user's \textit{Claims}. A \textit{Session} is formed and it is used for further user identification. Finally, the \textit{Profile View} is fed with a \textit{Profile View Model}.
 
-		\labelRef{fig:comment}[Figure 2] represents the components of commenting. It interacts with the \textit{Authorization Manager} to check if the user is able for such an action. To check if the content does not contain anything inappropriate, the contents are sent to a checker. If it is found to have problems, a notification email can be sent to an admin through the \textit{Email Service}.
+		\bigskip
+		\labelRef{fig:comment}[Figure \ref{fig:comment}] represents the components of commenting. It interacts with the \textit{Authorization Manager} to check if the user is able for such an action. To check if the content does not contain anything inappropriate, the contents are sent to a checker. If it is found to have problems, an email notification can be sent to an admin trough the \textit{Email Service} and a \textit{Report} can be registered in the Database.
+
+		\bigskip
+		In \labelRef{fig:upload-photo}[Figure \ref{fig:upload-photo}] is shown the components needed for a Photo Uploader. First, it gets the Logged User to link the user ID to the photo. Then, it interacts with the \textit{Tag Manager} to find possible tags on the uploaded image. It must also check for Inappropriate content which is done in the \textit{Inappropriate Content Manage}. Again, if a problem is found, an email notification can be sent.
 
 		\myIncludeImg{imgs/Login-to-profile.png}[0.5][Login Component Diagra][login]
-
 		\myIncludeImg{imgs/Comment.png}[0.4][Login Component Diagra][comment]
-
 		\myIncludeImg{imgs/UploadPhoto.png}[0.4][Upload Photo Component Diagra][upload-photo]
+
+	\section{Project Setup}
+		To work on this project, I would require Visual Studio, because I would write it in ASP.NET Core 2. I would definetly need git to work with my team. As for the database, I would install SQLite.
+
+		For testing, I would need multiple browsers, like Chrome, Firefox, Opera, Sefari, Explorer. For testing on mobile platforms, I would need multiple types of phones: Android, IOS, etc.
+
+		To check if the POST/GET and other requests work, I would use \textit{Insomnia REST}.
+
+	\section{Conclusion}
+		Component diagrams, are very helpful to get a general idea about what parts of the system interact with each other, and what components can be reused. This type of diagrams don't enter too deep into details. Rather than \textit{Class Diagrams}, it offers a much more general view of the project.
 \end{document}
