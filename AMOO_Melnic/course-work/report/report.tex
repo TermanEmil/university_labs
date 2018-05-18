@@ -1,0 +1,439 @@
+\documentclass{article}
+
+\usepackage{enumitem}
+\usepackage{indentfirst}
+\usepackage[export]{adjustbox}
+\usepackage{float}
+\usepackage{silence}
+\WarningFilter{latex}{You have requested package}
+
+\usepackage{lib/defaultReportSettings}
+\usepackage{lib/myTitlePage}
+\usepackage{lib/customHyperRef}
+\usepackage{lib/myIncludeImg}
+\usepackage{lib/unumberedSectionsAndSubsections}
+
+\setlist[itemize]{noitemsep, topsep=0pt}
+
+\begin{document}
+	\myTitlePage{AMOO}{Terman Emil FAF161}[M. Gavrilita][Course work on UML]
+
+	\section{Intro to Theory}
+		\subsection{Project description, User stories}
+		\subsection{Modeling Lnaguages}
+			\textbf{Use case diagrams} are usually referred to as behavior diagrams used to describe a set of actions (use cases) that some system or systems (subject) should or can perform in collaboration with one or more external users of the system (actors). Each use case should provide some observable and valuable result to the actors or other stakeholders of the system.
+
+			\bigskip
+			\textbf{Modeling language}: can be graphical or textual:
+			\begin{itemize}
+				\item Graphical modeling languages use a diagram technique with named symbols that represent concepts and lines that connect the symbols and represent relationships and various other graphical notation to represent constraints;
+				\item Textual modeling languages may use standardized keywords accompanied by parameters or natural language terms and phrases to make computer-interpretable expressions;
+			\end{itemize}
+
+		\subsection{Conceptual OO Analysis / Technical OO Design}
+			Object-oriented analysis and design is a popular technical approach for analyzing and designing an application, system, or business by applying object-oriented programming, as well as using visual modeling throughout the development life cycles to foster better stakeholder communication and product quality.
+
+			The primary tasks in object-oriented analysis (OOA) are:
+			\begin{itemize}
+				\item find the objects;
+				\item organize the objects;
+				\item describe how the objects interact;
+				\item define the behavior of the objects;
+				\item define the internals of the objects;
+			\end{itemize}
+
+		\subsection{Abstraction, Encapsulation, Decomposition, Generalization}
+			All the following concepts represent basic analysis and design techniques. They are interrelated and normally used together during software development. We use them even though we are not always aware of it. Deeper understanding of these concepts helps us to be more accurate and effective.
+
+			\begin{enumerate}
+				\item \textbf{Abstraction} - in general, it's the process of consciously ignoring some aspects of a subject under analysis in order to better understand other aspects of it. In other words, it is some kind of a simplification of a subject. In software in particular, analysis and design are all about abstraction.
+					\begin{itemize}
+						\item when the architecture is modeled, you concentrate on high-level modules and their relationships and ignore their internal structure;
+
+						\item each UML diagram gives a special, limited view on the system. Therefore, it focuses on a single aspect and ignores all other things (sequences abstract objects and messages, deployment abstracts network and servers, use cases abstract system users and their interactions with a system, etc);
+
+						\item so, abstraction is used to generalize objects into one category in the design phase. For example in a travel management system you can use Vehicle as an abstract object or entity that generalizes how you travel from one place to another;
+					\end{itemize}
+
+				\item \textbf{Encapsulation} - refers to the process of an object controlling outside access to its internal data. This also means to hide functions and methods of a class;
+
+				\item \textbf{Generalization} - is a relationship in which one model element (the child) is based on another model element (the parent). Generalization relationships are used in classes, components, deployments and use-case diagrams to indicate that the child receives all of the attributes, operations and relationships that are defined in the parent. This also doesn’t have names.
+
+				\item \textbf{Decomposition} - is an application of the old good principle "divide and conquer" in software development. It is a technique of classifying, structuring and grouping complex elements in order to form more atomic ones, organized in a certain fashion and easier to manage. In all phases there are lots of examples:
+					\begin{itemize}
+						\item functional decomposition of a complex process to hierarchical structure of smaller sub-processes and activities;
+
+						\item  high-level structure of an complex application to 3 tiers - UI, logic and data;
+
+						\item UML packages are a direct use of decomposition on the model level - use packages to organize your model;
+
+						\item to have a good level of understanding of decomposition, you should first understand the concepts of association, composition, and aggregation;
+					\end{itemize}
+			\end{enumerate}
+
+		\subsection{Coupling and Cohesion, Separation of Concerns, Information Hiding, Conceptual integrity}
+
+			\textbf{Cohesion and Coupling} deal with the quality of an OO design. Generally, good OO design should be loosely coupled and highly cohesive. Lot of the design principles, design patterns which have been created are based on the idea of “Loose coupling and high cohesion”. The aim of the design should be to make the application:
+			\begin{itemize}
+				\item easier to add new features;
+				\item easier to develop;
+				\item easier to maintain;
+				\item less fragile;
+			\end{itemize}
+
+			\bigskip
+			\textbf{Cohesion} g is the degree to which one class knows about another class. Let us consider two classes class A and class B. If class A knows class B through its interface only i.e it interacts with class B through its API then class A and class B are said to be loosely coupled. If class A apart from interacting class B by means of its interface also interacts through the non-interface stuff of class B then they are said to be tightly coupled. Suppose the developer changes the class B’s non-interface part i.e non API stuff then in case of loose coupling class A does not breakdown but tight coupling causes the class A to break.
+				
+			\bigskip
+			\textbf{Coupling} is used to indicate the degree to which a class has a single, well-focused purpose. Coupling is all about how classes interact with each other, on the other hand cohesion focuses on how single class is designed. Higher the cohesiveness of the class, better is the OO design.
+
+			\bigskip
+			\textbf{Concerns} are the different aspects of software functionality. For instance, the "business logic" of software is a concern, and the interface through which this logic being used is another. The separation of concerns is keeping the code for each of these concerns separate. Changing the interface should not require changing the business logic code, and vice versa. Model-View-Controller (MVC) design pattern is an excellent example of separating these concerns for better software maintainability.
+
+			\textbf{Information hiding} is the process of hiding details of an object or function. Information hiding is a powerful programming technique because it reduces complexity. One of the chief  mechanisms for hiding information is encapsulation - combining elements to create a larger entity. The programmer can then focus on the new object without worrying about the hidden details. In a sense, the entire hierarchy of programming languages, from machine languages to high-level languages, can be seen as a form of information hiding. Information hiding is also used to prevent programmers from intentionally or unintentionally changing parts of a program.
+
+			\textbf{Conceptual integrity} it is the principle that anywhere you look in your system, you can tell that the design is part of the same overall design. This includes low-level issues such as formatting and identifier naming, but also issues such as how modules and classes are designed, etc. This is vitally important because inevitably unanticipated issues come up that must be resolved quickly.
+
+
+		\subsection{SOLID}
+			The term SOLID is a mnemonic acronym for five design principles intended to make software designs more understandable, flexible and maintainable.
+			\begin{itemize}
+				\item \textbf{S}ingle responsibility principle: a class should have only a single responsibility (i.e. changes to only one part of the software’s specification should be able to affect the specification of the class);
+				\item \textbf{O}pen for extensions and closed for modification;
+				\item \textbf{L}iskov substitution principle: "objects in a program should be replaceable with instances of their subtypes without altering the correctness of that program";
+				\item \textbf{I}nterface segregation principle: "many client-specific interfaces are better than one generalpurpose interface";
+				\item \textbf{D}ependency inversion principle: one should "depend upon abstractions, \textbf{not} concretions";
+			\end{itemize}
+
+		\subsection{Grasp Principles}
+			The different patterns and principles used in GRASP are controller, creator, indirection, information expert, high cohesion, low coupling, polymorphism, protected variations and pure fabrication. All these patterns answer some software problems, and these problems are common to almost every software development project.
+
+			These techniques have not been invented to create new ways of working, but to better document and standardize old, tried-and-tested programming principles in object-oriented design.
+
+		\subsection{Software Development Process}
+			It is the process of dividing software development work into distinct phases to improve design, product management and project management. It is also known as a software development life cycle. The methodology may include the pre-definition of specific deliverables and artifacts that are created and completed by a project team to develop or maintain an application.
+
+			Most modern development processes can be vaguely described as agile. Other methodologies include waterfall, prototyping, iterative and incremental development, spiral development, rapid application development and extreme programming.
+
+		\subsection{Top-down and Bottom-up Design}
+			Component diagrams are different in terms of nature and behavior. Component diagrams are used to model the physical aspects of a system. Now the question is, what are these physical aspects? Physical aspects are the elements such as executables, libraries, files, documents, etc. which reside in a node.
+
+			Component diagrams are used to visualize the organization and relationships among components in a system. These diagrams are also used to make executable systems.
+
+			\textbf{Purpose?} Component diagram is a special kind of diagram in UML. The purpose is also different from all other diagrams discussed so far. It does not describe the functionality of the system but it describes the components used to make those functionalities.
+
+			\textbf{Benefits}
+			\begin{itemize}
+				\item imagine the system’s physical structure;
+				
+				\item emphasize the service behavior as it relates to the interface;
+				
+				\item pay attention to the system’s components and how they relate;
+			\end{itemize}
+
+		\subsection{OntoUML}
+			OntoUML is a ontologically well-founded language for Ontology-driven Conceptual Modeling. OntoUML is built as a UML extension based on the Unified Foundational Ontology (UFO). OntoUML has been adopted by many academic, corporate and governmental institutions worldwide for the development of conceptual models in a variety of domains. It has also been considered as a candidate for addressing the OMG SIMF (Semantic Information Model Federation) Request for Proposal, as is explicitly recognized as the foundations for the Data Modeling Guide (DMG) For An Enterprise Logical Data Model (ELDM) initiative. Finally, some of the foundational theories underlying OntoUML have also influenced other popular conceptual modeling languages such as ORM 2.0.
+
+	\section{Analysis and Modeling}
+		\subsection{Main and Alternative Flows}
+			\begin{center}
+				\textbf{Main Flow}
+			\end{center}
+
+				\textbf{Uploading a new photo}
+				\begin{enumerate}
+					\item log in;
+					\item go to user profile;
+					\item press \textit{photos};
+					\item press \textit{Add photos/video};
+					\item choose file;
+					\item set as public;
+					\item add comment;
+					\item add tags;
+					\item upload photo;
+				\end{enumerate}
+
+				\textbf{Inviting a user to a chat grup}
+				\begin{enumerate}
+					\item log in;
+					\item create a chat grup;
+					\item search for the desired user;
+					\item go to his profile;
+					\item press the invite button on his profile;
+					\item choose the \textit{Invite to a chat} option;
+				\end{enumerate}
+
+				\textbf{Post on facebook}
+				\begin{enumerate}
+					\item log in;
+					\item choose the \textit{Create post} option;
+					\item write post content;
+					\item add a local image;
+					\item tag some friends;
+					\item write how you feel;
+					\item set publicity as \textit{friends-only};
+					\item post;
+				\end{enumerate}
+
+			\begin{center}
+				\textbf{Alternate Flow}
+			\end{center}
+
+				\textbf{Log in with the wrong credentials}
+				\begin{enumerate}
+					\item user goes to log in page;
+					\item enters wrong credentials;
+					\item the platform displays an error;
+					\item the user tries again;
+					\item another error is displayed;
+					\item a robot detection test is required this time;
+					\item user chooses to recover the password trough email;
+				\end{enumerate}
+
+				\textbf{Post rejected by group admin}
+				\begin{enumerate}
+					\item log in;
+					\item enter the desired group;
+					\item submit a post;
+					\item wait for approval;
+					\item post gets rejected for being irrelevant to the group;
+				\end{enumerate}
+
+				\textbf{Registering with an existing email}
+				\begin{enumerate}
+					\item go to register page;
+					\item enter credentials;
+					\item submit the request;
+					\item get an error that the email is already taken by another user;
+				\end{enumerate}
+
+
+		\subsection{Functional and Non functional requirements}
+			\begin{center}
+				\textbf{Functional requirements}
+			\end{center}
+
+				\textbf{What will happen?}
+				\begin{enumerate}
+					\item Register user on the platform;
+					\item Register a friend request;
+					\item Register an event;
+					\item Send email confirmation;
+					\item Find requested users;
+				\end{enumerate}
+
+			\begin{center}
+				\textbf{Non-functional requirements}
+			\end{center}
+
+				\textbf{How will it happen?}
+				\begin{enumerate}
+					\item Only registred users can send friend requests;
+					\item Users can cancel the friend request, until it is accepted;
+					\item Users can receive notifications;
+					\item An event invite can be set to be public or private;
+					\item Event invites can be canceled;
+				\end{enumerate}
+
+		\subsection{Technologies}
+			Facebook is a social web platform, so I suppose that a user privatness shoul come first. With that said, I will use \textit{Triple DES} or \textit{RSA} encryption algorithms, to ensure everything stays private.
+		
+			Moving on to profit, like the current facebook, I will sell ads. For that, I would use Google Ads, because they are quite profitable and easy to use.
+
+			Since I need to work in a team and continually maintain the web app, I would need a platform where I can easily collaborate with other developers. And \textbf{Github} comes with plenty of tools, that fit just right for this problem. Using git, I can create different branches and descriptively commit my changes.
+
+		\subsection{SWOT Analysis}
+			It is a strategic planning technique used to help a person or an organization to identify the Strengths, Weaknesses, Opportunities and Threats related to business competition or project planning. Strengths and Weakness are frequently internally-related, while Opportunities and Threats commonly focus on environmental placement.
+
+			\begin{itemize}
+				\item \textit{\textbf{S}trenghs}: characteristics of the business or project that give it an advantage over others;
+				\item \textit{\textbf{W}eaknesses}: characteristics of the business which can place the business or project at a disadvantage relative to others;
+				\item \textit{\textbf{O}pportunities}: elements in the environment that the business or project could exploit to its advantage;
+				\item \textit{\textbf{T}hreats}: elements in the environment that could cause trouble for the business or project;
+			\end{itemize}
+
+		\subsection{Domain Analysis}
+			\begin{itemize}
+				\item this platform is from the social networking \textbf{domain}. People are continously looking for a faster, intuitive and safier app, so I think, my application's main advantage is the full comunication privacy. Another strong point is that this project will be available as open source;
+				
+				\item \textit{The importance of this theme}: a user's privacy is often secretly ignored, or at least, the user isn't 100\% sure his chats are private. So, it would be a good idea to make the project open source so that other programmers can confirm my project's privatness;
+				
+				\item \textbf{Twiter} and \textbf{Instagram} are \textbf{similar applications}, but the user's private content is used for advertistment targeting and other nasty things. Instagram is more media based platform, whereas Twiter, it's more focused on comunication;
+				
+				\item \textit{The purpose and objectives}: This app is supposed to be open source, meaning that there will be many comunity contributions, which will greatly affect the popularity.
+			\end{itemize}
+
+		\subsection{Project Setup}
+			To work on this project, I would require Visual Studio, because I would write it in ASP.NET Core 2. I would definetly need access to git to work with my team. As for the database, I would install SQLite. I will also need multiple browsers, like Chrome, Firefox, Opera, Sefari, Explorer. For testing on mobile platforms, I would need multiple types of phones: Android, IOS, etc.
+
+		% \subsection{Delivery / Installation Documentation}
+
+
+	\section{Analysis and Modeling in UML}
+		\subsection{Use Case Diagram}
+			\labelRef{fig:enter-fb-usecase}[Figure 1] is the \textit{Use Case Diagram} for a user, when he wants to enter FB. The most basic features are \textit{Login} and \textit{Register}. The login can be done through Email or Phone number. If the user forgets his password/email/phone number, he is able to recover it. Registration may be done either through an external provider, like Google account or like the usual.
+			
+			\bigskip
+			In \labelRef{fig:general-fb-usecase}[Figure 2] is represented the most basic features a user can access. The first, most natural option, is to log out. He is also able to edit FB settings, like notifications. Moving on to \textit{Modify user data}, this option offers to add photos or videos, change the avatar photo, change birthday and other such data. As many other social platforms, the user is able to post on the timeline, with configurable publicity. As well as \textbf{Interact with other users}.
+
+			\bigskip
+			In \labelRef{fig:interact-with-others}[Figure 3] is shown the Interaction use case diagram. A logged user, can chat. He is able to interact with some Facebook Content, like reacting to a post, comment or share. He is also able to invite users to groups, events or chat groups.
+
+			\myIncludeImg{../../lab2/report/imgs/enter-fb.png}[0.4][Enter Facebook Use Case Diagram][enter-fb-usecase][H]
+
+			\myIncludeImg{../../lab2/report/imgs/general-use.png}[0.4][General use of FB Use Case Diagram][general-fb-usecase][H]
+
+			\myIncludeImg{../../lab2/report/imgs/interact-with-others.png}[0.4][Interactions with other Users Use Case Diagram][interact-with-others][H]
+
+		\subsection{Sequence Diagram}
+			In \labelRef{fig:seq-diag-reg}[Figure 4] is explained how the process of registration looks like. The actor is an unregistred user, and he interacts only with the site. While the Facebook platform, has interactions with both user and the database. First, the user tries to submit some registration data. Then the platform validates the input and loads the \textit{Terms of use} from the database. The user then accepts the terms and the platform validates the registration data on the server. After a successful validation, the user is then registred in the database as an unconfirmed user. After that, a message requesting email confirmation is sent back.
+
+			\bigskip
+			Moving on to user interaction, we have in \labelRef{fig:seq-diag-friend-req}[Figure 5] a friend request \textit{sequence diagram}. In this case, two actors are involved: the sender (A) and the receiver (B). First, the sender tries to access the target. The platform then, returns a list of possible matches. After that, the first user submits a friend request. Then a validation is run and the request is registred on the database, followed by a notification to the \textit{receiver}. Finally, the first user receives a \textit{success} message.
+
+			\bigskip
+			Finally, in \labelRef{fig:seq-diag-create-event}[Figure 6], the diagram of creating an event is shown. First, the user starts with accessing the \textit{Create event} page. Then, he submits the event's data, followed by a validation on the platform. The event is then created in the database. After that, the user, ussually decides to invite people to his event: invitations are sent and the requests are registred in the database.
+
+			\myIncludeImg{../../lab3/report/imgs/reg.png}[0.5][Seq Diag: Registration][seq-diag-reg][H]
+			
+			\myIncludeImg{../../lab3/report/imgs/friend-request.png}[0.5][Seq Diag: Friend request][seq-diag-friend-req][H]
+
+			\myIncludeImg{../../lab3/report/imgs/create-event.png}[0.5][Seq Diag: Create event][seq-diag-create-event][H]
+
+		\subsection{Collaboration Diagram}
+			The following diagrams are the exact copy from the previous laboratory task, but transformed in collaboration diagrams. For a more detailed description, please refer to my previous laboratory task.
+
+			\begin{itemize}
+				\item \textbf{\labelRef{fig:col-diag-reg}[Figure 7] - Registration}
+				\begin{enumerate}
+					\item open reg. page;
+					\item show reg. page;
+					\item enter reg. data;
+					\item validate reg. data;
+					\item load terms;
+					\item return terms;
+					\item show terms;
+					\item accept terms;
+					\item server validate reg. data;
+					\item valid reg. data;
+					\item register user;
+					\item user registered;
+					\item send email confirmation;
+					\item confimation sent;
+				\end{enumerate}
+
+				\item \textbf{\labelRef{fig:col-diag-friend-req}[Figure 8] - Friend request}
+				\begin{enumerate}
+					\item access target user;
+					\item find user;
+					\item return matching users;
+					\item show possible users;
+					\item send friend request;
+					\item validate request;
+					\item register friend request;
+					\item registered friend request;
+					\item notify user;
+					\item successful friend request;
+				\end{enumerate}
+
+				\item \textbf{\labelRef{fig:col-diag-create-event}[Figure 9] - Create an event}
+				\begin{enumerate}
+					\item access \textit{new event} option;
+					\item load \textit{new event} page;
+					\item submit event data;
+					\item validate request;
+					\item create event;
+					\item created event;
+					\item successful event creation;
+					\item invite users;
+					\item validate requests;
+					\item send invitation requests;
+					\item invitations sent;
+				\end{enumerate}
+			\end{itemize}
+
+			\myIncludeImg{../../lab4/report/imgs/reg.png}[0.5][Registration][col-diag-reg][H]
+			\myIncludeImg{../../lab4/report/imgs/friend-request.png}[0.5][Friend request][col-diag-friend-req][H]
+			\myIncludeImg{../../lab4/report/imgs/create-event.png}[0.5][Create event][col-diag-create-event][H]
+
+		\subsection{Class Diagram}
+			In \labelRef{fig:class-diagram}[Figure 10] it's represented the general structure of Facebook that is related to the user. It contains:
+			\begin{itemize}
+				\item Account;
+				\item Profile;
+				\item Converstaion;
+				\item Message;
+				\item Comment;
+				\item RCSContent (React Comment Share content)
+				\item Photo;
+				\item Share;
+				\item Reaction;
+				\item Account State interface;
+				\item Active account state;
+				\item Banned account state;
+				\item IssuedContent interface;
+			\end{itemize}
+
+			\bigskip
+			The most important class, is the \textbf{Profile}. It has an \textit{Agregation} from \textbf{Account}. (Why not \textit{Composition}? Because the account may get deleted, but the profile may still remain. The profile is also used to identify comments, reactions, shares, converstations and other things). All the user's friends are stored inside the Friends list. FriendRequests list is a container for pending friend requests. The user may \textit{ProcessFriendRequest()} and set it as accepted or rejected. The profile may be also deleted. In this case, all its public \textit{Issued content} will become anonymus.
+
+			\bigskip
+			The \textbf{Account} class contains all the user's identity. Some of its fields may be set to public in the profile settings. The boolean which indicates if the phone is confirmed is used when the user tries to LogIn with his phone number. The Role is used to diffirenciate between a simple or a special account, like an Admin. Moving on to \textit{Account state}: this represents an interface which shows if the account is available. For example, when some people try to find a user A, before they can see him, \textbf{accountState.isAvailable()} is checked first.
+
+			\bigskip
+			\textbf{AccountState} is an interface which is realized by \textbf{Active} or \textbf{Banned} classes. When a user is banned by an admin or multiple reports, an expiration time is set. If he is banned undefinetly, the \textit{endDate} is set to its maximum value.
+
+			\bigskip
+			\textbf{IssuedContent} is an interface assigned to anything that has an Owner and a creation time.
+
+			\bigskip
+			\textbf{RCSContent} is a base class for anything that can be Commented, Reacted or Shared.
+
+			\bigskip
+			The \textbf{Comment} class inherits from both \textit{Message} and \textit{RCSContent} and has a protected opperation which checks if the content is Uncensured. If there are problems, the comment is hidden until a special user can approve. It also has the option to be reported by anyone who sees the comment, which may lead to banning the owner's account. The \textit{TargetId} is the Id of the content that the comment was issued to. Any content on this platform has a unique ID. As said before, this class inherits from \textbf{Message}. This class has a protected string which represents the content. If the message contains a link to a video, or an image, or it's an audio/video message, then \textit{Read()} opperation will properly display it.
+
+			\myIncludeImg{../../lab5/report/imgs/ClassDiagram.png}[0.25][\textbf{MiniFacebook} class diagram - user related][class-diagram][H]
+
+		\subsection{Statechart Diagram}
+			In \labelRef{fig:create-an-event}[Figure 11] is represented the Statechart of creating a new event. First the user must enter the event details, then he is able invite people or add event photos. When he is done, the user is redirected to the event's View.
+
+			\bigskip
+			\labelRef{fig:add-new-photo}[Figure 12] is about adding a new photo. The user is able to load a local image or indicate a link. If the file or the link is invalid, the user is returned to the initial state. When successfull, the loaded photo is shown in full screen. From here, it's possible to tag people, add a location or a comment. After submit is pressed, a corresponding message is displayed. In this state, it's possible to add more photos.
+			
+			\bigskip
+			In \labelRef{fig:friend-request}[Figure 13] is shown the statechart of a friend request. First, the user tries to find some people in the search forms. If nothing satisfactory is found, he can cancel the action. Then profile is selected. It's also possible to cancel the action from this state. Here, a friend request button is available, if pressed, a message is displayed and the user is redirectioned to a page with people he may know. He can select other users or finish the action.
+
+			\myIncludeImg{../../lab6/report/imgs/create-event.png}[0.5][Create an event][create-an-event][H]
+			\myIncludeImg{../../lab6/report/imgs/add-new-photo.png}[0.5][Add new photo][add-new-photo][H]
+			\myIncludeImg{../../lab6/report/imgs/friend-request.png}[0.5][Friend request][friend-request][H]
+
+		\subsection{Activity Diagram}
+			\labelRef{fig:login-activity}[Figure 14] represents the Activity diagram of a user trying to login into the platform. If he fails 2 times, a capcha must be completed for additional attempts. If he fails 5 times, the access is locked for futher tries and an Email warning is sent to the account's user and the action is terminated. Otherwise, messages, notifications and other necessary data is loaded to display the user's Home page.
+
+			\bigskip
+			In \labelRef{fig:registration-activity}[Figure 15] is shown the activity of registration. After successfully submiting the registration details, an email confirmation is sent. If in the following 10 minutes the user doesn't validate his account, the registration data is removed from the Database. Otherwise, the account is set as active.
+
+			\bigskip
+			In \labelRef{fig:write-a-comment-activity}[Figure 16] I tried to separate what activities are done in the controller and view. When the comment is submited, it is validated in the controller. If it is found to be inappropriate, then an email notification is sent to an admin and a warning is displayed in View. Otherwise, the comment is registred in the DB and notifications are sent to users interested in this comment. After that, the comment is displayed.
+
+			\myIncludeImg{../../lab7/report/imgs/login.png}[0.5][Login][login-activity][H]
+			\myIncludeImg{../../lab7/report/imgs/registration.png}[0.5][Registration][registration-activity][H]
+			\myIncludeImg{../../lab7/report/imgs/write-a-comment.png}[0.5][Write a comment][write-a-comment-activity][H]
+
+		\subsection{Component Diagram}
+			In \labelRef{fig:login}[Figure 17] is represented the component diagram of Login. I tried to keep to the MVC patern. With that being said, the user interacts with the \textbf{Login} \textit{View}, which sends the \textit{Credentials} to the \textit{Authentication}. It then communicates with the \textit{UserManager} to authenticate and then form the user's \textit{Claims}. A \textit{Session} is formed and it is used for further user identification. Finally, the \textit{Profile View} is fed with a \textit{Profile View Model}.
+
+			\labelRef{fig:comment}[Figure 18] represents the components of commenting. It interacts with the \textit{Authorization Manager} to check if the user is able for such an action. To check if the content does not contain anything inappropriate, the contents are sent to a checker. If it is found to have problems, a notification email can be sent to an admin through the \textit{Email Service}.
+
+			\myIncludeImg{../../lab8/report/imgs/Login-to-profile.png}[0.5][Login Component Diagra][login][H]
+			\myIncludeImg{../../lab8/report/imgs/Comment.png}[0.4][Login Component Diagra][comment][H]
+			\myIncludeImg{../../lab8/report/imgs/UploadPhoto.png}[0.4][Upload Photo Component Diagra][upload-photo][H]
+
+		\subsection{Deployment Diagram}
+			In \labelRef{fig:deploy-diag}[Figure 20] is shown the general Facbook deployment diagram. Generally, 
+
+			\myIncludeImg{../../lab9/report/imgs/DeploymentDiagram.png}[0.3][Deployment Diagram][deploy-diag][H]			
+
+	\section{Conclusion}
+		In this course I learned how to draw and read UML diagrams. UML language is a powerful tool wich helps a lot in designing a project. \textbf{Class diagrams} for example are extremly handy in developing a programmig library, because it offers a much clearer view on the structure. With that, it helps avoiding a lot of refactoring in the production stage. 
+\end{document}

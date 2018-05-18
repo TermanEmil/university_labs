@@ -1,0 +1,56 @@
+\documentclass{article}
+
+\usepackage{enumitem}
+\usepackage{indentfirst}
+\usepackage[export]{adjustbox}
+\usepackage{silence}
+\WarningFilter{latex}{You have requested package}
+
+\usepackage{lib/defaultReportSettings}
+\usepackage{lib/myTitlePage}
+\usepackage{lib/customHyperRef}
+\usepackage{lib/myIncludeImg}
+\usepackage{lib/unumberedSectionsAndSubsections}
+
+\setlist[itemize]{noitemsep, topsep=0pt}
+
+\begin{document}
+	\myTitlePage{AMOO}{Terman Emil FAF161}[R. Melnic][Component Diagrams. Project setup. Top-down and bottom-up design.][8]
+
+	\section{Theory}
+		\subsection{Component diagrams}
+			Component diagrams are different in terms of nature and behavior. Component diagrams are used to model the physical aspects of a system. Now the question is, what are these physical aspects? Physical aspects are the elements such as executables, libraries, files, documents, etc. which reside in a node.
+
+			Component diagrams are used to visualize the organization and relationships among components in a system. These diagrams are also used to make executable systems.
+
+			\textbf{Purpose?} Component diagram is a special kind of diagram in UML. The purpose is also different from all other diagrams discussed so far. It does not describe the functionality of the system but it describes the components used to make those functionalities.
+
+			\textbf{Benefits}
+			\begin{itemize}
+				\item imagine the system’s physical structure;
+				
+				\item emphasize the service behavior as it relates to the interface;
+				
+				\item pay attention to the system’s components and how they relate;
+			\end{itemize}
+
+		\subsection{Top-down and bottom-up design}
+			\textbf{Top-down} and \textbf{bottom-up} are both strategies of information processing and knowledge ordering, used in a variety of fields including software, humanistic and scientific theories (see systemics), and management and organization. In practice, they can be seen as a style of thinking, teaching, or leadership.
+
+			\begin{itemize}
+				\item a \textbf{top-down} approach (also known as stepwise design and in some cases used as a synonym of decomposition) is essentially the breaking down of a system to gain insight into its compositional sub-systems in a reverse engineering fashion. In a top-down approach an overview of the system is formulated, specifying, but not detailing, any first-level subsystems. Each subsystem is then refined in yet greater detail, sometimes in many additional subsystem levels, until the entire specification is reduced to base elements. A top-down model is often specified with the assistance of "black boxes", which makes it easier to manipulate. However, black boxes may fail to clarify elementary mechanisms or be detailed enough to realistically validate the model. Top down approach starts with the big picture. It breaks down from there into smaller segments;
+
+				\item a \textbf{bottom-up} approach is the piecing together of systems to give rise to more complex systems, thus making the original systems sub-systems of the emergent system. Bottom-up processing is a type of information processing based on incoming data from the environment to form a perception. From a cognitive psychology perspective, information enters the eyes in one direction (sensory input, or the "bottom"), and is then turned into an image by the brain that can be interpreted and recognized as a perception (output that is "built up" from processing to final cognition). In a bottom-up approach the individual base elements of the system are first specified in great detail. These elements are then linked together to form larger subsystems, which then in turn are linked, sometimes in many levels, until a complete top-level system is formed. This strategy often resembles a "seed" model, by which the beginnings are small but eventually grow in complexity and completeness. However, "organic strategies" may result in a tangle of elements and subsystems, developed in isolation and subject to local optimization as opposed to meeting a global purpose;
+			\end{itemize}
+
+	\section{Component Diagrams}
+		In \labelRef{fig:login}[Figure 1] is represented the component diagram of Login. I tried to keep to the MVC patern. With that being said, the user interacts with the \textbf{Login} \textit{View}, which sends the \textit{Credentials} to the \textit{Authentication}. It then communicates with the \textit{UserManager} to authenticate and then form the user's \textit{Claims}. A \textit{Session} is formed and it is used for further user identification. Finally, the \textit{Profile View} is fed with a \textit{Profile View Model}.
+
+		\labelRef{fig:comment}[Figure 2] represents the components of commenting. It interacts with the \textit{Authorization Manager} to check if the user is able for such an action. To check if the content does not contain anything inappropriate, the contents are sent to a checker. If it is found to have problems, a notification email can be sent to an admin through the \textit{Email Service}.
+
+		\myIncludeImg{imgs/Login-to-profile.png}[0.5][Login Component Diagra][login]
+
+		\myIncludeImg{imgs/Comment.png}[0.4][Login Component Diagra][comment]
+
+		\myIncludeImg{imgs/UploadPhoto.png}[0.4][Upload Photo Component Diagra][upload-photo]
+\end{document}

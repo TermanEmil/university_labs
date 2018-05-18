@@ -21,12 +21,12 @@
 % #3 caption
 % #4 label
 
-\DeclareDocumentCommand{\myIncludeImg}{m O{1} O{} O{Img\nImg}}{
+\DeclareDocumentCommand{\myIncludeImg}{m O{1} O{} O{Img\nImg} O{}}{
 	\refstepcounter{nImg}
 	\captionsetup{labelformat=ImgCaption,labelsep=colon}
 
 	\begin{center}
-		\begin{figure}
+		\begin{figure}[#5]
 			\begin{mdframed}[backgroundcolor=black!5,
 							rightline=false,
 							leftline=false]
