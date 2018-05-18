@@ -1,0 +1,28 @@
+\contentsline {section}{\numberline {1}Intro to Theory}{3}{section.1}
+\contentsline {subsection}{\numberline {1.1}Project description, User stories}{3}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Modeling Lnaguages}{3}{subsection.1.2}
+\contentsline {subsection}{\numberline {1.3}Conceptual OO Analysis / Technical OO Design}{3}{subsection.1.3}
+\contentsline {subsection}{\numberline {1.4}Abstraction, Encapsulation, Decomposition, Generalization}{3}{subsection.1.4}
+\contentsline {subsection}{\numberline {1.5}Coupling and Cohesion, Separation of Concerns, Information Hiding, Conceptual integrity}{4}{subsection.1.5}
+\contentsline {subsection}{\numberline {1.6}SOLID}{5}{subsection.1.6}
+\contentsline {subsection}{\numberline {1.7}Grasp Principles}{5}{subsection.1.7}
+\contentsline {subsection}{\numberline {1.8}Software Development Process}{5}{subsection.1.8}
+\contentsline {subsection}{\numberline {1.9}Top-down and Bottom-up Design}{5}{subsection.1.9}
+\contentsline {subsection}{\numberline {1.10}OntoUML}{5}{subsection.1.10}
+\contentsline {section}{\numberline {2}Analysis and Modeling}{6}{section.2}
+\contentsline {subsection}{\numberline {2.1}Main and Alternative Flows}{6}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Functional and Non functional requirements}{7}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Technologies}{7}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}SWOT Analysis}{8}{subsection.2.4}
+\contentsline {subsection}{\numberline {2.5}Domain Analysis}{8}{subsection.2.5}
+\contentsline {subsection}{\numberline {2.6}Project Setup}{8}{subsection.2.6}
+\contentsline {section}{\numberline {3}Analysis and Modeling in UML}{8}{section.3}
+\contentsline {subsection}{\numberline {3.1}Use Case Diagram}{8}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Sequence Diagram}{10}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Collaboration Diagram}{12}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}Class Diagram}{15}{subsection.3.4}
+\contentsline {subsection}{\numberline {3.5}Statechart Diagram}{16}{subsection.3.5}
+\contentsline {subsection}{\numberline {3.6}Activity Diagram}{18}{subsection.3.6}
+\contentsline {subsection}{\numberline {3.7}Component Diagram}{21}{subsection.3.7}
+\contentsline {subsection}{\numberline {3.8}Deployment Diagram}{23}{subsection.3.8}
+\contentsline {section}{\numberline {4}Conclusion}{24}{section.4}
