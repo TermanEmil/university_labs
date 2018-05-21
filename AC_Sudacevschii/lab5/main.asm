@@ -1,10 +1,14 @@
 .model small
 
 .DATA
-    X   DW  05h, 01h, 02h, 03h, 04h, 05h, 06h, 07h, 08h, 09h
+    ;       0      2      4      6      8      10      12     14     16     18
+    X   DW  9FFFh, 9FFFh, 9FFFh, 0003h, 0004h, 0009Fh, 0006h, 8FFFh, 9FFFh, 9FFFh
     N   DW  10
-    l1  DW  0
-    l2  DW  0
+    A   DW  0
+    B   DW  0
+    C   DW  0
+    
+    RESULT DW 3 DUP(?)
     
 .CODE
 begin:
@@ -31,51 +35,65 @@ sum_proc proc
     ret ; result in ax
 endp sum_proc
 
+CPY_VAR MACRO var1, var2
+    mov ax, var2
+    mov var1, ax    
+endm
+
 ; If ax is even: multiply first 3 numbers
 ;          else: multiply last 3 numbers
 odd_even proc
-    
     test ax, 1
     jz  EVEN
-    jnz ODD
     
-    ; Set L1 to n - 3 and L2 to n
     ODD:        
-        mov dx, n
-        sub dx, 3 
-        mov L1, dx
-        
-        mov dx, n
-        mov L2, dx
+        CPY_VAR A, X[14]
+        CPY_VAR B, X[16]
+        CPY_VAR C, X[18]
         
         jmp DONE
-    
-    ; set L1 to 0 and L2 to 3                    
+                                                 
     EVEN:
-        mov L1, 0
-        mov L2, 3
-        jmp DONE
+        CPY_VAR A, X[0]
+        CPY_VAR B, X[2]
+        CPY_VAR C, X[4]
         
     DONE:
-        ; Compute in CX the number of iterations    
-        mov dx, l2
-        sub dx, l1
-        mov cx, dx
-        
-        ; SI is the index of the element to start with
-        ; SI = l1 * 2
-        mov dx, l1
-        shl dx, 1
-        mov si, dx
-        
-        ; Init the multiplication
-        mov ax, 1
+        ; M.S. == dx == Most Significant part
+        ; L.S. == ax == Least Significant part
     
-    mult_loop:
-        mov BX, X[si]
-        mul BX
-        add si, 2
-        loop mult_loop    
+        ; A x B
+        mov ax, A
+        mul B   ; Mul_1
+        
+        ; Save the M.S. to bx
+        mov bx, dx
+        
+        ; multiply L.S. with C
+        mul C   ; Mul_2
+        
+        ; Save the L.S. of Mul_2
+        ;  as the first bytes of the result
+        mov RESULT[0], ax
+        
+        ; Move the M.S. of Mul_1 to ax
+        mov ax, bx
+        
+        ; Save the M.S. of Mul_2 to bx
+        mov bx, dx
+        
+        ; Multiply M.S. of Mul_1 with C 
+        mul C   ; Mul_3
+        
+        ; Add to L.S. of Mul_3 the M.S. of Mul_2
+        add ax, bx
+        
+        ; The carry is added to the M.S. of Mul_3
+        adc dx, 0
+        
+        mov RESULT[2], ax
+        mov RESULT[4], dx
+     
     ret    
 endp odd_even
 
