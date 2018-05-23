@@ -1,0 +1,154 @@
+% \documentclass[draft]{article}
+\documentclass{beamer}
+
+\usepackage{silence}
+\WarningFilter{latex}{You have requested package}
+
+\usepackage{enumitem}
+\usepackage{indentfirst}
+\usepackage[export]{adjustbox}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{lmodern}
+\usepackage{lib/myIncludeImg}
+
+\mode<presentation>
+{
+	\usetheme{default}      % or try Darmstadt, Madrid, Warsaw, ...
+	\usecolortheme{default} % or try albatross, beaver, crane, ...
+	\usefonttheme{default}  % or try serif, structurebold, ...
+	\setbeamertemplate{navigation symbols}{}
+	\setbeamertemplate{caption}[numbered]
+} 
+
+\DeclareDocumentCommand{\myCourseTitlePage}{m m o o o O{2018}}
+{
+	\begin{center}
+		{\fontsize{8}{1}\selectfont
+		Technical University of Moldova\\
+		Inginerical department S.A.}
+		
+
+		\vfill {\fontsize{30}{1}\selectfont Course Work}\\
+		\bigskip
+
+		{\large #1}\\
+
+		{\large \textbf{Subject:} #4}
+		\vfill
+
+		Author: \hfill Terman Emil FAF161\\
+		Prof: \hfill #3
+
+	\end{center}
+}
+
+\DeclareDocumentCommand{\themeTitle}{m m}
+{
+	\begin{frame}\begin{center}
+		{\huge \color{blue} \textbf{#1}}
+
+		\begin{itemize}
+			#2
+		\end{itemize}
+	\end{center}\end{frame}
+}
+
+\DeclareDocumentCommand{\imgFrame}{m m m m O{#2#1}}
+{
+	\begin{frame}
+		\myIncludeImg{../../lab#1/report/imgs/#2.png}[#3][#4][#5]
+	\end{frame}
+}
+
+\hypersetup{final}
+\begin{document}
+	\begin{frame}
+		\myCourseTitlePage{AMOO}{Terman Emil FAF161}[R. Melnic, M. Gavrilita][Analysis and modelling of Facebook]
+	\end{frame}
+
+	% ---------
+	\themeTitle{Use Case Diagrams}{
+		\item - Enter Facebook
+		\item - General Use
+		\item - Interaction with others
+	}
+
+	\imgFrame{2}{enter-fb}{0.38}{Enter Facebook}
+	\imgFrame{2}{general-use}{0.33}{General use}
+	\imgFrame{2}{interact-with-others}{0.4}{Interactions with others}
+
+	% ---------
+	\themeTitle{Sequence Diagram}{
+		\item - Registration
+		\item - Friend request
+		\item - Create event
+	}
+
+	\imgFrame{3}{reg}{0.38}				{Registration}
+	\imgFrame{3}{friend-request}{0.33}	{Friend request}
+	\imgFrame{3}{create-event}{0.38}	{Create event}
+
+	% ---------
+	\themeTitle{Collaboration Diagram}{
+		\item - Registration
+		\item - Friend request
+		\item - Create event
+	}
+
+	\imgFrame{4}{reg}				{0.40}				{Registration}
+	\imgFrame{4}{friend-request}	{0.40}				{Friend request}
+	\imgFrame{4}{create-event}		{0.40}				{Create event}
+
+	% ---------
+	\themeTitle{Class Diagram}{
+		\item - Facebook general
+	}
+
+	\imgFrame{5}{ClassDiagram}				{0.12}				{Facebook}
+
+	% ---------
+	\themeTitle{Statechart Diagram}{
+		\item - Create an event
+		\item - Add new photo
+		\item - Friend request
+	}
+
+	\imgFrame{6}{create-event}			{0.40}				{Create an event}
+	\imgFrame{6}{add-new-photo}			{0.38}				{Add new photo}
+	\imgFrame{6}{friend-request}		{0.40}				{Friend request}
+
+	% ---------
+	\themeTitle{Activity Diagram}{
+		\item - Login
+		\item - Registration
+		\item - Write a comment
+	}
+
+	\imgFrame{7}{login}					{0.40}				{Login}
+	\imgFrame{7}{registration}			{0.33}				{Registration}
+	\imgFrame{7}{write-a-comment}		{0.40}				{Write a comment}
+
+	% ---------
+	\themeTitle{Component Diagram}{
+		\item - Login
+		\item - Comment
+		\item - Upload Photo
+	}
+
+	\imgFrame{8}{Login-to-profile}		{0.20}				{Login}
+	\imgFrame{8}{Comment}				{0.20}				{Comment}
+	\imgFrame{8}{UploadPhoto}			{0.20}				{Upload Photo}
+
+	% ---------
+	\themeTitle{Deployment Diagram}{
+		\item - General Deployment 
+	}
+
+	\imgFrame{9}{DeploymentDiagram}		{0.17}				{General Deployment }
+
+	\begin{frame}
+		\myIncludeImg{imgs/uml-joke.png}[0.64][A funny joke]
+	\end{frame}
+
+\end{document}
