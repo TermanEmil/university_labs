@@ -22,7 +22,7 @@
 \contentsline {subsection}{\numberline {3.3}Collaboration Diagram}{12}{subsection.3.3}
 \contentsline {subsection}{\numberline {3.4}Class Diagram}{15}{subsection.3.4}
 \contentsline {subsection}{\numberline {3.5}Statechart Diagram}{16}{subsection.3.5}
-\contentsline {subsection}{\numberline {3.6}Activity Diagram}{18}{subsection.3.6}
-\contentsline {subsection}{\numberline {3.7}Component Diagram}{21}{subsection.3.7}
-\contentsline {subsection}{\numberline {3.8}Deployment Diagram}{23}{subsection.3.8}
-\contentsline {section}{\numberline {4}Conclusion}{24}{section.4}
+\contentsline {subsection}{\numberline {3.6}Activity Diagram}{19}{subsection.3.6}
+\contentsline {subsection}{\numberline {3.7}Component Diagram}{22}{subsection.3.7}
+\contentsline {subsection}{\numberline {3.8}Deployment Diagram}{24}{subsection.3.8}
+\contentsline {section}{\numberline {4}Conclusion}{25}{section.4}
