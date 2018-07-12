@@ -1,0 +1,17 @@
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}
+\contentsline {subsection}{\numberline {1.1}Objectives}{3}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}End Result}{3}{subsection.1.2}
+\contentsline {section}{\numberline {2}Theoretical analysis}{4}{section.2}
+\contentsline {subsection}{\numberline {2.1}HLS Streaming}{4}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}M3U8 Files}{4}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}FFMPEG Chunking Tool[1]}{4}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}Asp.Net Core[2]}{5}{subsection.2.4}
+\contentsline {subsection}{\numberline {2.5}Dependency Injection}{5}{subsection.2.5}
+\contentsline {subsection}{\numberline {2.6}Processes}{5}{subsection.2.6}
+\contentsline {subsection}{\numberline {2.7}Signals}{5}{subsection.2.7}
+\contentsline {subsection}{\numberline {2.8}In-memory Database[3]}{6}{subsection.2.8}
+\contentsline {subsection}{\numberline {2.9}Redis[3]}{6}{subsection.2.9}
+\contentsline {section}{\numberline {3}Demonstration}{7}{section.3}
+\contentsline {section}{\numberline {4}Implementation}{8}{section.4}
+\contentsline {section}{\numberline {5}Conclusion}{9}{section.5}
+\contentsline {section}{\numberline {6}Bibliography}{9}{section.6}
